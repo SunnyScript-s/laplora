@@ -16,7 +16,7 @@ The accompanying planning HTML and captured images show three representative scr
 - [Typeface comparison](design/typography-comparison.png): Outfit + Manrope, Space Grotesk + Manrope, and Plus Jakarta Sans, using the same copy and values.
 - [Website and font research](DESIGN_REFERENCES.md): inspected sources, scope, licenses, and the recommended typography direction.
 
-The founder requested a cooler typography direction and a capital L in Laplora. The refreshed previews show the recommended Outfit + Manrope pairing with that capitalization; the alternative specimens remain available for comparison.
+The founder selected Option A, Outfit + Manrope, on October 14, 2026 and requested a capital L in Laplora. The refreshed previews show this approved typography; the alternative specimens remain available for comparison. The full layout review remains pending.
 
 ## Remaining states covered by the user-flow specification
 

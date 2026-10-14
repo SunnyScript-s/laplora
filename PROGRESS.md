@@ -1,5 +1,15 @@
 # Laplora progress
 
+## October 14, 2026 — approved typography option A
+
+- Founder selected Option A: Outfit headings/wordmark and Manrope body/controls. Recorded the selection in contributor and design documents so this decision does not need to be requested again.
+- Applied local variable fonts to the application foundation through shared display/body tokens, retaining licenses and package provenance. Vite bundles only these two families (57,128 font bytes); no new package dependency or external font service.
+- Set the main headline to Outfit 550, other headings to 600, and the capital-L wordmark to 650. Body text and inherited control typography use Manrope with system fallbacks and font-display: swap.
+- Type checking, production build, and 2 existing desktop/mobile foundation browser tests passed. Verified both font faces loaded from local hashed production assets, correct computed heading/body families, no runtime/request errors, and no overflow at 1440px, 390px, and 320px.
+- Visually reviewed captured desktop/mobile application screenshots in docs/design/app-option-a-desktop.png and app-option-a-mobile.png. Closed the temporary preview server after verification.
+- Typography selection is complete; the existing full wireframe/layout review remains pending. No model code changed or engine test rerun was needed. Original DEVELOPMENT_PLAN.md is unchanged.
+- Local checkpoint: `style: apply approved Outfit and Manrope typography`. No push/deployment.
+
 ## October 14, 2026 — compact font example
 
 - Added docs/design/font-quick-example.html and its captured image for a quick side-by-side view of the same wordmark, headline, and body copy in options A/B/C.

@@ -8,6 +8,8 @@ The founder approved the React/TypeScript architecture, implementation-with-ment
 
 The React/Vite page is still a development foundation; the score engine is not connected to a student interface yet. Charting and animation libraries will be introduced with their milestones.
 
+The founder selected Outfit headings/wordmark with Manrope body text and controls (Option A). These licensed variable fonts are bundled locally, with system fallbacks and no external font service.
+
 ## Development
 
 Use Node **24.19.0** (pinned in `.node-version`) and npm **11.9.0**. Dependencies are pinned in `package-lock.json`.

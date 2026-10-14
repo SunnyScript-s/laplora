@@ -1,5 +1,23 @@
+@font-face {
+  font-family: "Outfit";
+  src: url("./fonts/outfit.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Manrope";
+  src: url("./fonts/manrope.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  font-family: Inter, "Segoe UI", system-ui, sans-serif;
+  --font-display: "Outfit", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Manrope", "Segoe UI", system-ui, sans-serif;
+  font-family: var(--font-body);
   color: #173e50;
   background: #e7f5fa;
   font-synthesis: none;
@@ -14,6 +32,7 @@
 
 * { box-sizing: border-box; }
 body { margin: 0; min-width: 320px; }
+h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 600; }
 button, input, select, textarea { font: inherit; }
 a { color: var(--color-accent); text-underline-offset: 0.25em; }
 :focus-visible { outline: 3px solid var(--color-accent); outline-offset: 5px; }

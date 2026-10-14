@@ -19,12 +19,12 @@ Professional Frutiger Aero with a restrained glass surface treatment: bright atm
 | Glass surface | White at roughly 80–92% opacity | Main panels; preserve contrast against the actual background |
 | Panel radius | 24px | Main cards; controls use smaller 10–12px corners |
 | Spacing | 4, 8, 12, 16, 24, 32, 48, 64px | Consistent rhythm |
-| Display typography — proposed A | Outfit, locally bundled | Rounded geometric wordmark/headlines, with a system fallback |
-| Body typography — proposed A | Manrope, locally bundled | Readable labels, paragraphs, and numerical summaries |
+| Display typography — approved A | Outfit, locally bundled | Rounded geometric wordmark/headlines, with a system fallback |
+| Body typography — approved A | Manrope, locally bundled | Readable labels, paragraphs, and numerical summaries |
 
 Use one calm background, one primary accent, and one scenario accent. Avoid stacked decorative gradients, unsolicited gauges, fake precision, unnecessary counters, and decorative animation. Model-version disclosure belongs in an explanation, not as an intimidating technical label on every control.
 
-The founder requested font exploration and a capital **L** in **Laplora**. See [DESIGN_REFERENCES.md](DESIGN_REFERENCES.md) for actual website observations, three font pairings, provenance, and delivery tradeoffs. The current review views use Outfit + Manrope; this is a recommendation awaiting design review, not a silently approved runtime font change.
+The founder selected Option A, Outfit + Manrope, on October 14, 2026 and requested a capital **L** in **Laplora**. This typography is applied to the application foundation and review views. See [DESIGN_REFERENCES.md](DESIGN_REFERENCES.md) for actual website observations, three font pairings, provenance, and delivery tradeoffs. Full wireframe/layout review remains pending.
 
 ## Layout and components
 
