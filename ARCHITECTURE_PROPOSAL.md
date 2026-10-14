@@ -14,9 +14,9 @@ V1 accepts SAT, PSAT/NMSQT, PSAT 10, and official full-length practice results. 
 
 The founder approved the implementation-with-mentoring workflow and the proposed React/TypeScript architecture on October 14, 2026. This resolves the implementation conflict below. TypeScript is the production language; Python remains an optional learning topic, with no duplicate production engine proposed.
 
-1. **Implementation and learning:** the plan's Development Rule 3 says, “Do not have AI generate the entire Laplora codebase while I simply paste it.” The supplied request asks the assistant to handle much of implementation. These instructions need clarification before application coding. Recommendation: assistant implements bounded milestones, explains the reasoning and code, and the founder reviews decisions and completes small learning exercises. Alternatively, use a mentor-led workflow where the founder writes the core code.
-2. **Architecture:** approve or revise the client-side React/TypeScript proposal below. The plan emphasizes Python learning in Weeks 6–8; it does not explicitly mandate a Python production engine. Confirm whether Python is a learning objective or a required implementation language. A Python production engine would require a separate architecture decision.
-3. **Model gate:** approve the research-first process now. Numerical coefficients, PSAT treatment, and the final model remain separate decisions in Weeks 2–5; architecture approval does not approve a growth formula.
+1. **Implementation and learning — resolved:** the plan's Development Rule 3 says, “Do not have AI generate the entire Laplora codebase while I simply paste it.” The founder approved bounded assistant implementation with mentoring: explain the reasoning and code, involve the founder in major decisions, and offer learning exercises.
+2. **Architecture — approved:** use the client-side React/TypeScript proposal below. The plan emphasizes Python learning in Weeks 6–8 but does not explicitly mandate a Python production engine. A future Python production engine would require a separate architecture decision.
+3. **Model gate — still open:** numerical coefficients, PSAT treatment, and the final model remain separate decisions in Weeks 2–5; architecture approval does not approve a growth formula.
 
 Architecture approval permits initialization. Complete Week 1 before building product features, as the plan requests. The input policy and final mathematical model still require their scheduled review gates.
 

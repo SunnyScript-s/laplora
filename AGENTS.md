@@ -13,3 +13,5 @@
 - Update PROGRESS.md with decisions, lessons, evidence, tests, blockers, commits, and next steps at meaningful checkpoints.
 - Commit genuine progress with accurate attribution and timestamps. Push only when authorized; never force-push or rewrite history without approval.
 - Add dependencies when the current milestone needs them. Preserve the lockfile during setup with npm ci.
+- Use Node 24.19.0 and npm 11.9.0. In this cloud sandbox, install with `npm ci --cache /tmp/laplora-npm-cache`; verify with `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npm run verify`.
+- `npm run dev` binds to loopback port 5173; browser tests build and use production preview on port 4173. Do not assume live processes survive an environment snapshot.

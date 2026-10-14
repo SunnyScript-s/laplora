@@ -1,0 +1,40 @@
+:root {
+  font-family: Inter, "Segoe UI", system-ui, sans-serif;
+  color: #173e50;
+  background: #e7f5fa;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  --color-ink: #173e50;
+  --color-muted: #426171;
+  --color-accent: #126279;
+  --color-green: #316c57;
+  --color-surface: rgb(255 255 255 / 78%);
+  --radius-panel: 1.5rem;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; }
+button, input, select, textarea { font: inherit; }
+a { color: var(--color-accent); text-underline-offset: 0.25em; }
+:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 5px; }
+
+.skip-link {
+  position: fixed;
+  z-index: 10;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  background: white;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus { transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

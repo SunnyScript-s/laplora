@@ -6,7 +6,35 @@ Laplora is an experimental SAT score-growth simulation project. It will help stu
 
 The founder approved the React/TypeScript client-side architecture and implementation-with-mentoring workflow on October 14, 2026. Week 1 product-definition and official scoring research are documented. The mathematical engine is not yet approved or implemented.
 
-The development foundation is being initialized. This repository does not yet provide a working score simulator.
+The React/Vite development foundation runs a small development page. It does not yet provide a working score simulator. Charting, model validation, and animation libraries will be introduced when their milestones need them.
+
+## Development
+
+Use Node **24.19.0** (pinned in `.node-version`) and npm **11.9.0**. Dependencies are pinned in `package-lock.json`.
+
+```sh
+npm ci
+npm run dev
+```
+
+The server uses loopback port 5173 and fails clearly if the port is occupied. `npm run preview` serves the production build on port 4173. In this cloud sandbox, use `npm ci --cache /tmp/laplora-npm-cache` because the default home cache is not writable. No application environment variables or credentials are required.
+
+## Verification
+
+```sh
+npm run check
+npm run build
+npx playwright install chromium
+npm test
+```
+
+`npm test` builds the application and runs the foundation browser smoke test on desktop and mobile Chromium viewports. `npm run verify` combines type checking and those tests. For the cloud machine's existing browser, use:
+
+```sh
+PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npm run verify
+```
+
+The tests check startup, keyboard navigation, and viewport fit. They do not validate a simulation engine, which is not implemented yet. GitHub Actions contains the same verification flow; its remote run has not been exercised yet.
 
 ## Project references
 

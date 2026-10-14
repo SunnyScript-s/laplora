@@ -27,14 +27,24 @@
 
 ### Current work and next steps
 
-- Initialize the approved development foundation, then verify type checking, build, and actual browser startup.
+- Approved development foundation initialized with React, TypeScript, Vite, pinned dependency versions, a lockfile, a small development page, browser smoke tests, and a CI workflow.
+- Added shared color/surface tokens and semantic page structure as a foundation. The full design system and guided interface remain future milestones.
+- Type checking and production build passed. Both browser smoke runs passed: desktop Chromium and a mobile Chromium viewport, including keyboard skip-link navigation and horizontal-overflow checks.
+- Started the development server and verified actual rendering on desktop and mobile with no JavaScript runtime errors. Reviewed screenshots; replaced an unavailable arrow font glyph with a decorative SVG.
+- Exercised the reusable frozen-lockfile installation script: npm ci, type check, and build all passed. Original DEVELOPMENT_PLAN.md remains byte-for-byte unchanged.
+- Saved the tested install_script and start_skill in the environment configuration draft. Saving does not publish a snapshot; review/save and publication remain user actions in environment settings.
+- Final verification after the icon fix passed: type checking, production build, and 2 browser tests, with no failures or skips.
+- Browser checks use the cloud image's system Chromium. Managed-browser installation and the GitHub Actions workflow have not been run here. Full model, results, accessibility, and cross-browser testing remain future work.
 - Next product milestone: Week 2 input specification and user flow, including baseline age and PSAT interpretation.
 - Final model approval remains required in Weeks 4–5 before engine implementation.
 - No push or deployment is authorized.
 
 ### Git checkpoint
 
-- Week 1 documents are ready for a meaningful local commit. Actual commit IDs will be recorded after creation.
+- `b379321` — `docs: define Laplora V1 product and scoring research`.
+- Foundation checkpoint: `chore: initialize Laplora React TypeScript foundation`; use git log for the resulting commit ID.
+- Commits use an explicit local Codex identity rather than attributing assistant-written changes to the founder. Existing Git identity configuration was left unchanged.
+- The exported plan contains two trailing-space lines; these are preserved intentionally. Whitespace checks for new authored files pass.
 
 ## October 14, 2026 — planning checkpoint
 
