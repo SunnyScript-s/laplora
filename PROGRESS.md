@@ -1,5 +1,20 @@
 # Laplora progress
 
+## October 14, 2026 — simulation engine and stress testing
+
+- Implemented the approved model in src/model: immutable versioned parameters, stable exponential section math, exact calendar timelines, raw/rounded section-total results, goal markers, and disclosed assumptions.
+- Implemented increased-practice and custom scenario helpers, explicit changed fields, descriptive-only explanations, preserved baseline/model/date, and reset through an empty patch.
+- Preserved valid below-floor PSAT observations and returned the approved needs-sat-baseline outcome without fabricating scores.
+- Full verification passed: TypeScript, 123 unit tests, build, and 2 existing foundation browser runs. The stress grid covers 2,160 profiles inside one test; these are not 2,160 separately counted tests.
+- Reviewed zero-time numerical behavior, non-record scenario patches, and warning wording; fixed those issues without changing approved coefficients.
+- Wrote docs/MODEL_TEST_REPORT.md. No empirical calibration or prediction accuracy is claimed. Retain model version 0.1.0-experimental; a parameter bump to V0.2 is not justified by structural tests alone.
+- Week 6 input and Week 7 engine work are complete. Week 8 structural stress testing is complete, with the version decision recorded. The student interface and comprehensive accessibility checks remain unimplemented/unverified.
+- Input commit: 6304cc9. Engine checkpoint: `feat: implement experimental SAT trajectories and scenarios`; see git log for the resulting ID. No push or deployment.
+
+Learning focus: the engine is a pure function of explicit inputs and dates, so identical inputs produce identical results. Numerical consistency and scientific calibration are different forms of evidence.
+
+Next: prepare a concrete Week 9 design/wireframe review; the approved architecture requires wireframe approval before the full interface is implemented.
+
 ## October 14, 2026 — approved input engine
 
 - Founder approved the V0.1 input/model/scenario choices, including experimental coefficients, PSAT edge-case coverage, descriptive-only context fields, and study/horizon limits.

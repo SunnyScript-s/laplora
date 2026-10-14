@@ -4,9 +4,9 @@ Laplora is an experimental SAT score-growth simulation project. It will help stu
 
 ## Project status
 
-The founder approved the React/TypeScript client-side architecture and implementation-with-mentoring workflow on October 14, 2026. Week 1 product-definition and official scoring research are documented. The mathematical engine is not yet approved or implemented.
+The founder approved the React/TypeScript architecture, implementation-with-mentoring workflow, and V0.1 input/model/scenario choices on October 14, 2026. Product/research documentation, input validation, and the pure experimental score engine are implemented.
 
-The React/Vite development foundation runs a small development page. It does not yet provide a working score simulator. Charting, model validation, and animation libraries will be introduced when their milestones need them.
+The React/Vite page is still a development foundation; the score engine is not connected to a student interface yet. Charting and animation libraries will be introduced with their milestones.
 
 ## Development
 
@@ -28,13 +28,13 @@ npx playwright install chromium
 npm test
 ```
 
-`npm test` builds the application and runs the foundation browser smoke test on desktop and mobile Chromium viewports. `npm run verify` combines type checking and those tests. For the cloud machine's existing browser, use:
+`npm test` runs Vitest input/model/scenario tests, builds the application, and runs the foundation browser test on desktop and mobile Chromium viewports. `npm run test:unit` and `npm run test:e2e` run those parts separately. `npm run verify` includes type checking. For the cloud machine's existing browser, use:
 
 ```sh
 PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npm run verify
 ```
 
-The tests check startup, keyboard navigation, and viewport fit. They do not validate a simulation engine, which is not implemented yet. GitHub Actions contains the same verification flow; its remote run has not been exercised yet.
+Unit tests verify engine contracts and structural behavior, including a 2,160-profile stress grid. Browser tests currently check the foundation's startup, keyboard navigation, and viewport fit. These checks do not establish prediction accuracy. GitHub Actions contains the same verification flow; its remote run has not been exercised yet.
 
 ## Project references
 
@@ -45,10 +45,11 @@ The tests check startup, keyboard navigation, and viewport fit. They do not vali
 - [Proposed input rules](docs/INPUT_SPECIFICATION.md) and [guided user flow](docs/USER_FLOW.md)
 - [Preparation-growth research](docs/GROWTH_RESEARCH.md)
 - [Model V0.1 proposal](docs/MODEL_SPECIFICATION.md) and [simulation rules](docs/SIMULATION_RULES.md)
+- [Engine test report](docs/MODEL_TEST_REPORT.md)
 - [Future ideas](docs/FUTURE_IDEAS.md)
 - [Progress and next steps](PROGRESS.md)
 - [Contributor guidance](AGENTS.md)
 
 The public beta target in the plan is February 2, 2027. Read PROGRESS.md for actual completion status.
 
-The written input/model proposals are ready for founder review. They contain explicitly experimental coefficients and two important policy choices: below-SAT-floor PSAT handling, and descriptive rather than numerical treatment of preparation history/methods/test frequency. The score engine remains unimplemented pending that approval.
+The approved model uses explicitly experimental coefficients, conservative below-SAT-floor PSAT handling, and descriptive rather than numerical treatment of preparation history/methods/test frequency. The next milestone is the design system and wireframes before interface implementation.

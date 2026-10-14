@@ -1,6 +1,6 @@
 # Laplora simulation rules V0.1
 
-Week 5 written deliverable · October 14, 2026 · Proposed, awaiting founder approval.
+Week 5 written deliverable · V0.1 choices approved by the founder October 14, 2026. Pure engine and scenario helpers implemented; guided interface remains future work.
 
 References: [input specification](INPUT_SPECIFICATION.md), [written model](MODEL_SPECIFICATION.md), and [research limits](GROWTH_RESEARCH.md).
 
@@ -68,4 +68,4 @@ Test independent expectations and properties rather than copying the formula int
 
 ## Current verification status
 
-Worked-example arithmetic in MODEL_SPECIFICATION.md was evaluated using a local scratch calculation of the written closed form. It confirms those document numbers; it is not a production engine or an engine test suite. No model validation tests, user studies, calibration runs, or prediction accuracy checks have been executed.
+The implementation matches independently documented worked examples and passes input/model/scenario tests, including a 2,160-profile stress grid. See MODEL_TEST_REPORT.md for scope and actual counts. No calibration, prediction-accuracy evaluation, or student usability study has been performed.

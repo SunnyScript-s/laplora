@@ -1,8 +1,8 @@
-# Laplora SAT model V0.1 — proposed written specification
+# Laplora SAT model V0.1 — approved experimental specification
 
-Week 4 deliverable · October 14, 2026 · **Awaiting founder approval.**
+Week 4 deliverable · **V0.1 choices approved by the founder on October 14, 2026.** Implementation: src/model; verification: MODEL_TEST_REPORT.md.
 
-This document proposes an educational mathematical model, not a scientifically validated individual prediction model. No production engine or coefficients have been implemented. Approval of React/TypeScript did not approve this model.
+This document specifies the approved educational mathematical model, not a scientifically validated individual prediction model. The engine implements these experimental coefficients. The founder approved them separately from the React/TypeScript architecture.
 
 References: [input rules](INPUT_SPECIFICATION.md), [reviewed evidence](GROWTH_RESEARCH.md), [scenario and presentation rules](SIMULATION_RULES.md).
 
@@ -16,7 +16,7 @@ The model does not estimate a student's true latent ability, establish their pot
 
 Validate and label the observed assessment first. For SAT and accepted shared-scale PSAT observations with both sections at least 200, use the reported section values as the hypothetical starting scores. Preserve the original assessment/date in result metadata. Do not scale PSAT by its maximum or infer past growth between its date and today.
 
-Proposed below-floor policy: preserve a valid PSAT observation with a section below 200, but return `needs-sat-baseline` rather than generating an SAT score curve. This coverage restriction needs founder approval. Do not silently replace its observed value with 200. Explain the lower PSAT floor and offer entry of an official full-length SAT practice result.
+Approved below-floor policy: preserve a valid PSAT observation with a section below 200, but return `needs-sat-baseline` rather than generating an SAT score curve. Do not silently replace its observed value with 200. Explain the lower PSAT floor and offer entry of an official full-length SAT practice result.
 
 At a PSAT section ceiling of 760, disclose the restricted assessment ceiling; do not grant a numerical uplift. The common-scale interpretation is supported by official documentation; the hypothetical starting point today and all future growth remain assumptions.
 
@@ -56,7 +56,7 @@ total(t) = math(t) + readingWriting(t)
 
 Use the closed form for constant plans so results do not depend on how graph points are sampled. Evaluate weekly dates and the exact final date, using elapsed calendar days divided by seven. Do not round intermediate values. Stable exponential calculations can avoid loss of precision for tiny horizons when the engine is implemented.
 
-## Proposed parameter set — entirely experimental
+## Approved parameter set — entirely experimental
 
 | Parameter | Math | Reading & Writing | Reason and status |
 | --- | --- | --- | --- |
@@ -75,7 +75,7 @@ The synthetic examples below were inspected to make the proposal understandable.
 
 Required prep history, methods, and practice-test frequency remain in the input/result context and support transparent guidance. They do not receive separate numerical boosts in V0.1. Weekly hours include every activity, preventing test time from being counted twice.
 
-This choice avoids interpreting observational study associations as causal score bonuses, ranking tutoring against self-study without evidence, or double-counting prior preparation already reflected in the baseline. It also means that changing only a method/history/frequency field leaves the curve unchanged. Explain that limitation explicitly; do not imply that methods are equally effective in reality. This treatment needs founder approval because those fields are part of the requested simulation design.
+This approved choice avoids interpreting observational study associations as causal score bonuses, ranking tutoring against self-study without evidence, or double-counting prior preparation already reflected in the baseline. It also means that changing only a method/history/frequency field leaves the curve unchanged. Explain that limitation explicitly; do not imply that methods are equally effective in reality.
 
 The target score is a reference marker only. It never enters `e_j` or `k_j`. The model has no passive growth term, forgetting term, test-day variability, school-instruction adjustment, or demographic coefficient. Absence of a term is a limitation, not a claim that the real-world factor does not matter.
 
@@ -126,9 +126,9 @@ The slower/central/faster cases vary only the experimental learning-rate assumpt
 
 This V0.1 cannot quantify baseline measurement error, current proficiency after an old score, individual learning differences, test-day conditions, or changes in engagement over time. A PSAT ceiling can hide higher proficiency. The curve does not prove that more hours always help in reality or that improvement continues at a stable rate for years.
 
-## Approval and implementation gate
+## Approval and implementation record
 
-Founder approval is required for this parameterized model, the illustrative range, descriptive treatment of history/methods/frequency, section allocation, and the PSAT edge-case policy in INPUT_SPECIFICATION.md. If approved, implement the input engine first, then the pure simulation engine with the test matrix in SIMULATION_RULES.md. Do not begin production engine implementation before that approval.
+The founder approved this parameterized model, illustrative range, descriptive treatment of history/methods/frequency, section allocation, and PSAT edge-case policy in INPUT_SPECIFICATION.md. The input and pure simulation engines are implemented with the acceptance matrix in SIMULATION_RULES.md. Future substantive equation/parameter changes still require approval. Tests establish implementation behavior, not empirical accuracy.
 
 ## Mentoring exercise
 
