@@ -46,10 +46,11 @@ Unit tests verify engine contracts and structural behavior, including a 2,160-pr
 - [Preparation-growth research](docs/GROWTH_RESEARCH.md)
 - [Model V0.1 proposal](docs/MODEL_SPECIFICATION.md) and [simulation rules](docs/SIMULATION_RULES.md)
 - [Engine test report](docs/MODEL_TEST_REPORT.md)
+- [Proposed design system](docs/DESIGN_SYSTEM.md) and [wireframe review](docs/WIREFRAMES.md)
 - [Future ideas](docs/FUTURE_IDEAS.md)
 - [Progress and next steps](PROGRESS.md)
 - [Contributor guidance](AGENTS.md)
 
 The public beta target in the plan is February 2, 2027. Read PROGRESS.md for actual completion status.
 
-The approved model uses explicitly experimental coefficients, conservative below-SAT-floor PSAT handling, and descriptive rather than numerical treatment of preparation history/methods/test frequency. The next milestone is the design system and wireframes before interface implementation.
+The approved model uses explicitly experimental coefficients, conservative below-SAT-floor PSAT handling, and descriptive rather than numerical treatment of preparation history/methods/test frequency. Static desktop/mobile wireframes are ready for the design review required by the approved architecture. They are planning artifacts, not a working student interface.

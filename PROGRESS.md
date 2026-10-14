@@ -1,5 +1,20 @@
 # Laplora progress
 
+## October 14, 2026 — design review checkpoint
+
+- Prepared docs/DESIGN_SYSTEM.md and docs/WIREFRAMES.md for Week 9 review: shared palette/spacing/typography, guided setup, readable glass surfaces, graph semantics, accessibility expectations, and reduced-motion rules.
+- Created static landing, baseline setup, desktop results/comparison, and mobile results images in docs/design. Source HTML is a planning artifact with inert controls, not application UI.
+- Generated preview paths from the actual approved engine using the documented synthetic 1200 baseline/12-week case. Current and Increased Practice totals display 1240 and 1280; no real student data or research outcome was invented.
+- Reviewed all four captured views. Corrected tiny mobile chart labels by giving the static mobile chart its own layout. The captured mobile planning page has no horizontal overflow; this does not establish full application accessibility.
+- Browser file navigation was disallowed, so screenshots were rendered through a temporary local HTTP server, which was closed afterward. A prior /tmp setup helper was absent after snapshot restoration; reconstructed it from the saved configuration rather than assuming temporary files persisted.
+- Exercised the revised frozen-lockfile setup: npm ci, type checking, all 123 unit tests, and build passed. Earlier full verification also passed the 2 foundation browser tests. No repeated browser run was needed for static planning-document changes.
+- Saved updated install_script/start_skill, preserving unrelated configuration. The instructions now include unit verification and the existing V0.1 approval. Publication has not been performed by the agent.
+- Local engine commit: 6f7e732; input commit: 6304cc9. Design checkpoint: `docs: prepare Aero wireframes for interface review`. No push or deployment.
+
+### Pending decision
+
+The approved architecture explicitly says “Approve wireframes before visual implementation” (ARCHITECTURE_PROPOSAL.md). The concrete wireframe/design artifacts are ready for that review. After approval or revisions, proceed with the guided interface, engine integration, charting, motion, comparisons, and How It Works. Existing V0.1 model approval remains valid and does not need to be requested again.
+
 ## October 14, 2026 — simulation engine and stress testing
 
 - Implemented the approved model in src/model: immutable versioned parameters, stable exponential section math, exact calendar timelines, raw/rounded section-total results, goal markers, and disclosed assumptions.

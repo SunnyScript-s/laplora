@@ -1,6 +1,6 @@
 # Laplora V1 — architecture and development proposal
 
-Status: React/TypeScript architecture and implementation-with-mentoring workflow approved by the founder on October 14, 2026. Mathematical model remains proposed and requires separate approval. Prepared October 14, 2026.
+Status: React/TypeScript architecture, implementation-with-mentoring, and V0.1 input/model/scenario choices approved by the founder on October 14, 2026. Prepared October 14, 2026.
 
 Primary reference: [DEVELOPMENT_PLAN.md](DEVELOPMENT_PLAN.md), preserved verbatim from the supplied Notion Markdown export. The export contains one Markdown page and no linked subpage files. The original Notion link was inaccessible; the entire supplied export was read successfully.
 
@@ -16,9 +16,9 @@ The founder approved the implementation-with-mentoring workflow and the proposed
 
 1. **Implementation and learning — resolved:** the plan's Development Rule 3 says, “Do not have AI generate the entire Laplora codebase while I simply paste it.” The founder approved bounded assistant implementation with mentoring: explain the reasoning and code, involve the founder in major decisions, and offer learning exercises.
 2. **Architecture — approved:** use the client-side React/TypeScript proposal below. The plan emphasizes Python learning in Weeks 6–8 but does not explicitly mandate a Python production engine. A future Python production engine would require a separate architecture decision.
-3. **Model gate — still open:** numerical coefficients, PSAT treatment, and the final model remain separate decisions in Weeks 2–5; architecture approval does not approve a growth formula.
+3. **Model gate — approved separately:** the founder approved the written V0.1 choices, including coefficients, PSAT treatment, sensitivity wording, descriptive-only fields, and limits. Future substantive model changes still require approval.
 
-Architecture approval permits initialization. Complete Week 1 before building product features, as the plan requests. The input policy and final mathematical model still require their scheduled review gates.
+Architecture and V0.1 approvals permit the completed input/engine work. Continue through the milestone gates; wireframes need review before full interface implementation.
 
 ## Recommended technology stack
 
@@ -79,7 +79,7 @@ Weeks 1–3 must establish assessment scales, score interpretation, content doma
 
 Keep a ledger separating official scoring facts, supported empirical observations, and experimental model assumptions. Do not claim calibration or prediction accuracy without suitable held-out longitudinal data. Recruiting 5–10 beta testers can validate usability; it cannot establish population-level predictive accuracy.
 
-### Candidate model for discussion, not an approved engine
+### Model overview — see the separately approved V0.1 specification
 
 Simulate Math and Reading & Writing separately in weekly steps, with a fractional final week. Let `s_j` be section score, `h_j` the weekly hours allocated to that section, and `c` consistency from 0 to 1. A candidate effective-practice function is:
 
@@ -89,7 +89,7 @@ s_j,next = 800 − (800 − s_j) × exp(−k_j × e_j × Δt)
 total = math + readingWriting
 ```
 
-`H_j > 0` controls diminishing returns from added hours; `k_j ≥ 0` controls modeled improvement per effective hour; `Δt` is weeks. No values have been selected. The 800 ceiling is specified in the supplied development plan and should be verified against current official scoring documentation.
+`H_j > 0` controls diminishing returns from added hours; `k_j ≥ 0` controls modeled improvement per effective hour; `Δt` is weeks. The approved V0.1 uses H=4 and rates 0.006/0.012/0.018. The official SAT section ceiling of 800 has been verified. See docs/MODEL_SPECIFICATION.md for the complete approved policy and experimental limitations.
 
 In plain language: more effective practice uses some of the remaining room below the section ceiling. Each additional hour has less modeled benefit, and progress slows near the ceiling. Zero hours or zero consistency produces no practice-driven growth; a score already at the ceiling stays there. These properties are mathematical design choices, not evidence that students follow this curve. Real performance can decline or fluctuate; a monotone central trajectory must disclose that limitation.
 
@@ -139,4 +139,4 @@ Maintain PROGRESS.md after each session with completed work, lessons, sources, d
 
 ## Current checkpoint
 
-Architecture and workflow approvals are recorded, Week 1 is complete, and the approved development foundation is installed and browser-verified. Written input/user-flow, focused growth-research, model, and scenario-rule deliverables are prepared in docs. Input policies and final model coefficients await founder approval; the engine remains unimplemented. See PROGRESS.md for the approval checkpoint and actual verification results.
+Architecture, workflow, and V0.1 approvals are recorded. The input and score engines are implemented and structurally verified, including a 2,160-profile stress grid. Week 9 design/wireframe review is next; the student interface remains unimplemented. See PROGRESS.md for actual results and pending review.
