@@ -6,7 +6,7 @@ export function App() {
       <a className="skip-link" href="#main">Skip to content</a>
       <div className={styles.shell}>
         <header className={styles.header}>
-          <span className={styles.wordmark}>laplora<span aria-hidden="true">.</span></span>
+          <span className={styles.wordmark}>Laplora<span aria-hidden="true">.</span></span>
           <span className={styles.status}>In development</span>
         </header>
         <main id="main" tabIndex={-1} className={styles.intro}>

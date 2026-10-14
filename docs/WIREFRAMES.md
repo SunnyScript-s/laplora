@@ -13,6 +13,10 @@ The accompanying planning HTML and captured images show three representative scr
 - [Results and comparison](design/results.png): central total and illustrative range, Total/Math/RW chart controls, changed study inputs, a data-table alternative, and nearby caveats.
 - [Mobile results](design/mobile-results.png): the same content in one column; chart and scenario controls do not require horizontal page scrolling.
 - [Static planning source](design/wireframes.html): source for the captured review artifact. Controls are inert; this is a visual proposal rather than functional UI.
+- [Typeface comparison](design/typography-comparison.png): Outfit + Manrope, Space Grotesk + Manrope, and Plus Jakarta Sans, using the same copy and values.
+- [Website and font research](DESIGN_REFERENCES.md): inspected sources, scope, licenses, and the recommended typography direction.
+
+The founder requested a cooler typography direction and a capital L in Laplora. The refreshed previews show the recommended Outfit + Manrope pairing with that capitalization; the alternative specimens remain available for comparison.
 
 ## Remaining states covered by the user-flow specification
 

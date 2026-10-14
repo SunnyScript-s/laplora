@@ -1,5 +1,19 @@
 # Laplora progress
 
+## October 14, 2026 — font exploration and capital-L branding
+
+- Applied the founder's requested capital L to the application and static-preview wordmarks: Laplora. Adjusted wordmark tracking for the capitalized spelling.
+- Retrieved Stripe, Framer, and Linear public pages and inspected their styles. Reviewed Stripe/Framer landing captures; Linear's navigation and heading CSS were inspectable but its hero remained hidden in the capture. Recorded those limits in docs/DESIGN_REFERENCES.md.
+- Initial direct browser TLS trust failed. Used the configured proxy and a certificate-verifying HTTPS request context for reference resources; did not disable verification. No form submissions or account interactions.
+- Compared Outfit + Manrope, Space Grotesk + Manrope, and Plus Jakarta Sans in a visual specimen board. Recommended Outfit + Manrope for geometric, optimistic headings with readable UI text.
+- Downloaded exact OFL-licensed variable-font packages, verified registry integrity, and retained four local Latin WOFF2 files/licenses for review. No runtime dependency or external font service was added to the application.
+- Refreshed the landing, setup, desktop results, and mobile results review images with the proposed pairing and capital-L wordmark.
+- Checked all comparison fonts loaded, no local capture errors, and no horizontal overflow at 390px/320px. Type checking, build, and 2 foundation browser runs passed. No engine changes; no unnecessary engine test rerun.
+- Updated design/reference documents and README. Original development plan and approved mathematical coefficients are unchanged.
+- Local checkpoint: `style: explore Laplora typography and capitalize branding`. No push/deployment.
+
+Current review choice: Option A (Outfit + Manrope) is recommended; B is more technical, C is a cohesive single-family alternative. Full interface implementation still awaits the existing wireframe/design review; this request authorized exploration and capitalization, not an unrelated model/scope change.
+
 ## October 14, 2026 — design review checkpoint
 
 - Prepared docs/DESIGN_SYSTEM.md and docs/WIREFRAMES.md for Week 9 review: shared palette/spacing/typography, guided setup, readable glass surfaces, graph semantics, accessibility expectations, and reduced-motion rules.

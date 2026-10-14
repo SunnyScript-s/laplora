@@ -47,6 +47,7 @@ Unit tests verify engine contracts and structural behavior, including a 2,160-pr
 - [Model V0.1 proposal](docs/MODEL_SPECIFICATION.md) and [simulation rules](docs/SIMULATION_RULES.md)
 - [Engine test report](docs/MODEL_TEST_REPORT.md)
 - [Proposed design system](docs/DESIGN_SYSTEM.md) and [wireframe review](docs/WIREFRAMES.md)
+- [Website/font exploration](docs/DESIGN_REFERENCES.md) and [typeface comparison](docs/design/typography-comparison.png)
 - [Future ideas](docs/FUTURE_IDEAS.md)
 - [Progress and next steps](PROGRESS.md)
 - [Contributor guidance](AGENTS.md)
