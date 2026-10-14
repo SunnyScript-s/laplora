@@ -1,5 +1,19 @@
 # Laplora progress
 
+## October 14, 2026 — orange orbital theme and accessibility/browser review
+
+- Founder requested a vibrant orange DORfic-inspired palette and spinning background before continuing the approved accessibility/cross-browser milestone. This explicitly supersedes the prior aqua/green direction; original DEVELOPMENT_PLAN.md is preserved unchanged.
+- Applied warm charcoal/ivory/orange tokens across the interface, SVG chart/legend, favicon, and browser theme color. Darker orange small-link text retains contrast against stronger orange backdrops; readable warm-white panels sit over the artwork.
+- Added a glossy sphere, tilted ring, and satellites with slow 30-second rotation. Verified the ring advances, Pause motion freezes its position, resume continues it, and reduced motion removes animation. Added a real browser motion recording and desktop/mobile screenshots in docs/design/orange-*.
+- Added pinned @axe-core/playwright as a dev-only dependency. Scans cover nine core screens/error states per browser, with WCAG 2/2.1/2.2 A/AA tags. Added a 320px/200% root-text check through all seven views.
+- Testing caught clipped navigation/actions and chart tabs at enlarged text, plus an undersized Firefox motion-control target. Fixed wrapping and narrow metric layouts; enlarged the control to at least 44px height. Custom-plan fields now expose invalid state and describe their error summary.
+- Final full browser suite passed 50/50 runs across Chromium desktop/mobile, Firefox desktop, and WebKit desktop/mobile; no skips or failures. Five additional accessibility runs passed after the final deep-orange text refinement. TypeScript and production build passed. Unit/model tests were not unnecessarily rerun; no engine/coefficients/input policies changed.
+- Firefox initially failed writing profile configuration under read-only home and then crashed on /proc namespace writes. Workspace XDG directories and a test-process-only inner-sandbox override resolved actual rendering. WebKit initially lacked native libraries; standard root dependency installation lacked authentication. Retrieved signed/checksummed Debian packages with verification retained and extracted libraries under workspace cache, then used the supported binary/bundle override because the packaged shell wrapper overwrites the library path. No system/home edits, disabled TLS/signature checks, or skipped assertions.
+- Added optional cross-browser Playwright projects and expanded CI to all three managed engines. Local WebKit iPhone settings are emulation, not physical iOS/Safari certification; remote CI has not run.
+- Wrote docs/ORANGE_THEME_REVIEW.md with design interpretation, evidence, environment diagnosis, and remaining screen-reader/real-device/performance/private-beta limits. Updated current design/product/architecture decisions without altering the original plan.
+- Saved updated start_skill, preserving the installation script and unrelated environment configuration. Saved draft is not publication or fresh-task restoration. Temporary review servers closed after capture.
+- Local checkpoint: `style: add orange orbital theme and cross-browser accessibility checks`. No push/deployment. Remaining: real screen-reader/device validation and student beta feedback; release and feedback storage remain owner decisions.
+
 ## October 14, 2026 — approved layouts and functional interface
 
 - Founder approved the concrete landing/setup/results layouts. Recorded approval in AGENTS.md, the architecture record, and design documents. Existing V0.1 and Option A approvals remain in effect; no repeat permission gate.

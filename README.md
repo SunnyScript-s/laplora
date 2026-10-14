@@ -6,7 +6,7 @@ Laplora is an experimental SAT score-growth simulation project. It will help stu
 
 The founder approved the React/TypeScript architecture, implementation-with-mentoring workflow, and V0.1 input/model/scenario choices on October 14, 2026. Product/research documentation, input validation, and the pure experimental score engine are implemented.
 
-The founder also approved the proposed layouts. The React/Vite app now includes guided baseline/goal/study setup, review, total and section trajectories, keyboard/touch timeline exploration, a score table, Increased Practice and custom comparisons, and How It Works. Atmospheric backgrounds, chart/step entrances, hover feedback, a motion pause control, and reduced-motion support provide the visual polish. Native SVG and CSS support these features without new runtime libraries.
+The founder also approved the proposed layouts, then requested a vibrant orange DORfic-inspired direction. The React/Vite app includes guided baseline/goal/study setup, review, total and section trajectories, keyboard/touch timeline exploration, a score table, Increased Practice and custom comparisons, and How It Works. Warm ivory/orange backgrounds, a glossy rotating orbit, chart/step entrances, hover feedback, a motion pause control, and reduced-motion support provide the visual polish. Native SVG and CSS support these features without new runtime libraries.
 
 The founder selected Outfit headings/wordmark with Manrope body text and controls (Option A). These licensed variable fonts are bundled locally, with system fallbacks and no external font service.
 
@@ -36,7 +36,23 @@ npm test
 PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npm run verify
 ```
 
-Unit tests verify engine contracts and structural behavior, including a 2,160-profile stress grid. Browser tests cover actual setup/results/comparison flows, validation, keyboard chart exploration, data consistency, in-memory privacy behavior, and reduced motion on desktop/mobile Chromium. These checks do not establish prediction accuracy. GitHub Actions contains the same verification flow; its remote run has not been exercised yet.
+Unit tests verify engine contracts and structural behavior, including a 2,160-profile stress grid. Browser tests cover setup/results/comparison flows, validation, keyboard chart exploration, data consistency, in-memory privacy, reduced motion, automated accessibility scans, and 320px/200% text reflow. The default suite runs 20 desktop/mobile Chromium cases. Optional cross-browser projects add Firefox desktop and WebKit desktop/mobile (50 total runs). These checks do not establish prediction accuracy or full accessibility compliance. GitHub Actions is configured for all three engines; its remote run has not been exercised yet.
+
+On a machine with browser dependencies installed:
+
+```sh
+npx playwright install --with-deps chromium firefox webkit
+LAPLORA_CROSS_BROWSER=1 npm run verify
+```
+
+In the prepared cloud environment, the browser binaries and locally extracted WebKit libraries are under /workspace/.cache. To run the full suite with the verified cloud selectors:
+
+```sh
+source /workspace/.cache/laplora-browser-env.sh
+npm run test:e2e
+```
+
+These selectors apply only to test processes; they are not application variables or credentials. See [the orange theme and accessibility report](docs/ORANGE_THEME_REVIEW.md) for environment workarounds and verification limits.
 
 ## Project references
 

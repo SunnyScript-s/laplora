@@ -129,6 +129,8 @@ The original dates remain targets, not claims of completed work or guaranteed de
 
 Use a bright atmospheric background, aqua/sky-blue palette, restrained green accents, readable dark text, rounded panels, and limited glass depth. Design tokens unify all components. Approve wireframes before visual implementation. Transparency must retain contrast; focus rings, labels, chart summaries, and a data-table alternative must remain usable.
 
+Later founder direction, October 14, 2026: the vibrant orange DORfic-inspired theme and rotating orbital background supersede the earlier aqua/green color choice. This is explicitly authorized visual refinement; typography, layouts, model, and privacy architecture remain as approved. Pause motion and reduced-motion behavior remain required.
+
 Test model invariants and independent expected behaviors: valid limits, finite outputs, baseline preservation, section-total agreement, consistent scenario rules, zero-effort behavior, diminishing gains, and ceiling behavior. Reject invalid enums, nonfinite numbers, incompatible score scales, impossible dates, and unreasonable time budgets. Verify form errors, browser back/reset behavior, responsive layouts, keyboard operation, and reduced motion. Report test counts and actual outcomes; never mark an unavailable browser check as passed.
 
 ## Git, documentation, and owner learning

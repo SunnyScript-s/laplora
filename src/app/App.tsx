@@ -37,7 +37,14 @@ export function App() {
   return <>
     <a className="skip-link" href="#main">Skip to content</a>
     <div className={`${styles.shell} ${motionPaused ? styles.paused : ''}`}>
-      <div className={styles.atmosphere} aria-hidden="true"><div className={styles.orb} /><div className={styles.orbTwo} /><div className={styles.horizon} /></div>
+      <div className={styles.atmosphere} aria-hidden="true">
+        <div className={styles.orb} /><div className={styles.orbTwo} />
+        <div className={styles.rotor}>
+          <div className={styles.rotorRing}><span className={styles.satellite} /><span className={styles.satelliteTwo} /></div>
+          <div className={styles.rotorCore} />
+        </div>
+        <div className={styles.horizon} />
+      </div>
       <header className={styles.header}>
         <button className={styles.wordmark} aria-label="Laplora home" onClick={() => setView('home')}>Laplora<span aria-hidden="true">.</span></button>
         <nav aria-label="Main navigation">

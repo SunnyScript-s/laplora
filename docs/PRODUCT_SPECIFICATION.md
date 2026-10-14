@@ -62,6 +62,8 @@ Guided flow: choose baseline → enter section scores → set goal and date → 
 
 Use a bright sky/aqua palette, restrained green accents, rounded glass-inspired panels, readable typography, and consistent spacing. Contrast and focus visibility take priority over transparency. Motion should communicate changes and respect reduced-motion settings. Detailed visual design belongs to Week 9.
 
+Later owner direction, October 14, 2026: replace the aqua/green palette with a vibrant orange DORfic-inspired treatment and spinning background motion. The latest request explicitly supersedes the color direction above; approved flow, fonts, model, readable contrast, and motion controls remain required. See DESIGN_SYSTEM.md for the implemented palette.
+
 ## Privacy and credibility
 
 - Run V1 calculations in the browser; keep scores in memory by default.

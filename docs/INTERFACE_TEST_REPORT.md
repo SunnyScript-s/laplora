@@ -2,6 +2,8 @@
 
 October 14, 2026 · Founder-approved layouts and typography · Model 0.1.0-experimental
 
+Later checkpoint: the founder requested a vibrant orange DORfic-inspired theme and rotating background. See [ORANGE_THEME_REVIEW.md](ORANGE_THEME_REVIEW.md) for the new previews, accessibility repairs, and actual 50-run cross-browser result. The evidence below records the earlier interface checkpoint.
+
 ## Working experience
 
 The React interface now connects to the approved engine: landing → baseline → goal → study plan → review → results. Students can edit prior steps without losing answers, explore Total/Math/Reading & Writing curves, inspect rounded weekly data and the exact endpoint, apply Increased Practice or a custom scenario, reset comparisons, and read How It Works without submitting data.

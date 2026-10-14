@@ -2,6 +2,8 @@
 
 Week 9 review artifact · October 14, 2026 · Static planning views, not the implemented application.
 
+Later owner direction replaces the original aqua/green colors with an orange DORfic-inspired theme and orbital motion. The approved layouts remain; see [the current orange review](ORANGE_THEME_REVIEW.md) for latest application previews and cross-browser evidence. Original planning images below are retained for layout history.
+
 References: [visual system](DESIGN_SYSTEM.md), [guided flow](USER_FLOW.md), [approved input rules](INPUT_SPECIFICATION.md), and [model limits](MODEL_SPECIFICATION.md).
 
 The accompanying planning HTML and captured images show three representative screens. Synthetic scores use the already documented 1200 baseline, 12-week, 3-hours/70% example; none are research findings or real student data.

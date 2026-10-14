@@ -18,15 +18,23 @@
   --font-display: "Outfit", "Segoe UI", system-ui, sans-serif;
   --font-body: "Manrope", "Segoe UI", system-ui, sans-serif;
   font-family: var(--font-body);
-  color: #173e50;
-  background: #e7f5fa;
+  color: var(--color-ink);
+  background: #fff6ec;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-  --color-ink: #173e50;
-  --color-muted: #426171;
-  --color-accent: #126279;
-  --color-green: #316c57;
-  --color-surface: rgb(255 255 255 / 78%);
+  --color-ink: #30231e;
+  --color-muted: #6d5143;
+  --color-accent: #b83d0b;
+  --color-link: #9e3008;
+  --color-accent-hover: #9e3008;
+  --color-vibrant: #ff6a22;
+  --color-comparison: #54506e;
+  --color-surface: rgb(255 253 249 / 96%);
+  --color-soft: #fff1e4;
+  --color-border: #d9bfa9;
+  --color-control-border: #987b67;
+  --color-grid: #ead9cc;
+  --color-marker: #80604b;
   --radius-panel: 1.5rem;
 }
 
@@ -35,17 +43,17 @@ body { margin: 0; min-width: 320px; }
 h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 600; }
 button, input, select, textarea { font: inherit; }
 input:not([type="checkbox"]):not([type="range"]), select, textarea {
-  display: block; width: 100%; min-width: 0; min-height: 48px; border: 1px solid #6f8997;
+  display: block; width: 100%; min-width: 0; min-height: 48px; border: 1px solid var(--color-control-border);
   border-radius: 10px; padding: .7rem .85rem; background: white; color: var(--color-ink);
   font-size: 1rem; font-variant-numeric: tabular-nums;
 }
 input[aria-invalid="true"], select[aria-invalid="true"] { border-color: #a63740; }
 button:disabled { cursor: default; }
 details { margin-block: 1rem; }
-summary { cursor: pointer; color: var(--color-accent); font-size: .85rem; font-weight: 650; line-height: 1.6; padding-block: .5rem; }
+summary { cursor: pointer; color: var(--color-link); font-size: .85rem; font-weight: 650; line-height: 1.6; padding-block: .5rem; }
 li { margin-block: .5rem; }
-a { color: var(--color-accent); text-underline-offset: 0.25em; }
-:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 5px; }
+a { color: var(--color-link); text-underline-offset: 0.25em; }
+:focus-visible { outline: 3px solid var(--color-link); outline-offset: 5px; }
 
 .skip-link {
   position: fixed;

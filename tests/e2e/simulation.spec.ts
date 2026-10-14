@@ -67,6 +67,7 @@ test('comparisons identify changes, reject invalid plans, and reset without alte
   await page.getByRole('button', { name: 'Apply custom plan' }).click();
   await expect(page.getByRole('alert')).toBeFocused();
   await expect(page.getByRole('alert')).toContainText('Weekly study hours');
+  await expect(page.getByLabel('Weekly hours', { exact: true })).toHaveAttribute('aria-invalid', 'true');
   await expect(status).toContainText('1280');
   await page.getByLabel('Weekly hours', { exact: true }).fill('0');
   await page.getByRole('button', { name: 'Apply custom plan' }).click();
@@ -169,12 +170,13 @@ test('reset asks before clearing; refresh clears in-memory values', async ({ pag
 
 test('motion can be paused and reduced-motion keeps complete results with no animations', async ({ page }) => {
   await page.getByRole('button', { name: 'Pause motion' }).click();
-  expect(await page.evaluate(() => document.getAnimations().filter(animation => animation.playState === 'running').length)).toBe(0);
+  await expect(page.getByRole('button', { name: 'Resume motion' })).toHaveAttribute('aria-pressed', 'true');
+  await expect.poll(() => page.evaluate(() => document.getAnimations().filter(animation => animation.playState === 'running').length)).toBe(0);
   await page.getByRole('button', { name: 'Resume motion' }).click();
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await results(page);
   await expect(page.getByText('Central modeled total', { exact: true }).locator('..')).toContainText('1240');
-  expect(await page.evaluate(() => document.getAnimations().filter(animation => animation.playState === 'running').length)).toBe(0);
+  await expect.poll(() => page.evaluate(() => document.getAnimations().filter(animation => animation.playState === 'running').length)).toBe(0);
   await page.getByRole('slider', { name: 'Explore timeline' }).focus();
   await page.keyboard.press('Home');
   await expect(page.getByRole('slider', { name: 'Explore timeline' })).toHaveAttribute('aria-valuetext', 'Oct 14, 2026, current 1200');

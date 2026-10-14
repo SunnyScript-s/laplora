@@ -4,6 +4,7 @@ import type { ScenarioComparison } from '../model/scenarios';
 import { displayScores } from '../model/math';
 import type { SimulatedResult } from '../model/simulate';
 import { parseNumericInput } from '../domain/inputs';
+import type { InputError } from '../domain/inputs';
 import { assessmentLabels, formatDate, frequencyLabels, friendlyErrors, historyLabels, labels, methodLabels } from './form';
 import { ScoreChart } from './ScoreChart';
 import { ArrowIcon } from './ArrowIcon';
@@ -20,7 +21,7 @@ export function Results({ result, onEdit }: { result: SimulatedResult; onEdit: (
   const [history, setHistory] = useState(result.input.prepHistory);
   const [methods, setMethods] = useState(result.input.studyMethods);
   const [frequency, setFrequency] = useState(result.input.practiceTestFrequency);
-  const [errors, setErrors] = useState<string[]>([]);
+  const [errors, setErrors] = useState<InputError[]>([]);
   const heading = useRef<HTMLHeadingElement>(null);
   const errorBox = useRef<HTMLDivElement>(null);
   useEffect(() => { heading.current?.focus(); }, []);
@@ -36,6 +37,10 @@ export function Results({ result, onEdit }: { result: SimulatedResult; onEdit: (
     if (field === 'prepHistory') return historyLabels[value as keyof typeof historyLabels];
     if (field === 'practiceTestFrequency') return frequencyLabels[value as keyof typeof frequencyLabels];
     return `${value}${field === 'consistencyPercent' || field === 'mathSharePercent' ? '%' : field === 'weeklyStudyHours' ? ' hrs/week' : ''}`;
+  }
+  function errorProps(field: InputError['field']) {
+    const invalid = errors.some(error => error.field === field);
+    return { 'aria-invalid': invalid, 'aria-describedby': invalid ? 'custom-plan-errors' : undefined };
   }
   return <section className={styles.enter}>
     <div className={styles.resultHeading}><div><p className={styles.eyebrow}>Your preparation, in perspective</p><h1 className={styles.pageTitle} tabIndex={-1} ref={heading}>Explore the paths ahead.</h1></div><button className={styles.secondary} onClick={onEdit}>Edit preparation</button></div>
@@ -69,18 +74,18 @@ export function Results({ result, onEdit }: { result: SimulatedResult; onEdit: (
           const next = compareScenario(result.input, result.simulationStartDate, { weeklyStudyHours: parseNumericInput(hours), consistencyPercent: parseNumericInput(consistency), mathSharePercent: parseNumericInput(allocation), prepHistory: history, studyMethods: methods, practiceTestFrequency: frequency });
           if (next.status === 'invalid-input') {
             const displayErrors = friendlyErrors(next.errors, { ...result.input, mathScore: String(result.input.mathScore), readingWritingScore: String(result.input.readingWritingScore), targetScore: String(result.input.targetScore), weeklyStudyHours: hours, consistencyPercent: consistency, mathSharePercent: allocation, prepHistory: history, studyMethods: methods, practiceTestFrequency: frequency });
-            setErrors(displayErrors.map(error => `${labels[error.field as keyof typeof labels] ?? 'Plan'}: ${error.message}`)); requestAnimationFrame(() => errorBox.current?.focus()); return;
+            setErrors(displayErrors); requestAnimationFrame(() => errorBox.current?.focus()); return;
           }
           if (next.status === 'compared') { setComparison(next); setComparisonName('Custom Scenario'); setErrors([]); }
         }}>
           <h3>Custom Scenario</h3>
-          {errors.length > 0 && <div ref={errorBox} tabIndex={-1} role="alert" className={styles.errorSummary}><ul>{errors.map((error, index) => <li key={index}>{error}</li>)}</ul></div>}
-          <label className={styles.label} htmlFor="custom-hours">Weekly hours</label><input id="custom-hours" type="number" min={0} max={40} step={0.25} value={hours} onChange={e => setHours(e.target.value)} />
-          <label className={styles.label} htmlFor="custom-consistency">Consistency (%)</label><input id="custom-consistency" type="number" min={0} max={100} step={1} value={consistency} onChange={e => setConsistency(e.target.value)} />
-          <details><summary>Allocation and context</summary><label className={styles.label} htmlFor="custom-allocation">Math share (%)</label><input id="custom-allocation" type="number" min={0} max={100} step={1} value={allocation} onChange={e => setAllocation(e.target.value)} />
+          {errors.length > 0 && <div id="custom-plan-errors" ref={errorBox} tabIndex={-1} role="alert" className={styles.errorSummary}><ul>{errors.map((error, index) => <li key={index}>{labels[error.field as keyof typeof labels] ?? 'Plan'}: {error.message}</li>)}</ul></div>}
+          <label className={styles.label} htmlFor="custom-hours">Weekly hours</label><input {...errorProps('weeklyStudyHours')} id="custom-hours" type="number" min={0} max={40} step={0.25} value={hours} onChange={e => setHours(e.target.value)} />
+          <label className={styles.label} htmlFor="custom-consistency">Consistency (%)</label><input {...errorProps('consistencyPercent')} id="custom-consistency" type="number" min={0} max={100} step={1} value={consistency} onChange={e => setConsistency(e.target.value)} />
+          <details><summary>Allocation and context</summary><label className={styles.label} htmlFor="custom-allocation">Math share (%)</label><input {...errorProps('mathSharePercent')} id="custom-allocation" type="number" min={0} max={100} step={1} value={allocation} onChange={e => setAllocation(e.target.value)} />
             <label className={styles.label} htmlFor="custom-history">Preparation experience</label><select id="custom-history" value={history} onChange={e => setHistory(e.target.value as typeof history)}>{Object.entries(historyLabels).map(([value, text]) => <option value={value} key={value}>{text}</option>)}</select>
             <label className={styles.label} htmlFor="custom-frequency">Practice-test frequency</label><select id="custom-frequency" value={frequency} onChange={e => setFrequency(e.target.value as typeof frequency)}>{Object.entries(frequencyLabels).map(([value, text]) => <option value={value} key={value}>{text}</option>)}</select>
-            <fieldset className={styles.methods}><legend>Study methods</legend>{Object.entries(methodLabels).map(([value, text]) => <label key={value}><input type="checkbox" checked={methods.includes(value as typeof methods[number])} onChange={e => { const method = value as typeof methods[number]; setMethods(e.target.checked ? method === 'unsure' ? ['unsure'] : [...methods.filter(m => m !== 'unsure'), method] : methods.filter(m => m !== method)); }} />{text}</label>)}</fieldset>
+            <fieldset className={styles.methods}><legend>Study methods</legend>{Object.entries(methodLabels).map(([value, text]) => <label key={value}><input {...errorProps('studyMethods')} type="checkbox" checked={methods.includes(value as typeof methods[number])} onChange={e => { const method = value as typeof methods[number]; setMethods(e.target.checked ? method === 'unsure' ? ['unsure'] : [...methods.filter(m => m !== 'unsure'), method] : methods.filter(m => m !== method)); }} />{text}</label>)}</fieldset>
           </details>
           <button type="submit" className={styles.primary}>Apply custom plan</button>
         </form>
