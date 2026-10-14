@@ -1,5 +1,11 @@
 # Laplora progress
 
+## October 14, 2026 — compact font example
+
+- Added docs/design/font-quick-example.html and its captured image for a quick side-by-side view of the same wordmark, headline, and body copy in options A/B/C.
+- Rendered the local fonts in Chromium and visually reviewed the result. No application/model changes or new tests were needed.
+- Font selection and the existing full-interface design review remain pending; positive feedback on the comparison board was not treated as a choice of a particular typeface.
+
 ## October 14, 2026 — font exploration and capital-L branding
 
 - Applied the founder's requested capital L to the application and static-preview wordmarks: Laplora. Adjusted wordmark tracking for the capitalized spelling.
