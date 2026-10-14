@@ -1,6 +1,6 @@
 # Laplora guided user flow V0.1
 
-Week 2 written deliverable · V0.1 choices approved October 14, 2026. The guided interface is not implemented yet; input validation and the pure engine are implemented separately.
+Week 2 written deliverable · V0.1 choices and layouts approved October 14, 2026. The guided interface now connects to the separately implemented input and score engines.
 
 ## Step 1 — Your starting point
 
@@ -47,6 +47,8 @@ Keep baseline, target, start date, and model assumptions fixed across plans. Ide
 - Responsive layout uses one primary column on narrow screens; no horizontal overflow or inaccessible chart-only information.
 - Reduced-motion mode avoids count-up/line-drawing/page-transition effects while preserving the same content.
 - Start over confirms clearing an entered plan; refreshing has the documented in-memory behavior.
+
+The implemented views use local React state rather than URL routes. Browser Back leaves the application rather than navigating setup steps; the How It Works page explains this behavior. In-app navigation to How It Works preserves the active setup step or comparison state. Use Back/Next/Edit controls to navigate the plan.
 
 ## Mentoring exercise
 

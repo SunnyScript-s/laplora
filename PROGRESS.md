@@ -1,5 +1,21 @@
 # Laplora progress
 
+## October 14, 2026 — approved layouts and functional interface
+
+- Founder approved the concrete landing/setup/results layouts. Recorded approval in AGENTS.md, the architecture record, and design documents. Existing V0.1 and Option A approvals remain in effect; no repeat permission gate.
+- Implemented guided baseline/goal/study setup and review, preserving edits and focusing errors/step headings. Assessment changes revalidate without erasing scores; below-floor PSAT results stop with the approved baseline guidance.
+- Connected the pure engine to responsive results, total/section native SVG curves, a keyboard/touch date control, rounded table alternatives, exact target dates, target context, and explicit experimental assumptions.
+- Added Increased Practice and custom scenarios, changed-field explanations, descriptive-only disclosures, invalid-input handling, reset, and retained comparison state while visiting How It Works.
+- Polished atmospheric backgrounds and Outfit/Manrope typography; added CSS entrance/graph/hover motion, finite ambient drift, Pause motion, and independent system reduced-motion support. SVG arrows fix unavailable font glyphs. Improved input border/selected-tab visibility.
+- Built How It Works with the equations, chosen coefficients, baseline/PSAT policy, sensitivity-range limits, rounding, navigation behavior, sources, and actual tab-memory privacy explanation. No accounts, persistence, score telemetry, or server.
+- Final verification passed: TypeScript, production build, 123 unit tests, and 16 actual desktop/mobile browser runs. Two additional targeted runs verified opening a collapsed allocation control before focusing its error. Manually reviewed 21 screen/viewport combinations at 1440/390/320px with no page overflow or clipped controls, and captured final screenshots in docs/design/interface-*.png.
+- Exercised actual development startup and production rendering. An initial test launch found an owned preview process occupying port 4173; stopped its complete process tree and reran successfully. Temporary review servers were closed afterward.
+- Distributed both font licenses/provenance with the production build, without new npm dependencies. Model code/coefficients and original DEVELOPMENT_PLAN.md are unchanged. Numerical checks are not prediction-accuracy evidence.
+- Saved updated start_skill in the environment configuration draft, preserving the installation script and unrelated settings. Saving does not publish/apply settings or establish fresh-task restoration.
+- Wrote docs/INTERFACE_TEST_REPORT.md with evidence, limits, and mentoring exercises. Local feature branch: feat/laplora-interface. Checkpoint: `feat: build guided SAT simulation interface and polished motion`. No push/deployment.
+
+Learning focus: string form state preserves blank-versus-zero intent; the pure engine owns calculations; chart/table summaries share section-first rounding; comparisons change only supported study inputs. Next: private beta preparation and broader accessibility/cross-browser/performance review. Feedback storage and release/deployment remain separate owner decisions.
+
 ## October 14, 2026 — approved typography option A
 
 - Founder selected Option A: Outfit headings/wordmark and Manrope body/controls. Recorded the selection in contributor and design documents so this decision does not need to be requested again.

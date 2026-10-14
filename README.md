@@ -6,7 +6,7 @@ Laplora is an experimental SAT score-growth simulation project. It will help stu
 
 The founder approved the React/TypeScript architecture, implementation-with-mentoring workflow, and V0.1 input/model/scenario choices on October 14, 2026. Product/research documentation, input validation, and the pure experimental score engine are implemented.
 
-The React/Vite page is still a development foundation; the score engine is not connected to a student interface yet. Charting and animation libraries will be introduced with their milestones.
+The founder also approved the proposed layouts. The React/Vite app now includes guided baseline/goal/study setup, review, total and section trajectories, keyboard/touch timeline exploration, a score table, Increased Practice and custom comparisons, and How It Works. Atmospheric backgrounds, chart/step entrances, hover feedback, a motion pause control, and reduced-motion support provide the visual polish. Native SVG and CSS support these features without new runtime libraries.
 
 The founder selected Outfit headings/wordmark with Manrope body text and controls (Option A). These licensed variable fonts are bundled locally, with system fallbacks and no external font service.
 
@@ -36,7 +36,7 @@ npm test
 PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npm run verify
 ```
 
-Unit tests verify engine contracts and structural behavior, including a 2,160-profile stress grid. Browser tests currently check the foundation's startup, keyboard navigation, and viewport fit. These checks do not establish prediction accuracy. GitHub Actions contains the same verification flow; its remote run has not been exercised yet.
+Unit tests verify engine contracts and structural behavior, including a 2,160-profile stress grid. Browser tests cover actual setup/results/comparison flows, validation, keyboard chart exploration, data consistency, in-memory privacy behavior, and reduced motion on desktop/mobile Chromium. These checks do not establish prediction accuracy. GitHub Actions contains the same verification flow; its remote run has not been exercised yet.
 
 ## Project references
 
@@ -48,6 +48,7 @@ Unit tests verify engine contracts and structural behavior, including a 2,160-pr
 - [Preparation-growth research](docs/GROWTH_RESEARCH.md)
 - [Model V0.1 proposal](docs/MODEL_SPECIFICATION.md) and [simulation rules](docs/SIMULATION_RULES.md)
 - [Engine test report](docs/MODEL_TEST_REPORT.md)
+- [Interface verification and mentoring notes](docs/INTERFACE_TEST_REPORT.md)
 - [Proposed design system](docs/DESIGN_SYSTEM.md) and [wireframe review](docs/WIREFRAMES.md)
 - [Website/font exploration](docs/DESIGN_REFERENCES.md) and [typeface comparison](docs/design/typography-comparison.png)
 - [Future ideas](docs/FUTURE_IDEAS.md)
@@ -56,4 +57,4 @@ Unit tests verify engine contracts and structural behavior, including a 2,160-pr
 
 The public beta target in the plan is February 2, 2027. Read PROGRESS.md for actual completion status.
 
-The approved model uses explicitly experimental coefficients, conservative below-SAT-floor PSAT handling, and descriptive rather than numerical treatment of preparation history/methods/test frequency. Static desktop/mobile wireframes are ready for the design review required by the approved architecture. They are planning artifacts, not a working student interface.
+The approved model uses explicitly experimental coefficients, conservative below-SAT-floor PSAT handling, and descriptive rather than numerical treatment of preparation history/methods/test frequency. Inputs remain in this tab’s memory and clear on refresh; no account, storage service, score telemetry, or backend is used. Private student beta, broader accessibility/cross-browser review, and owner-approved deployment remain future work.

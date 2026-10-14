@@ -16,7 +16,7 @@ The accompanying planning HTML and captured images show three representative scr
 - [Typeface comparison](design/typography-comparison.png): Outfit + Manrope, Space Grotesk + Manrope, and Plus Jakarta Sans, using the same copy and values.
 - [Website and font research](DESIGN_REFERENCES.md): inspected sources, scope, licenses, and the recommended typography direction.
 
-The founder selected Option A, Outfit + Manrope, on October 14, 2026 and requested a capital L in Laplora. The refreshed previews show this approved typography; the alternative specimens remain available for comparison. The full layout review remains pending.
+The founder selected Option A, Outfit + Manrope, and approved the proposed landing/setup/results layouts on October 14, 2026, with a capital L in Laplora. The original planning artifacts remain for reference; the React interface is now functional. See the [implemented landing](design/interface-landing-desktop.png), [results](design/interface-results-desktop.png), and [mobile chart](design/interface-chart-mobile.png).
 
 ## Remaining states covered by the user-flow specification
 
@@ -26,6 +26,6 @@ How It Works will explain the observed baseline, shared PSAT scale, section mode
 
 ## Design review gate
 
-The approved ARCHITECTURE_PROPOSAL.md says: “Approve wireframes before visual implementation.” These artifacts make that review concrete. The input and engine work are complete independently; full interface code remains pending this review.
+The approved ARCHITECTURE_PROPOSAL.md says: “Approve wireframes before visual implementation.” The founder approved these concrete artifacts on October 14, 2026. This gate is satisfied; no repeat approval is required.
 
 Recommended direction: use this restrained Aero layout, preserve the documented guided flow, and implement results with one primary graph plus section-view controls and a clearly labeled comparison panel.

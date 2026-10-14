@@ -18,7 +18,7 @@ The founder approved the implementation-with-mentoring workflow and the proposed
 2. **Architecture — approved:** use the client-side React/TypeScript proposal below. The plan emphasizes Python learning in Weeks 6–8 but does not explicitly mandate a Python production engine. A future Python production engine would require a separate architecture decision.
 3. **Model gate — approved separately:** the founder approved the written V0.1 choices, including coefficients, PSAT treatment, sensitivity wording, descriptive-only fields, and limits. Future substantive model changes still require approval.
 
-Architecture and V0.1 approvals permit the completed input/engine work. Continue through the milestone gates; wireframes need review before full interface implementation.
+The founder selected typography Option A and approved the proposed landing/setup/results layouts on October 14, 2026. Guided setup, results, comparisons, background polish, and reduced-motion-aware animations are authorized. Continue through the remaining model, scope, beta, and release gates without requesting these existing approvals again.
 
 ## Recommended technology stack
 
@@ -139,4 +139,4 @@ Maintain PROGRESS.md after each session with completed work, lessons, sources, d
 
 ## Current checkpoint
 
-Architecture, workflow, and V0.1 approvals are recorded. The input and score engines are implemented and structurally verified, including a 2,160-profile stress grid. Week 9 design/wireframe review is next; the student interface remains unimplemented. See PROGRESS.md for actual results and pending review.
+Architecture, workflow, V0.1, typography, and wireframe approvals are recorded. The input and score engines are structurally verified, including a 2,160-profile stress grid. The guided React interface now connects to the engine with responsive results, interactive native SVG charts, preparation comparisons, motion controls, and How It Works. No additional chart or animation dependency was needed for these bounded curves and CSS transitions. See PROGRESS.md for verification and remaining beta/launch work.

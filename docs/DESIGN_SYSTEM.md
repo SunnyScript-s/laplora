@@ -1,12 +1,12 @@
-# Laplora visual system V0.1 — proposed
+# Laplora visual system V0.1
 
-Week 9 design deliverable · October 14, 2026 · Awaiting wireframe/design review before full interface implementation.
+Week 9 design deliverable · October 14, 2026 · Typography and landing/setup/results layouts approved; implemented in the React interface.
 
 ## Direction
 
 Professional Frutiger Aero with a restrained glass surface treatment: bright atmospheric backgrounds, aqua and sky tones, soft green accents, rounded shapes, readable dark text, and consistent typography. The interface should feel optimistic and credible to students, families, and teachers.
 
-## Proposed tokens
+## Shared tokens
 
 | Token | Value | Purpose |
 | --- | --- | --- |
@@ -24,7 +24,7 @@ Professional Frutiger Aero with a restrained glass surface treatment: bright atm
 
 Use one calm background, one primary accent, and one scenario accent. Avoid stacked decorative gradients, unsolicited gauges, fake precision, unnecessary counters, and decorative animation. Model-version disclosure belongs in an explanation, not as an intimidating technical label on every control.
 
-The founder selected Option A, Outfit + Manrope, on October 14, 2026 and requested a capital **L** in **Laplora**. This typography is applied to the application foundation and review views. See [DESIGN_REFERENCES.md](DESIGN_REFERENCES.md) for actual website observations, three font pairings, provenance, and delivery tradeoffs. Full wireframe/layout review remains pending.
+The founder selected Option A, Outfit + Manrope, and approved the full proposed layouts on October 14, 2026, with a capital **L** in **Laplora**. See [DESIGN_REFERENCES.md](DESIGN_REFERENCES.md) for actual website observations, three font pairings, provenance, and delivery tradeoffs.
 
 ## Layout and components
 
@@ -45,6 +45,8 @@ Show totals derived from rounded section values in summaries/tooltips, while ret
 ## Motion contract
 
 Use short 150–250ms feedback and restrained step/result transitions. No artificial simulation delay. Optional graph drawing and counters must preserve an immediately available semantic final value. Reduced motion removes travel/drawing/count-up effects while preserving content and interaction.
+
+Implemented motion: 180ms hover feedback, 380ms page/step entrances, 900ms central-curve drawing, and two 18-second cycles of ambient background drift. Scores render immediately with no count-up delay. A visible Pause motion control removes animations/transitions, and the system reduced-motion preference disables them independently. Ambient shapes use transform motion behind content; they never intercept input.
 
 ## Review versus validation
 

@@ -1,0 +1,20 @@
+import { MODEL_V01 } from '../model/parameters';
+import styles from './App.module.css';
+
+export function HowItWorks() {
+  return <section className={`${styles.how} ${styles.enter}`}>
+    <p className={styles.eyebrow}>Clear assumptions. More useful questions.</p><h1 className={styles.pageTitle}>How Laplora works</h1><p className={styles.description}>A way to explore preparation, with room for everything a model cannot know.</p>
+    <div className={styles.panel}>
+      <h2>Start from a score you already have</h2><p>An SAT, PSAT/NMSQT, PSAT 10, or scored official full-length practice result anchors Math and Reading & Writing separately. Your total is the sum of the sections. No new quiz is needed.</p>
+      <p>PSAT uses the shared score scale without rescaling. A valid PSAT section below 200 requires an SAT baseline before simulation, because the SAT section scale starts at 200. A PSAT score of 760 is not automatically increased.</p>
+      <h2>Turn a preparation plan into a curve</h2><p>Your observed score becomes a hypothetical starting point today. Laplora does not estimate growth since that test. Planned hours are split equally between sections by default; you can change the allocation.</p>
+      <p>The model combines assigned weekly hours, expected consistency, and time until your test. It models diminishing returns at high study hours and near the section ceiling of 800. Your goal marks the chart; it does not change growth.</p>
+      <h2>Understand what the range means</h2><p>The shaded illustrative assumption range varies an experimental learning rate around the central curve. It is not a confidence interval, probability of success, or expected test-day score range. Actual scores may fall outside it, including below your baseline.</p>
+      <p>The model does not include forgetting, passive growth, test-day variability, individual learning differences, or domain proficiency. Long horizons can overstate progress.</p>
+      <h2>Keep context separate from numerical effects</h2><p>Preparation experience, methods, and practice-test frequency support context and schedule notes. This version does not assign them causal score bonuses. Weekly study hours already include full tests and review.</p>
+      <details><summary>The equations and experimental coefficients</summary><div className={styles.equations}><p>Effective hours per section: <code>e = c × H × (1 − exp(−h / H))</code></p><p>Section score after t weeks: <code>S(t) = S₀ + (800 − S₀) × (1 − exp(−k × e × t))</code></p></div><p>h is assigned weekly hours, c is consistency as a fraction, H = 4 hours, and k = 0.012 per effective hour for the central case. Slower/faster sensitivity cases use 0.006 / 0.018 for both sections. These are chosen experimental assumptions, not calibrated individual rates.</p><p>Displayed section scores round to the nearest ten, then sum to the total. The graph uses raw curves. Version: {MODEL_V01.version}.</p></details>
+      <h2>Your inputs stay with you</h2><p>Calculations run in your browser. Inputs remain in this tab’s memory; refreshing clears them. Laplora has no accounts, score telemetry, or database. Navigation inside the app preserves your draft; browser Back leaves the app rather than moving between setup steps. Use the in-app Back controls.</p>
+      <h2>Sources and independence</h2><p>Official sources establish score scales and preparation guidance. They do not validate Laplora’s equations or guarantee improvement.</p><ul><li><a href="https://satsuite.collegeboard.org/sat/scores/understanding-scores">College Board: understanding SAT scores</a></li><li><a href="https://satsuite.collegeboard.org/psat-nmsqt/scores/understanding-scores">College Board: understanding PSAT/NMSQT scores</a></li><li><a href="https://satsuite.collegeboard.org/practice/practice-tests/bluebook">Official full-length practice tests</a></li></ul><p>Laplora is an independent educational project and is not affiliated with College Board. SAT and PSAT are College Board trademarks. Numerical implementation checks establish mathematical behavior, not prediction accuracy.</p>
+    </div>
+  </section>;
+}

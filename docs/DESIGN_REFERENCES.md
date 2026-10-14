@@ -32,13 +32,13 @@ All three specimens show the same capital-L wordmark, headline, form label, scor
 
 Use Outfit at approximately 550–650 for headings and the **Laplora** wordmark; Manrope at 400–650 for paragraphs, labels, controls, and score summaries. Use restrained negative display tracking and normal body tracking. Keep numeric columns aligned with tabular-figure styling where supported.
 
-The founder selected Option A on October 14, 2026. The application foundation now uses shared display/body tokens for this pairing: Outfit 550 for the main headline, 600 for other headings, and 650 for the capital-L wordmark; Manrope for body text and controls. The static landing/setup/results views also use Option A. Full wireframe/layout approval is a separate pending review.
+The founder selected Option A and approved the full proposed layouts on October 14, 2026. The application uses shared display/body tokens for this pairing: Outfit 550 for the main headline, 600 for other headings, and 650 for the capital-L wordmark; Manrope for body text and controls. The static landing/setup/results views also use Option A.
 
 ## Font provenance and delivery
 
 Four Latin variable WOFF2 files are retained in docs/design/fonts, together with their OFL-1.1 licenses and sources.json. They came from the exact `@fontsource-variable/*@5.3.0` packages through npm. The downloaded archives were checked against the registry's SHA-512 integrity metadata before extracting the font files.
 
-Selected Outfit + Manrope files total 57,128 bytes, about 56 KiB. Copies of these two fonts, their licenses, and source metadata are retained in src/styles/fonts. Vite bundles their local CSS URLs into hashed production assets with font-display: swap and system fallbacks. The comparison uses all four local families; the application bundles only the selected two. No Google Fonts/CDN request is needed. Additional glyph coverage may be needed if the product adds other languages.
+Selected Outfit + Manrope files total 57,128 bytes, about 56 KiB. These two fonts and source metadata are retained in src/styles/fonts. Their licenses and source metadata are also distributed in public/font-licenses, which Vite copies into the production build. Vite bundles local CSS font URLs into hashed assets with font-display: swap and system fallbacks. The comparison uses all four local families; the application bundles only the selected two. No Google Fonts/CDN request is needed. Additional glyph coverage may be needed if the product adds other languages.
 
 ## Actual checks
 
