@@ -32,6 +32,8 @@ S1 also describes a **Score Range**: how much scores would likely vary on anothe
 
 Scoring increments and cross-assessment comparability require more detailed source review in Week 2. Different test maxima do not justify linear rescaling from PSAT to SAT. These pages do not validate a personal future-score conversion.
 
+Update: the subsequent focused review in [GROWTH_RESEARCH.md](GROWTH_RESEARCH.md) verified 10-point section intervals in the digital technical manual and the common vertical scale in the Fall 2026 score guides. A score on the common scale is not evidence of future growth; the below-SAT-floor input policy still needs approval.
+
 ## Structure and content domains
 
 S2 states that the SAT has Reading and Writing and Math sections. Reading and Writing contains 54 questions over 64 minutes; Math contains 44 questions over 70 minutes. Each section has two equal-length modules, and there is a 10-minute break between sections. Performance in the first module affects the difficulty of the second. Laplora uses reported section scores; it is not implementing adaptive testing or reconstructing scores from question counts.
@@ -58,6 +60,8 @@ Product implication: accept a student's existing scored full-length result, ask 
 ## What the sources do not establish
 
 No preparation-growth study was read in this milestone. S6 links an Official SAT Practice Technical Report and 2026 growth estimates, but the index is not a substitute for reviewing those reports, their cohorts, methods, uncertainty, and applicability to current digital assessments.
+
+Subsequent research: GROWTH_RESEARCH.md records the reviewed May 2025 digital-practice study and the relevant methods/limitations of the March 2026 student-growth report. Neither supplies calibrated Laplora coefficients.
 
 No numerical relationship between hours, consistency, methods, preparation history, or score improvement has been verified here. No coefficient, accuracy claim, probability of reaching a target, or personal score guarantee is supported by these scoring pages.
 

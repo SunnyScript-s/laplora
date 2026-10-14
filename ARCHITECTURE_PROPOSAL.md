@@ -139,4 +139,4 @@ Maintain PROGRESS.md after each session with completed work, lessons, sources, d
 
 ## Current checkpoint
 
-Architecture and workflow approvals are recorded. Week 1 product and research documentation are in docs; the approved development foundation is being initialized. No simulation coefficients or deployment are approved. The next product milestone is Week 2 input specification and user flow. The final mathematical engine requires its own later approval.
+Architecture and workflow approvals are recorded, Week 1 is complete, and the approved development foundation is installed and browser-verified. Written input/user-flow, focused growth-research, model, and scenario-rule deliverables are prepared in docs. Input policies and final model coefficients await founder approval; the engine remains unimplemented. See PROGRESS.md for the approval checkpoint and actual verification results.

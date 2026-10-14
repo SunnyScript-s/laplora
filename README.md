@@ -42,8 +42,13 @@ The tests check startup, keyboard navigation, and viewport fit. They do not vali
 - [Architecture and approval record](ARCHITECTURE_PROPOSAL.md)
 - [Product specification](docs/PRODUCT_SPECIFICATION.md)
 - [Official SAT scoring research](docs/SAT_RESEARCH.md)
+- [Proposed input rules](docs/INPUT_SPECIFICATION.md) and [guided user flow](docs/USER_FLOW.md)
+- [Preparation-growth research](docs/GROWTH_RESEARCH.md)
+- [Model V0.1 proposal](docs/MODEL_SPECIFICATION.md) and [simulation rules](docs/SIMULATION_RULES.md)
 - [Future ideas](docs/FUTURE_IDEAS.md)
 - [Progress and next steps](PROGRESS.md)
 - [Contributor guidance](AGENTS.md)
 
 The public beta target in the plan is February 2, 2027. Read PROGRESS.md for actual completion status.
+
+The written input/model proposals are ready for founder review. They contain explicitly experimental coefficients and two important policy choices: below-SAT-floor PSAT handling, and descriptive rather than numerical treatment of preparation history/methods/test frequency. The score engine remains unimplemented pending that approval.

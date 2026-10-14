@@ -1,5 +1,43 @@
 # Laplora progress
 
+## October 14, 2026 — input/research/model approval checkpoint
+
+### Completed work
+
+- Continued at the founder's request without treating continuation as approval of the mathematical model.
+- Prepared Week 2 written deliverables: docs/INPUT_SPECIFICATION.md and docs/USER_FLOW.md, including field roles, assessment-specific validation, dates, historical baselines, study-time budgeting, error recovery, and accessibility.
+- Reviewed official common-scale guidance in Fall 2026 SAT/PSAT score guides and score intervals/vertical scale in relevant sections of the digital technical manual.
+- Reviewed the May 2025 digital SAT practice report's methods, results, limitations, and appendix, plus the March 2026 student-growth report's relevant methods and limitations. Recorded focused Week 3 evidence and unresolved research questions in docs/GROWTH_RESEARCH.md.
+- Prepared Week 4/5 written proposals: docs/MODEL_SPECIFICATION.md and docs/SIMULATION_RULES.md, with explicit parameters, units, illustrative sensitivity ranges, scenario semantics, rounding, and future acceptance tests.
+- Calculated synthetic worked examples from the written closed form in a scratch command. Document numbers were checked; this did not implement a production score engine or validate prediction accuracy.
+- Linked the new documents from README and updated the architecture checkpoint. The original development plan remains unchanged.
+
+### Lessons and evidence
+
+- SAT and PSAT use a common score scale, with different score floors/ceilings. Scaling PSAT scores by 800/760 is not justified.
+- The digital-practice study explicitly reports noncausal estimates. Its associations cannot be awarded as personal points-per-test bonuses.
+- Cohort growth ranges, score measurement ranges, and experimental parameter sensitivity answer different questions. Do not label the proposed range as a probability or confidence interval.
+- A curve can respect limits and still produce unrealistic long-term results; synthetic arithmetic is not empirical calibration.
+
+### Proposed decisions awaiting founder approval
+
+1. Experimental section-growth model: saturation scale 4 hours/section/week, central rate 0.012 per effective hour, slower/faster cases 0.006/0.018, disclosed equal section allocation with an optional control, and sensitivity-only range wording.
+2. Accept/preserve PSAT section scores below 200, but request a scored SAT baseline rather than fabricate an SAT trajectory for them. This explicitly limits simulation coverage and needs an owner decision.
+3. Keep prep history/methods/test frequency as transparent context and budget guidance in V0.1, without unvalidated numerical bonuses. Method-only edits leave curves unchanged and must be explained.
+4. Proposed input policies include a 40-hour weekly cap, 104-week maximum horizon, baseline-age warnings, and long-horizon warnings. These are product policies, not scientifically validated cutoffs.
+
+### Verification and Git
+
+- Reviewed the written rules against the supplied plan and source excerpts; checked arithmetic examples and internal date/section-total consistency.
+- New model/input documents do not mean those milestones are signed off. Input policy and model/scenario approval gates remain pending.
+- No application code or dependencies changed in this checkpoint. The previous foundation verification remains 2 passing browser runs, successful type check/build, and an unrun remote CI workflow. No new engine tests are claimed.
+- Earlier local commits: b379321 (Week 1 documents) and 5e26b35 (React/TypeScript foundation).
+- This checkpoint is recorded with `docs: propose Laplora inputs and mathematical model rules`; use git log for its commit ID. No push or deployment was performed.
+
+### Next step / current blocker
+
+Founder approval is required before production engine implementation under the supplied development instructions. Once the input/model proposal is approved or revised, continue with Week 6 input validation and meaningful automated boundary/date tests, then Week 7 engine implementation. Keep design/launch milestones in sequence and do not imply the public beta exists yet.
+
 ## October 14, 2026 — Week 1 product and research
 
 ### Approvals and completed work
