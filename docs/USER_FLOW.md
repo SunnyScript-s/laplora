@@ -1,6 +1,6 @@
 # Laplora guided user flow V0.1
 
-Week 2 written deliverable · October 14, 2026 · Proposed flow, not implemented.
+Week 2 written deliverable · V0.1 choices approved October 14, 2026. The guided interface is not implemented yet; input validation and the pure engine are implemented separately.
 
 ## Step 1 — Your starting point
 

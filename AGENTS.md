@@ -2,6 +2,7 @@
 
 - Read DEVELOPMENT_PLAN.md, PROGRESS.md, and docs/PRODUCT_SPECIFICATION.md before changing the project.
 - The founder approved implementation-with-mentoring and the React/TypeScript client-side architecture on October 14, 2026. Explain substantive changes and concepts in student-friendly language.
+- The founder approved the V0.1 input/model/scenario choices on October 14, 2026: section saturation 4, rates 0.006/0.012/0.018, PSAT below-floor handling, descriptive-only context fields, and input limits. Do not ask for those approvals again; future substantive model changes still need approval.
 - Follow the plan's milestones. Complete written input/model rules before coding the engine. Obtain founder approval for final mathematical equations/parameters, major architecture changes, and scope expansion. Existing architecture approval does not approve the model.
 - Preserve DEVELOPMENT_PLAN.md as the supplied source; record decisions and deviations in separate documents.
 - Use the existing isolated checkout. Do not create a Git worktree unless the user asks.

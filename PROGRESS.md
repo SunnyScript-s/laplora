@@ -1,5 +1,17 @@
 # Laplora progress
 
+## October 14, 2026 — approved input engine
+
+- Founder approved the V0.1 input/model/scenario choices, including experimental coefficients, PSAT edge-case coverage, descriptive-only context fields, and study/horizon limits.
+- Implemented strict Zod validation, explicit numeric form parsing, assessment-specific score ranges/increments, real calendar dates, injected current dates, and contextual warnings.
+- Kept date-only arithmetic independent of timezone offsets and covered leap-day, daylight-saving, and pre-100-year calendar behavior.
+- The input-only verification passed 81 tests and TypeScript checking. A later full-suite run also verified the model work described in the next checkpoint.
+- Source: src/domain/inputs.ts and src/domain/dates.ts. Tests: tests/unit/inputs.test.ts.
+- Added pinned Zod and Vitest dependencies with a lockfile update. npm test now runs unit tests before the production-build/browser checks.
+- Local input checkpoint: `feat: add SAT input and calendar validation`. No push or deployment.
+
+Learning focus: a typed number is not automatically a valid score; runtime validation enforces the assessment rules. A calendar date is a day label, not a timestamp that should shift when the timezone changes.
+
 ## October 14, 2026 — input/research/model approval checkpoint
 
 ### Completed work

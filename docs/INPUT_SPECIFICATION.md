@@ -1,6 +1,6 @@
 # Laplora input specification V0.1
 
-Week 2 written deliverable · October 14, 2026 · Proposed policies, awaiting model/input approval.
+Week 2 written deliverable · V0.1 choices approved by the founder on October 14, 2026. Implemented in src/domain/inputs.ts and src/domain/dates.ts.
 
 References: [product specification](PRODUCT_SPECIFICATION.md), [scoring research](SAT_RESEARCH.md), [growth research](GROWTH_RESEARCH.md), [user flow](USER_FLOW.md), and [model proposal](MODEL_SPECIFICATION.md).
 
@@ -24,13 +24,13 @@ Official score limits/increments are facts. Study limits, age warnings, timeline
 | Study methods | Yes | Nonempty unique selection from `targeted-practice`, `full-length-tests`, `mistake-review`, `tutoring-class`; allow `unsure` alone | Context and practice guidance; not an automatic score bonus |
 | Full-length practice frequency | Yes | `none`, `every-four-weeks`, `every-two-weeks`, or `weekly` | Budget/consistency guidance; no additive points-per-test bonus |
 
-The 40-hour cap bounds an unusually intensive hypothetical schedule; it is not a recommended workload. The 728-day cap limits extrapolation and graph size; it is not a validated research horizon. Both require founder approval.
+The founder approved the 40-hour and 728-day caps. The 40-hour cap bounds an unusually intensive hypothetical schedule; it is not a recommended workload. The 728-day cap limits extrapolation and graph size; it is not a validated research horizon.
 
 Reject blank required values rather than turning them into zero. Reject NaN, infinity, booleans, arrays, unknown enums, and invalid date strings at the domain boundary. The form should parse strict decimal numeric text; do not accept a scientific-notation string as a student's score. Missing optional values remain absent rather than becoming invented defaults.
 
 Allow a target below or equal to the baseline; explain that the entered goal is already at or below the observed total. Never force growth toward the target. Zero hours or zero consistency is valid: the proposed practice-driven central trajectory stays flat, with an explicit reminder that actual test performance can vary.
 
-## PSAT baseline policy — approval required
+## PSAT baseline policy — approved V0.1
 
 Official Fall 2026 score guides and the technical manual confirm that the SAT Suite uses a common vertical score scale. A PSAT section score of 500 is therefore a shared-scale observation; do not multiply it by 800/760. This says nothing about future growth or differences caused by the date of testing.
 
@@ -41,7 +41,7 @@ Proposed V0.1 handling:
 3. If either section is below 200, return an explanatory `needs-sat-baseline` outcome instead of generating an SAT trajectory. Recommend a scored official full-length SAT practice result. Do not silently clamp 160 to 200, rescale it, or display an invalid SAT section score.
 4. If either PSAT section is 760, warn that the assessment ceiling may limit what the score reveals; do not add 40 free points or claim the student is exactly 40 points below their potential.
 
-Step 3 limits simulation coverage for a subset of otherwise valid PSAT baselines. It is an explicit founder decision, not an already approved requirement. The alternative is to design and approve a separate below-floor shared-scale representation, without calling sub-200 values SAT scores. That would require additional modeling and chart rules.
+Step 3 limits simulation coverage for a subset of otherwise valid PSAT baselines; the founder approved this restriction. A future alternative would require a separately approved below-floor shared-scale representation without calling sub-200 values SAT scores.
 
 ## Dates and old baselines
 
@@ -60,7 +60,7 @@ Do not hard-reject a historical baseline only because of age. These warning thre
 
 Weekly hours include tests, targeted work, mistake review, and tutoring. Do not count full-length tests as extra hours or award their observational study associations as independent score bonuses.
 
-The ordinary flow uses an explicit 50/50 section-hour allocation. Show this assumption. An optional Math-share control in advanced study settings can range from 0% to 100%; Reading & Writing receives the remainder. Do not silently assign more hours to the weaker section or infer a skill profile from total scores. This optional allocation control is part of the proposed model and needs approval.
+The ordinary flow uses an explicit 50/50 section-hour allocation. Show this assumption. The approved optional Math-share control in advanced study settings can range from 0% to 100%; Reading & Writing receives the remainder. Do not silently assign more hours to the weaker section or infer a skill profile from total scores.
 
 Warn for schedules above 20 hours/week and horizons above 26 weeks; invite the student to check realism, without presenting either threshold as a medical or statistical boundary.
 
@@ -88,4 +88,4 @@ Preserve the roadmap distinction: earlier scores, domain indicators, mistake-rev
 | 40 hours/week | Valid but warn; 40.25 is outside the proposed cap |
 | Mixed `unsure` plus another method | Reject ambiguous selection |
 
-No input validation engine is implemented by this document. Week 6 implementation follows approval of the input and model specifications.
+Week 6 input validation is implemented and covered by automated boundary, malformed-value, calendar, and warning tests. See PROGRESS.md for actual results. Numerical modeling rules remain experimental despite approval.
