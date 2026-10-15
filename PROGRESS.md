@@ -1,5 +1,11 @@
 # Laplora progress
 
+## October 15, 2026 — growth-chart logo replacement
+
+- Replaced the header artwork with Santiago’s new rounded L/growth-chart logo. With explicit approval for direct pixel processing, removed the white canvas from the supplied original PNG, recovered transparent edge pixels, and trimmed blank space. Kept the original lettering and interior colors; discarded the image editor's speckled attempts.
+- Simplified the header to a responsive local image inside the existing accessible home button. Updated the self-contained preview and desktop/mobile screenshots.
+- Passed TypeScript, production build, and all six existing desktop/mobile foundation and accessibility checks, including 320px/enlarged-text reflow. Confirmed the embedded logo loads in the standalone preview and reviewed the mobile rendering. The build reports a non-failing bundle-size advisory because the PNG is embedded for offline preview support.
+
 ## October 15, 2026 — first public deployment
 
 - Published the approved app to https://laplora.vercel.app using Vercel CLI 64.2.0 after the owner completed browser authentication. Production deployment dpl_7Jp7gw4R9hUAFGU7EypnKotWqo13 reached READY; Vercel ran the existing npm build successfully.
