@@ -1,5 +1,10 @@
 # Laplora progress
 
+## October 15, 2026 — supplied browser icon
+
+- Replaced the old SVG favicon with Santiago’s supplied transparent 1024×1024 PNG, retaining its exact bytes. The new filename also avoids reusing the old favicon URL cached by browsers.
+- Updated the standalone preview generator to embed the PNG favicon. Production build passed; browser decoding confirmed its size/type, and the built asset matches the uploaded original. No application behavior changed.
+
 ## October 15, 2026 — growth-chart logo replacement
 
 - Replaced the header artwork with Santiago’s new rounded L/growth-chart logo. With explicit approval for direct pixel processing, removed the white canvas from the supplied original PNG, recovered transparent edge pixels, and trimmed blank space. Kept the original lettering and interior colors; discarded the image editor's speckled attempts.

@@ -26,8 +26,8 @@ for (const match of [...css.matchAll(/url\(([^)]+\.woff2)\)/g)]) {
 const js = (await readFile(assetPath(script[1]), 'utf8')).replace(/<\/script/gi, '<\\/script');
 html = html.replace(script[0], () => `<script type="module">${js}</script>`);
 html = html.replace(stylesheet[0], () => `<style>${css}</style>`);
-const icon = await readFile(resolve(dist, 'favicon.svg'));
-html = html.replace('/favicon.svg', `data:image/svg+xml;base64,${icon.toString('base64')}`);
+const icon = await readFile(resolve(dist, 'laplora-icon.png'));
+html = html.replace('/laplora-icon.png', `data:image/png;base64,${icon.toString('base64')}`);
 
 // Font permissions travel with this standalone copy, including its embedded fonts.
 const notices = {};
