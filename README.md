@@ -2,6 +2,12 @@
 
 Laplora is an experimental SAT score-growth simulation project. It will help students explore how different preparation plans change modeled Math and Reading & Writing trajectories under explicit assumptions. It is independent of College Board and does not guarantee SAT results.
 
+## Live website
+
+Production: **https://laplora.vercel.app** (Vercel project `laplora`). The initial production deployment uses the existing Vite build and `dist` output.
+
+Automatic GitHub deployments are not connected yet: Vercel requires the owner to add a GitHub login connection, then connect `SunnyScript-s/laplora` with production branch `main`. Until connected, publish updates explicitly with `vercel deploy --prod` from an authenticated, linked checkout.
+
 ## Project status
 
 Laplora uses React and TypeScript with a pure, versioned simulation engine. Product and research documentation, input validation, and the experimental V0.1 score model are implemented.

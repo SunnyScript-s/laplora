@@ -1,5 +1,12 @@
 # Laplora progress
 
+## October 15, 2026 — first public deployment
+
+- Published the approved app to https://laplora.vercel.app using Vercel CLI 64.2.0 after the owner completed browser authentication. Production deployment dpl_7Jp7gw4R9hUAFGU7EypnKotWqo13 reached READY; Vercel ran the existing npm build successfully.
+- Verified anonymous HTTP 200 on the production domain. The cloud Chromium profile did not trust the environment's HTTPS certificate chain, so browser verification fetched public HTML, scripts, styles, and fonts through curl's configured CA trust with TLS verification enabled. Confirmed homepage rendering, original logo decoding, simulator entry, pricing navigation, and no JavaScript runtime errors using those public assets.
+- Vercel could not connect the GitHub repository because the owner's Vercel account lacks a GitHub login connection. This does not block the live deployment; automatic deployments require that account connection and repository linking. No automatic GitHub deployment claim is made.
+- Retained Vercel's generated .gitignore entry for local project metadata. Authentication stays outside the repository. Application files and model behavior are unchanged.
+
 ## October 15, 2026 — supplied header logo
 
 - Replaced the shared header text with Santiago’s supplied orange-to-yellow PNG logo. Preserved the original image bytes and transparency; an SVG viewport frames the artwork within its padded canvas. The logo remains a keyboard-accessible home button, with responsive 180–220px sizing.
