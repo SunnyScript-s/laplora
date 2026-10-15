@@ -8,6 +8,8 @@ async function scan(page: Page, state: string) {
   expect(results.violations.map(violation => ({ id: violation.id, impact: violation.impact, elements: violation.nodes.map(node => node.target) })), state).toEqual([]);
 }
 test('core screens and error states pass automated accessibility checks', async ({ page }) => {
+  // Nine complete scans can exceed the default 30s under WebKit on the shared cloud CPU.
+  test.setTimeout(60_000);
   await page.clock.setFixedTime(new Date('2026-10-14T17:00:00Z'));
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('/');

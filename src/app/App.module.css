@@ -1,11 +1,15 @@
-.shell { min-height: 100svh; position: relative; isolation: isolate; overflow: clip; background: linear-gradient(145deg, #fffaf3, #ffead6 50%, #fff4e8); padding: 0 clamp(1.25rem, 5vw, 4rem); }
+.shell { min-height: 100svh; position: relative; isolation: isolate; overflow: clip; background: linear-gradient(155deg, #fffdf7 4%, #fff4da 35%, #ffdb9b 70%, #fff1d8); padding: 0 clamp(1.25rem, 5vw, 4rem); }
 .atmosphere { position: absolute; z-index: -1; inset: 0; pointer-events: none; overflow: hidden; }
-.orb, .orbTwo { position: absolute; border-radius: 50%; width: min(75vw, 950px); aspect-ratio: 1; filter: blur(32px); opacity: .5; background: radial-gradient(circle, #ff8a3d, #ffbf81 35%, transparent 70%); top: -370px; right: -260px; animation: drift 18s ease-in-out 2 alternate; }
+.referenceArt { position: absolute; top: 0; left: 0; width: 100%; height: max(1120px, 78vw); }
+.floatingBubbles { animation: glassFloat 14s ease-in-out infinite alternate; }
+.giantBubble { opacity: .7; }
+.atmosphere::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgb(255 253 247 / 82%), transparent 66%), linear-gradient(180deg, rgb(255 253 247 / 36%), transparent 70%); }
+.orb, .orbTwo { position: absolute; border-radius: 50%; width: min(75vw, 950px); aspect-ratio: 1; filter: blur(32px); opacity: .2; background: radial-gradient(circle, #ffaf23, #ffe281 35%, transparent 70%); top: -370px; right: -260px; animation: drift 18s ease-in-out 2 alternate; }
 .orbTwo { top: 350px; left: -440px; background: radial-gradient(circle, #ffc38b, #ffe1ba 40%, transparent 68%); opacity: .35; animation-direction: alternate-reverse; }
 .horizon { position: absolute; top: 440px; right: -20%; width: 110%; height: 390px; border: 1px solid rgb(255 255 255 / 85%); border-radius: 50%; transform: rotate(-18deg); box-shadow: 0 -18px 65px rgb(255 255 255 / 30%); opacity: .65; }
-.rotor { position: absolute; top: 90px; right: -220px; width: 850px; aspect-ratio: 1; transform: rotate(-18deg); }
+.rotor { position: absolute; top: 90px; right: -220px; width: 850px; aspect-ratio: 1; transform: rotate(-18deg); opacity: .65; }
 .rotorRing { position: absolute; inset: 0; border-radius: 50%; border: 22px solid rgb(255 119 45 / 40%); border-top-color: rgb(255 248 231 / 85%); border-bottom-color: rgb(226 69 7 / 60%); box-shadow: inset 0 2px 6px rgb(255 255 255 / 90%), 0 15px 35px rgb(178 67 16 / 12%), 0 0 0 2px rgb(255 255 255 / 70%); transform: rotateX(58deg) rotateZ(0deg); animation: orbitSpin 30s linear infinite; }
-.rotorCore { position: absolute; width: 49%; aspect-ratio: 1; top: 25%; left: 25%; border-radius: 50%; background: radial-gradient(circle at 30% 24%, #fff5d8 0%, #ffd09c 12%, #ff8a35 38%, #ff5d14 58%, #b93408 90%); box-shadow: inset -20px -22px 35px rgb(128 34 0 / 16%), inset 8px 9px 20px rgb(255 255 255 / 55%), 25px 45px 80px rgb(187 68 6 / 14%); opacity: .48; }
+.rotorCore { display: none; }
 .satellite, .satelliteTwo { position: absolute; display: block; width: 38px; aspect-ratio: 1; top: 13%; right: 11%; border-radius: 50%; background: radial-gradient(circle at 30% 25%, #fff8e9, #ff7c29 50%, #bb3909); box-shadow: 0 8px 14px rgb(170 58 10 / 22%); }
 .satelliteTwo { width: 23px; top: auto; right: auto; bottom: 6%; left: 23%; }
 .header { max-width: 1160px; margin: auto; padding-block: 2rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
@@ -31,7 +35,7 @@
 .secondary:hover { background: #fff; transform: translateY(-1px); }
 .heroTrust { display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; font-size: .75rem; color: var(--color-muted); border-top: 1px solid var(--color-border); padding-top: 1.25rem; margin-top: 2rem; }
 .heroTrust span::before { content: '✓'; margin-right: .4rem; color: var(--color-accent); }
-.panel { padding: clamp(1.25rem, 2.5vw, 2rem); border: 1px solid white; border-radius: 24px; background: var(--color-surface); box-shadow: 0 15px 40px rgb(112 56 22 / 7%), inset 0 1px 0 white; min-width: 0; }
+.panel { padding: clamp(1.25rem, 2.5vw, 2rem); border: 1px solid white; border-radius: 24px; background: var(--color-surface); box-shadow: 0 18px 42px rgb(160 79 9 / 9%), inset 0 2px 0 white, inset 0 -1px rgb(255 217 146 / 40%); min-width: 0; }
 .panel h2 { font-size: 1.2rem; letter-spacing: -.02em; margin: 0 0 .65rem; }
 .panel h3 { font-size: 1rem; margin: 1.3rem 0 .75rem; }
 .preview { transform: rotate(1deg); }
@@ -123,6 +127,7 @@
 @keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
 @keyframes drift { from { transform: translate(0,0) scale(1); } to { transform: translate(-40px,45px) scale(1.08); } }
 @keyframes orbitSpin { from { transform: rotateX(58deg) rotateZ(0deg); } to { transform: rotateX(58deg) rotateZ(360deg); } }
+@keyframes glassFloat { from { transform: translateY(0); } to { transform: translateY(-18px); } }
 @media (max-width: 900px) { .hero { gap: 2rem; } .resultsGrid { grid-template-columns: 1fr; } .resultsGrid aside form { max-width: 500px; } .metrics .panel { padding: 1.25rem; } .rangeScore { font-size: 1.8rem; } }
 @media (max-width: 700px) {
   .shell { padding-inline: 1.25rem; } .header { padding-block: 1.5rem; flex-wrap: wrap; } .header nav { gap: .75rem; } .wordmark { font-size: 1.8rem; } .header .secondary { font-size: .75rem; padding: .6rem .8rem; gap: .5rem; min-height: 40px; } .navButton { font-size: .75rem; }
@@ -130,6 +135,7 @@
   .landingNote { flex-wrap: wrap; gap: 1rem; margin-top: 0; } .landingNote > div { flex: 1; min-width: 180px; } .landingNote button { margin-left: 0; } .fields { grid-template-columns: 1fr; gap: 1.25rem; } .steps { font-size: .68rem; gap: .4rem; } .steps li { gap: .3rem; flex-direction: column; } .steps li span { width: 24px; height: 24px; }
   .formActions { flex-wrap: wrap; } .formActions .primary { flex-grow: 1; } .resultHeading { flex-direction: column; align-items: start; gap: .5rem; margin-bottom: 1.5rem; } .metrics { grid-template-columns: 1fr; gap: .75rem; } .metrics .panel { display: grid; grid-template-columns: 1fr auto; align-items: center; column-gap: 1rem; } .metrics .score { grid-column: 2; grid-row: 1 / 3; margin: 0; font-size: 2rem; } .metrics .hint { font-size: .72rem; } .metrics .rangeScore { font-size: 1.6rem; }
   .reviewRow { flex-wrap: wrap; gap: .2rem; } .previewRange { font-size: .78rem; } .chartHeader { gap: 1rem; } .resultsGrid .panel { padding: 1.25rem; } .orb { width: 800px; right: -500px; } .orbTwo { width: 650px; left: -480px; top: 500px; } .horizon { top: 580px; width: 140%; } .rotor { width: 560px; top: 340px; right: -330px; opacity: .65; }
+  .referenceArt { width: 1050px; max-width: none; left: calc(50% - 580px); height: 1050px; top: 100px; opacity: .8; }
 }
 @media (prefers-reduced-motion: reduce) { .enter, .drawLine, .orb, .orbTwo, .rotorRing { animation: none !important; } .primary, .secondary, .preset { transition: none; transform: none; } .primary:hover, .secondary:hover { transform: none; } .paused .rotorRing { animation: none !important; } }
 @media (max-width: 360px) {

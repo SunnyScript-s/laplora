@@ -1,5 +1,17 @@
 # Laplora progress
 
+## October 14, 2026 — glass reference and working preview
+
+- Founder supplied a specific Pinterest image and requested a closer amber-glass/ribbon theme, a blank-preview repair, and Homizio Nova by Álvaro Thomáz.
+- Inspected the image and implemented original local SVG artwork with glossy amber bubbles, yellow/orange curved ribbons, white orbital lines, reflective highlights, and slow bubble motion alongside the pausable rotating ring. No Pinterest image is copied into the app or loaded by students' browsers.
+- Found no running development server. Restarted it, changed its dev bind to 0.0.0.0:5173, and verified the landing actually rendered with HTTP 200 and no runtime/request errors. Intentionally kept that live preview running. Browser-panel opening returned queued; desktop-to-cloud routing is not verified and no callable port forwarding is available.
+- Added scripts/build-preview.mjs and npm run build:preview to generate docs/design/interactive-preview.html with the actual app, styles, fonts, favicon, and license notices embedded. Independently ran the full synthetic student flow while permitting only the initial HTML request: known 1240 result, no dependent network/asset requests, and no runtime errors. This supplies a downloadable fallback when a web pane cannot reach the server.
+- TypeScript and production/standalone build passed. Of 15 targeted landing/motion/accessibility runs across five browser projects, 14 passed initially; the WebKit desktop nine-state scan exceeded its 30-second test budget. Added a scoped 60-second limit without skipping assertions; that affected run then passed in 19.1 seconds. Other passing checks were not unnecessarily repeated.
+- Reviewed desktop/mobile captures in docs/design/reference-glass-*.png. Original model, input policy, coefficients, font files, and DEVELOPMENT_PLAN.md are unchanged; no engine test rerun or deployment.
+- Homizio Nova remains blocked on verified webfont permission. Downloaded the exact desktop archive to a temporary research directory only. The author's DaFont note says free personal/commercial use and directs webfont licensing to atfg.co/font/homizio-nova, which returned proxy 403. The archive contains no license; metadata has copyright but no grant. Alternative/archived sources did not establish this exact family's web permission. Requested a license or working author-permission link asynchronously while completing independent work. No font binary is shipped or silently substituted.
+- Updated contributor/design/README records and wrote docs/REFERENCE_PREVIEW_REVIEW.md with the evidence and preview limitations. Saved revised start_skill, preserving other environment fields. Saving is not publication or proof of fresh-task restoration.
+- Local checkpoint: `style: refine amber glass artwork and restore reviewable previews`. Live development preview remains running; font installation is pending the missing license. No push/deployment.
+
 ## October 14, 2026 — orange orbital theme and accessibility/browser review
 
 - Founder requested a vibrant orange DORfic-inspired palette and spinning background before continuing the approved accessibility/cross-browser milestone. This explicitly supersedes the prior aqua/green direction; original DEVELOPMENT_PLAN.md is preserved unchanged.

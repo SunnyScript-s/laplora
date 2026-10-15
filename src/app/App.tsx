@@ -8,6 +8,7 @@ import { Results } from './Results';
 import { ScoreChart } from './ScoreChart';
 import { HowItWorks } from './HowItWorks';
 import { ArrowIcon } from './ArrowIcon';
+import { ReferenceAtmosphere } from './ReferenceAtmosphere';
 import styles from './App.module.css';
 
 type View = 'home' | 'setup' | 'results' | 'how';
@@ -38,6 +39,7 @@ export function App() {
     <a className="skip-link" href="#main">Skip to content</a>
     <div className={`${styles.shell} ${motionPaused ? styles.paused : ''}`}>
       <div className={styles.atmosphere} aria-hidden="true">
+        <ReferenceAtmosphere />
         <div className={styles.orb} /><div className={styles.orbTwo} />
         <div className={styles.rotor}>
           <div className={styles.rotorRing}><span className={styles.satellite} /><span className={styles.satelliteTwo} /></div>

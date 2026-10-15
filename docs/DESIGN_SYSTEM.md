@@ -29,6 +29,8 @@ Use one primary accent and one scenario accent. Decorative orange orbital motion
 
 The founder selected Option A, Outfit + Manrope, and approved the full proposed layouts on October 14, 2026, with a capital **L** in **Laplora**. See [DESIGN_REFERENCES.md](DESIGN_REFERENCES.md) for actual website observations, three font pairings, provenance, and delivery tradeoffs.
 
+Latest refinement: a supplied amber-glass reference now guides the vector background—glossy bubbles, curved yellow/orange ribbons, and white orbital lines. Homizio Nova by Álvaro Thomáz was requested next, but is pending verified webfont permission; the app still uses the licensed existing pairing. See [REFERENCE_PREVIEW_REVIEW.md](REFERENCE_PREVIEW_REVIEW.md) for exact status and source evidence.
+
 ## Layout and components
 
 - Content width: approximately 1100px, with generous desktop margins and a single-column mobile flow.

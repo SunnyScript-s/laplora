@@ -19,7 +19,15 @@ npm ci
 npm run dev
 ```
 
-The server uses loopback port 5173 and fails clearly if the port is occupied. `npm run preview` serves the production build on port 4173. In this cloud sandbox, use `npm ci --cache /tmp/laplora-npm-cache` because the default home cache is not writable. No application environment variables or credentials are required.
+The development server listens on port 5173 on all interfaces for preview access and fails clearly if that port is occupied. Keep it running while viewing the app; live processes do not survive a cloud snapshot. `npm run preview` serves the production build on loopback port 4173. In this cloud sandbox, use `npm ci --cache /tmp/laplora-npm-cache` because the default home cache is not writable. No application environment variables or credentials are required.
+
+If the browser panel cannot reach the cloud server, [download the interactive preview](docs/design/interactive-preview.html) and open it in a browser. It includes the actual app, styles, fonts, favicon, and font notices in one file. Refreshing clears its inputs just as in the live app. Rebuild it after application changes with:
+
+```sh
+npm run build:preview
+```
+
+The latest artwork follows the founder's amber glass/ribbon reference. Homizio Nova by Álvaro Thomáz was requested, but its separate webfont permission remains unverified; existing fonts remain until that permission is supplied or confirmed. See [the reference and preview checkpoint](docs/REFERENCE_PREVIEW_REVIEW.md).
 
 ## Verification
 
