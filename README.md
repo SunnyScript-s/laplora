@@ -60,7 +60,7 @@ npm test
 PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npm run verify
 ```
 
-Unit tests verify engine contracts and structural behavior, including a 2,160-profile stress grid. Browser tests cover setup/results/comparison flows, validation, keyboard chart exploration, data consistency, in-memory privacy, reduced motion, automated accessibility scans, and 320px/200% text reflow. The default suite runs 26 desktop/mobile Chromium cases. Optional cross-browser projects add Firefox desktop and WebKit desktop/mobile (65 total runs). These checks do not establish prediction accuracy or full accessibility compliance. GitHub Actions is configured for all three engines. See [workflow runs](https://github.com/SunnyScript-s/laplora/actions) for current remote verification status.
+Unit tests verify engine contracts and structural behavior, including a 2,160-profile stress grid. Browser tests cover setup/results/comparison flows, validation, keyboard chart exploration, data consistency, in-memory privacy, reduced motion, automated accessibility scans, and 320px/200% text reflow. The default suite runs 26 desktop/mobile Chromium cases. Optional cross-browser projects add Firefox desktop and WebKit desktop/mobile (65 total runs). These checks do not establish prediction accuracy or full accessibility compliance. GitHub Actions is configured for all three engines and runs one browser worker at a time to avoid resource contention on shared runners. Local runs default to two workers. See [workflow runs](https://github.com/SunnyScript-s/laplora/actions) for current remote verification status.
 
 On a machine with browser dependencies installed:
 

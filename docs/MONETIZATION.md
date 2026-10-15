@@ -47,3 +47,5 @@ Run npm run dev, then choose Explore Laplora Pro on the homepage or Laplora Pro 
 Review captures: [desktop pricing](design/pro-pricing-desktop.png), [mobile pricing](design/pro-pricing-mobile.png), [desktop homepage](design/pro-home-desktop.png), and [mobile homepage](design/pro-home-mobile.png).
 
 The browser tests cover the live-versus-planned distinction, prices and duration, no purchase controls or external requests, anonymous Free entry, keyboard focus, setup/comparison retention, an accessibility scan, reduced motion, and 320px/200% text reflow. See PROGRESS.md for actual run outcomes. Automated browser checks do not establish empirical prediction accuracy or replace physical-device/screen-reader review.
+
+Follow-up verification: the full suite passed locally with CI=1: 123 unit tests and 65 browser cases across Chromium desktop/mobile, Firefox desktop, and WebKit desktop/mobile. CI now uses one browser worker after diagnosing resource-related WebKit timeouts in the first hosted run; assertions, timeouts, and application motion remain intact. See [GitHub Actions](https://github.com/SunnyScript-s/laplora/actions) for hosted results.

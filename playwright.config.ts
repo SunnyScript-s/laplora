@@ -20,7 +20,8 @@ const webkitLaunch = webkitExecutable && webkitRoot ? {
 export default defineConfig({
   testDir: './tests/e2e',
   fullyParallel: true,
-  workers: 2,
+  // Shared CI runners contend on animated WebKit pages when two flows run together.
+  workers: process.env.CI ? 1 : 2,
   forbidOnly: Boolean(process.env.CI),
   retries: 0,
   reporter: 'list',

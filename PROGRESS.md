@@ -1,5 +1,13 @@
 # Laplora progress
 
+## October 15, 2026 — complete Pro verification and CI concurrency
+
+- Confirmed the full monetization presentation is already on GitHub main in d3772cd. The original hosted verification run completed with 123 passing unit tests and 57 passing browser cases; eight longer WebKit desktop/mobile flows exceeded the existing 30-second test timeout while two workers ran together. The failures included pricing-state retention and existing simulator flows.
+- Configured Playwright to use one browser worker when CI is set, retaining two workers for ordinary local runs. No retries, assertions, timeouts, application animations, paid availability, or product behavior were changed.
+- Ran the complete configured suite locally with CI=1 and the prepared cross-browser environment: TypeScript, production build, all 123 unit tests, and all 65 browser cases passed. The browser suite completed in 5.3 minutes with no failures or skips. This supersedes the earlier partial 35-case verification checkpoint.
+- Restarted the live development preview after the environment transition and verified the homepage message, Pro pricing, Coming Soon label, and Free entry in an actual browser. The server remains running. The downloadable preview already contains the unchanged application code.
+- Updated README with CI worker behavior and the monetization verification record. Checkpoint: `ci: serialize browser checks on shared runners`. Hosted results remain inspectable in the repository's GitHub Actions workflow runs.
+
 ## October 15, 2026 — Laplora Pro and planned pricing
 
 - Added a pricing view with Laplora Free ($0), planned Laplora Pro ($4.99/month), and a potential one-time 90-day SAT Prep Pass ($9.99). Both paid options explicitly say Coming Soon and have no purchase controls. The six requested Pro features are presented as planned, not implemented.
