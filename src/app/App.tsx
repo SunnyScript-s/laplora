@@ -10,6 +10,7 @@ import { HowItWorks } from './HowItWorks';
 import { ArrowIcon } from './ArrowIcon';
 import { ReferenceAtmosphere } from './ReferenceAtmosphere';
 import { Pricing } from './Pricing';
+import laploraLogo from '../assets/laplora-logo.png?inline';
 import styles from './App.module.css';
 
 type WorkspaceView = 'home' | 'setup' | 'results';
@@ -54,7 +55,12 @@ export function App() {
         <div className={styles.horizon} />
       </div>
       <header className={styles.header}>
-        <button className={styles.wordmark} aria-label="Laplora home" onClick={() => setView('home')}>Laplora<span aria-hidden="true">.</span></button>
+        <button className={styles.wordmark} aria-label="Laplora home" onClick={() => setView('home')}>
+          {/* Frame the artwork inside its original transparent canvas without altering the supplied PNG. */}
+          <svg className={styles.logo} viewBox="256 389 767 181" width="220" height="52" aria-hidden="true" focusable="false">
+            <image href={laploraLogo} width="1248" height="822" />
+          </svg>
+        </button>
         <nav aria-label="Main navigation">
           <button className={styles.navButton} aria-current={view === 'how' ? 'page' : undefined} onClick={() => openInformation('how')}>How it works</button>
           <button className={styles.navButton} aria-current={view === 'pricing' ? 'page' : undefined} onClick={() => openInformation('pricing')}>Laplora Pro</button>

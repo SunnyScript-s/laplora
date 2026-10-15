@@ -1,5 +1,11 @@
 # Laplora progress
 
+## October 15, 2026 — supplied header logo
+
+- Replaced the shared header text with Santiago’s supplied orange-to-yellow PNG logo. Preserved the original image bytes and transparency; an SVG viewport frames the artwork within its padded canvas. The logo remains a keyboard-accessible home button, with responsive 180–220px sizing.
+- Embedded the local logo in the application bundle so the regenerated downloadable preview remains self-contained. Reviewed desktop/mobile captures in docs/design/logo-home-*.png.
+- Verification passed: TypeScript, production/standalone builds, and all six existing Chromium desktop/mobile foundation and accessibility cases, including 320px reflow with enlarged text. Independently confirmed the embedded image decodes at its original dimensions, layouts fit, and keyboard home navigation works on both screen sizes with zero external asset requests. No model or billing behavior changed; the full unit/cross-browser suites were not rerun for this asset/layout change.
+
 ## October 15, 2026 — complete Pro verification and CI concurrency
 
 - Confirmed the full monetization presentation is already on GitHub main in d3772cd. The original hosted verification run completed with 123 passing unit tests and 57 passing browser cases; eight longer WebKit desktop/mobile flows exceeded the existing 30-second test timeout while two workers ran together. The failures included pricing-state retention and existing simulator flows.
