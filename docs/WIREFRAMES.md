@@ -28,6 +28,6 @@ How It Works will explain the observed baseline, shared PSAT scale, section mode
 
 ## Design review gate
 
-The approved ARCHITECTURE_PROPOSAL.md says: “Approve wireframes before visual implementation.” The founder approved these concrete artifacts on October 14, 2026. This gate is satisfied; no repeat approval is required.
+The landing, setup, and results wireframes were approved on October 14, 2026 and informed the implemented interface. See ARCHITECTURE.md for the current system.
 
 Recommended direction: use this restrained Aero layout, preserve the documented guided flow, and implement results with one primary graph plus section-view controls and a clearly labeled comparison panel.

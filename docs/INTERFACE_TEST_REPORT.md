@@ -38,7 +38,7 @@ An initial browser run was prevented by an owned preview process remaining on po
 
 Images use the documented synthetic profile and an explicitly fixed October 14 start for reproducibility. They contain no real student data. Capture uses reduced motion; the application also supports the animated presentation.
 
-## Mentoring notes
+## Implementation notes
 
 The form stores strings because a blank field is different from zero. The adapter deliberately parses numeric text, then the shared input engine validates it. Each setup step checks its own fields; only the complete reviewed draft reaches simulate. The mathematical engine does not read React state, browser storage, clocks, or networks.
 

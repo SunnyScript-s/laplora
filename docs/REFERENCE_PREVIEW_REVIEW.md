@@ -12,7 +12,7 @@ ReferenceAtmosphere.tsx adds original local vector artwork using these general v
 
 There was no development server running when the blank preview was reported. Restarted the server, changed its development bind address to 0.0.0.0 on port 5173 for preview access, and verified actual browser rendering with HTTP 200, the correct landing heading, and no runtime or failed-request errors. The development session was intentionally left running for review. Live processes still must restart after restoration.
 
-Opening the Codex browser panel returned queued; that is not confirmation that the user's browser pane loaded the cloud URL. This task has no callable port-forwarding capability, so end-to-end desktop-to-cloud routing cannot be asserted from local browser rendering.
+Opening the development browser panel returned queued; that is not confirmation that the user's browser pane loaded the cloud URL. This task has no callable port-forwarding capability, so end-to-end desktop-to-cloud routing cannot be asserted from local browser rendering.
 
 Added a self-contained fallback: [interactive-preview.html](design/interactive-preview.html). Download/open it in a browser when the panel cannot reach the cloud server. This is the actual compiled application, not an inert mockup. The generator embeds the bundled script, CSS, WOFF2 fonts, favicon, and font notices in one HTML file. No CDN or server is required for those assets. Official source links still navigate externally when clicked.
 

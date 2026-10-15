@@ -2,7 +2,7 @@
 
 Week 1 deliverable · October 14, 2026
 
-References: [original development plan](../DEVELOPMENT_PLAN.md), [approved architecture](../ARCHITECTURE_PROPOSAL.md), and [official scoring research](SAT_RESEARCH.md).
+References: [original development plan](../DEVELOPMENT_PLAN.md), [approved architecture](../ARCHITECTURE.md), and [official scoring research](SAT_RESEARCH.md).
 
 ## Problem statement
 
@@ -82,6 +82,6 @@ Tests will include score boundaries, nonfinite values, missing data, past dates,
 
 ## Week 1 completion and Week 2 decisions
 
-Week 1 product-definition tasks are covered by this specification, SAT_RESEARCH.md, and FUTURE_IDEAS.md. The founder-approved architecture and mentoring workflow are recorded separately.
+Week 1 product-definition tasks are covered by this specification, SAT_RESEARCH.md, and FUTURE_IDEAS.md. The architecture and development process are documented separately.
 
 Week 2 must specify score increments, cross-assessment baseline handling, baseline-age guidance, date/horizon limits, study-hour validation, consistency definitions, study-time allocation, required versus optional fields, and accessible form order. Mathematical policies remain open; no final conversion or growth coefficients are approved.

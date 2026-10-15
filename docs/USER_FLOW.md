@@ -50,6 +50,6 @@ Keep baseline, target, start date, and model assumptions fixed across plans. Ide
 
 The implemented views use local React state rather than URL routes. Browser Back leaves the application rather than navigating setup steps; the How It Works page explains this behavior. In-app navigation to How It Works preserves the active setup step or comparison state. Use Back/Next/Edit controls to navigate the plan.
 
-## Mentoring exercise
+## Learning exercise
 
 Sketch the three input steps on paper. Explain which fields are required for a calculation and which are descriptive context. Describe how a student can correct the baseline test type without losing their study plan. This is the difference between a usable guided form and a large questionnaire.

@@ -77,6 +77,6 @@ No numerical relationship between hours, consistency, methods, preparation histo
 | Study-method effects and growth coefficients | Unverified | Research in Week 3; distinguish associations from causal claims |
 | Future-score uncertainty | Unverified | Approve interpretation in Week 5; do not label illustrative bands as confidence intervals |
 
-## Mentoring exercise
+## Learning exercise
 
 Explain why a Math score of 700 and a Reading and Writing score of 600 imply a total of 1300, and why the same input cannot automatically be judged valid for every test type. Then explain why knowing the score scale does not tell us how many points one hour of practice will add. This distinguishes validation rules from a growth model.

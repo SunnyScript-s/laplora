@@ -53,6 +53,6 @@ No personal growth rate, method multiplier, predictive accuracy, or calibrated u
 
 Future calibration needs appropriate consented longitudinal observations, exposure definitions, a reference model, out-of-sample evaluation, section-level error metrics, coverage assessment, and attention to distribution shifts. A 5–10-person usability beta is insufficient for that scientific task.
 
-## Mentoring exercise
+## Learning exercise
 
 Explain why students who choose to complete practice tests might also be more motivated or receive more support. Matching measured characteristics helps, but it cannot guarantee those unseen differences disappear. That is why an association is useful evidence to discuss yet cannot automatically become a causal score-growth rule.

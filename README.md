@@ -4,11 +4,11 @@ Laplora is an experimental SAT score-growth simulation project. It will help stu
 
 ## Project status
 
-The founder approved the React/TypeScript architecture, implementation-with-mentoring workflow, and V0.1 input/model/scenario choices on October 14, 2026. Product/research documentation, input validation, and the pure experimental score engine are implemented.
+Laplora uses React and TypeScript with a pure, versioned simulation engine. Product and research documentation, input validation, and the experimental V0.1 score model are implemented.
 
-The founder also approved the proposed layouts, then requested a vibrant orange DORfic-inspired direction. The React/Vite app includes guided baseline/goal/study setup, review, total and section trajectories, keyboard/touch timeline exploration, a score table, Increased Practice and custom comparisons, and How It Works. Warm ivory/orange backgrounds, a glossy rotating orbit, chart/step entrances, hover feedback and system reduced-motion support provide the visual polish. Native SVG and CSS support these features without new runtime libraries.
+The React/Vite app uses a vibrant orange DORfic-inspired design and includes guided baseline/goal/study setup, review, total and section trajectories, keyboard/touch timeline exploration, a score table, Increased Practice and custom comparisons, and How It Works. Warm ivory/orange backgrounds, a glossy rotating orbit, chart/step entrances, hover feedback and system reduced-motion support provide the visual polish. Native SVG and CSS support these features without new runtime libraries.
 
-The founder's latest font choice is **Disket Mono** from the supplied Rostype ZIP, replacing Option A and the later Homizio Nova request. Its Regular/Bold webfonts serve branding, headings, action buttons, and score highlights; Manrope keeps paragraphs, forms, and chart labels readable. Fonts are bundled locally with system fallbacks and no external font service. The included EULA permits commercial and generated webfont use; see [the typography checkpoint](docs/DISKET_TYPOGRAPHY_REVIEW.md).
+The display typeface is **Disket Mono**. Its Regular/Bold webfonts serve branding, headings, action buttons, and score highlights; Manrope keeps paragraphs, forms, and chart labels readable. Fonts are bundled locally with system fallbacks and no external font service. The included EULA permits commercial and generated webfont use; see [the typography checkpoint](docs/DISKET_TYPOGRAPHY_REVIEW.md).
 
 ## Development
 
@@ -27,7 +27,7 @@ If the browser panel cannot reach the cloud server, [download the interactive pr
 npm run build:preview
 ```
 
-The latest artwork follows the founder's amber glass/ribbon reference. Disket Mono is installed in both the live app and downloadable preview. See [the reference and preview checkpoint](docs/REFERENCE_PREVIEW_REVIEW.md) for the earlier preview diagnosis.
+The background combines amber glass shapes, curved ribbons, and orbital motion. Disket Mono is installed in both the live app and downloadable preview. See [the reference and preview checkpoint](docs/REFERENCE_PREVIEW_REVIEW.md) for the earlier preview diagnosis.
 
 ## Verification
 
@@ -38,13 +38,13 @@ npx playwright install chromium
 npm test
 ```
 
-`npm test` runs Vitest input/model/scenario tests, builds the application, and runs the foundation browser test on desktop and mobile Chromium viewports. `npm run test:unit` and `npm run test:e2e` run those parts separately. `npm run verify` includes type checking. For the cloud machine's existing browser, use:
+`npm test` runs Vitest input/model/scenario tests, builds the application, and runs the browser suite on desktop and mobile Chromium viewports. `npm run test:unit` and `npm run test:e2e` run those parts separately. `npm run verify` includes type checking. For the cloud machine's existing browser, use:
 
 ```sh
 PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npm run verify
 ```
 
-Unit tests verify engine contracts and structural behavior, including a 2,160-profile stress grid. Browser tests cover setup/results/comparison flows, validation, keyboard chart exploration, data consistency, in-memory privacy, reduced motion, automated accessibility scans, and 320px/200% text reflow. The default suite runs 20 desktop/mobile Chromium cases. Optional cross-browser projects add Firefox desktop and WebKit desktop/mobile (50 total runs). These checks do not establish prediction accuracy or full accessibility compliance. GitHub Actions is configured for all three engines; its remote run has not been exercised yet.
+Unit tests verify engine contracts and structural behavior, including a 2,160-profile stress grid. Browser tests cover setup/results/comparison flows, validation, keyboard chart exploration, data consistency, in-memory privacy, reduced motion, automated accessibility scans, and 320px/200% text reflow. The default suite runs 20 desktop/mobile Chromium cases. Optional cross-browser projects add Firefox desktop and WebKit desktop/mobile (50 total runs). These checks do not establish prediction accuracy or full accessibility compliance. GitHub Actions is configured for all three engines. See [workflow runs](https://github.com/SunnyScript-s/laplora/actions) for current remote verification status.
 
 On a machine with browser dependencies installed:
 
@@ -65,19 +65,19 @@ These selectors apply only to test processes; they are not application variables
 ## Project references
 
 - [Original 16-week development plan](DEVELOPMENT_PLAN.md)
-- [Architecture and approval record](ARCHITECTURE_PROPOSAL.md)
+- [Architecture](ARCHITECTURE.md)
 - [Product specification](docs/PRODUCT_SPECIFICATION.md)
 - [Official SAT scoring research](docs/SAT_RESEARCH.md)
-- [Proposed input rules](docs/INPUT_SPECIFICATION.md) and [guided user flow](docs/USER_FLOW.md)
+- [Input rules](docs/INPUT_SPECIFICATION.md) and [guided user flow](docs/USER_FLOW.md)
 - [Preparation-growth research](docs/GROWTH_RESEARCH.md)
-- [Model V0.1 proposal](docs/MODEL_SPECIFICATION.md) and [simulation rules](docs/SIMULATION_RULES.md)
+- [Model V0.1 specification](docs/MODEL_SPECIFICATION.md) and [simulation rules](docs/SIMULATION_RULES.md)
 - [Engine test report](docs/MODEL_TEST_REPORT.md)
-- [Interface verification and mentoring notes](docs/INTERFACE_TEST_REPORT.md)
-- [Proposed design system](docs/DESIGN_SYSTEM.md) and [wireframe review](docs/WIREFRAMES.md)
+- [Interface verification and implementation notes](docs/INTERFACE_TEST_REPORT.md)
+- [Design system](docs/DESIGN_SYSTEM.md) and [wireframe review](docs/WIREFRAMES.md)
 - [Website/font exploration](docs/DESIGN_REFERENCES.md) and [typeface comparison](docs/design/typography-comparison.png)
 - [Future ideas](docs/FUTURE_IDEAS.md)
 - [Progress and next steps](PROGRESS.md)
-- [Contributor guidance](AGENTS.md)
+- [Contributor guidance](CONTRIBUTING.md)
 
 The public beta target in the plan is February 2, 2027. Read PROGRESS.md for actual completion status.
 

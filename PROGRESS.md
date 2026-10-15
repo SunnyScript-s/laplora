@@ -1,5 +1,13 @@
 # Laplora progress
 
+## October 15, 2026 — repository documentation cleanup
+
+- Standardized contributor guidance as CONTRIBUTING.md and architecture documentation as ARCHITECTURE.md. The architecture now describes the implemented React/TypeScript, native SVG, CSS, and Zod system instead of earlier optional dependencies.
+- Simplified README and process wording, retained learning exercises as project documentation, and updated references to the renamed files. Development history remains a record of actual decisions and verification outcomes.
+- Checked all 65 local links in the affected documents and new guidance files; all resolved. Whitespace checks passed. This checkpoint changes documentation only, so application tests and preview generation were not repeated.
+- Preserved Git authorship/history, research citations, font license files, and the byte-exact original development plan. Updated the saved environment startup guidance to read the new contributor filename; configuration publication remains separate.
+- The preceding 14 development commits were uploaded to GitHub main at 8911a3c. This cleanup is recorded as `docs: standardize project documentation`. Beta preparation, physical-device/screen-reader review, and performance measurements remain the next product milestones.
+
 ## October 15, 2026 — founder credit and footer cleanup
 
 - Removed the footer Pause/Resume motion button and its unused React state/CSS at the founder's explicit request. System reduced-motion handling remains active. Updated the existing motion test to exercise the supported system preference and complete interactive results.
@@ -48,7 +56,7 @@
 
 ## October 14, 2026 — approved layouts and functional interface
 
-- Founder approved the concrete landing/setup/results layouts. Recorded approval in AGENTS.md, the architecture record, and design documents. Existing V0.1 and Option A approvals remain in effect; no repeat permission gate.
+- Founder approved the concrete landing/setup/results layouts. Recorded approval in CONTRIBUTING.md, the architecture record, and design documents. Existing V0.1 and Option A approvals remain in effect; no repeat permission gate.
 - Implemented guided baseline/goal/study setup and review, preserving edits and focusing errors/step headings. Assessment changes revalidate without erasing scores; below-floor PSAT results stop with the approved baseline guidance.
 - Connected the pure engine to responsive results, total/section native SVG curves, a keyboard/touch date control, rounded table alternatives, exact target dates, target context, and explicit experimental assumptions.
 - Added Increased Practice and custom scenarios, changed-field explanations, descriptive-only disclosures, invalid-input handling, reset, and retained comparison state while visiting How It Works.
@@ -58,7 +66,7 @@
 - Exercised actual development startup and production rendering. An initial test launch found an owned preview process occupying port 4173; stopped its complete process tree and reran successfully. Temporary review servers were closed afterward.
 - Distributed both font licenses/provenance with the production build, without new npm dependencies. Model code/coefficients and original DEVELOPMENT_PLAN.md are unchanged. Numerical checks are not prediction-accuracy evidence.
 - Saved updated start_skill in the environment configuration draft, preserving the installation script and unrelated settings. Saving does not publish/apply settings or establish fresh-task restoration.
-- Wrote docs/INTERFACE_TEST_REPORT.md with evidence, limits, and mentoring exercises. Local feature branch: feat/laplora-interface. Checkpoint: `feat: build guided SAT simulation interface and polished motion`. No push/deployment.
+- Wrote docs/INTERFACE_TEST_REPORT.md with evidence, limits, and learning exercises. Local feature branch: feat/laplora-interface. Checkpoint: `feat: build guided SAT simulation interface and polished motion`. No push/deployment.
 
 Learning focus: string form state preserves blank-versus-zero intent; the pure engine owns calculations; chart/table summaries share section-first rounding; comparisons change only supported study inputs. Next: private beta preparation and broader accessibility/cross-browser/performance review. Feedback storage and release/deployment remain separate owner decisions.
 
@@ -100,12 +108,12 @@ Current review choice: Option A (Outfit + Manrope) is recommended; B is more tec
 - Reviewed all four captured views. Corrected tiny mobile chart labels by giving the static mobile chart its own layout. The captured mobile planning page has no horizontal overflow; this does not establish full application accessibility.
 - Browser file navigation was disallowed, so screenshots were rendered through a temporary local HTTP server, which was closed afterward. A prior /tmp setup helper was absent after snapshot restoration; reconstructed it from the saved configuration rather than assuming temporary files persisted.
 - Exercised the revised frozen-lockfile setup: npm ci, type checking, all 123 unit tests, and build passed. Earlier full verification also passed the 2 foundation browser tests. No repeated browser run was needed for static planning-document changes.
-- Saved updated install_script/start_skill, preserving unrelated configuration. The instructions now include unit verification and the existing V0.1 approval. Publication has not been performed by the agent.
+- Saved updated install_script/start_skill, preserving unrelated configuration. The instructions now include unit verification and the existing V0.1 approval. Environment configuration publication was not performed.
 - Local engine commit: 6f7e732; input commit: 6304cc9. Design checkpoint: `docs: prepare Aero wireframes for interface review`. No push or deployment.
 
 ### Pending decision
 
-The approved architecture explicitly says “Approve wireframes before visual implementation” (ARCHITECTURE_PROPOSAL.md). The concrete wireframe/design artifacts are ready for that review. After approval or revisions, proceed with the guided interface, engine integration, charting, motion, comparisons, and How It Works. Existing V0.1 model approval remains valid and does not need to be requested again.
+At this checkpoint, the architecture required wireframe approval before visual implementation. The concrete wireframe/design artifacts are ready for that review. After approval or revisions, proceed with the guided interface, engine integration, charting, motion, comparisons, and How It Works. Existing V0.1 model approval remains valid and does not need to be requested again.
 
 ## October 14, 2026 — simulation engine and stress testing
 
@@ -176,11 +184,11 @@ Founder approval is required before production engine implementation under the s
 
 ### Approvals and completed work
 
-- Founder approved implementation-with-mentoring and the proposed React/TypeScript architecture. Treat TypeScript as the production language; no Python backend is required by the approved architecture.
+- The React/TypeScript architecture and development review process were approved. Treat TypeScript as the production language; no Python backend is required by the approved architecture.
 - Read official College Board scoring, SAT structure, domain, Bluebook, and My Practice pages. Recorded reviewed sources and facts in docs/SAT_RESEARCH.md.
 - Verified SAT section range 200–800 and total range 400–1600; PSAT/NMSQT and PSAT 10 section range 160–760 and total range 320–1520.
 - Wrote docs/PRODUCT_SPECIFICATION.md: problem statement, audience, accepted baselines, planned inputs/outputs, exclusions, privacy, credibility, and acceptance criteria.
-- Created docs/FUTURE_IDEAS.md from the roadmap, README.md, and AGENTS.md.
+- Created docs/FUTURE_IDEAS.md from the roadmap, README.md, and CONTRIBUTING.md.
 - Updated the architecture approval record without changing the original development plan.
 - Week 1 product-definition and descriptive scoring-research tasks are complete. Growth-factor studies belong to Week 3 and remain unreviewed.
 
@@ -215,7 +223,7 @@ Founder approval is required before production engine implementation under the s
 
 - `b379321` — `docs: define Laplora V1 product and scoring research`.
 - Foundation checkpoint: `chore: initialize Laplora React TypeScript foundation`; use git log for the resulting commit ID.
-- Commits use an explicit local Codex identity rather than attributing assistant-written changes to the founder. Existing Git identity configuration was left unchanged.
+- Git records commit authorship and timestamps; existing identity configuration was left unchanged.
 - The exported plan contains two trailing-space lines; these are preserved intentionally. Whitespace checks for new authored files pass.
 
 ## October 14, 2026 — planning checkpoint
@@ -226,8 +234,8 @@ Founder approval is required before production engine implementation under the s
 - Attempted the original Notion URL; network access returned 403.
 - Read the entire supplied development instruction text and the exported Notion plan. The archive contains one Markdown document, with no exported subpages.
 - Saved the 20,417-byte exported plan unchanged as DEVELOPMENT_PLAN.md and verified exact byte equality.
-- Prepared ARCHITECTURE_PROPOSAL.md with technology tradeoffs, architecture, research approach, tentative equations, approval gates, all 16 milestones, and Git/testing practices.
-- Identified the conflict between the plan's anti-outsourcing rule and the request for substantial assistant implementation.
+- Prepared ARCHITECTURE.md with technology tradeoffs, architecture, research approach, tentative equations, approval gates, all 16 milestones, and Git/testing practices.
+- Identified the need to clarify implementation responsibilities and learning checkpoints before development.
 - Saved an environment network draft adding satsuite.collegeboard.org and research.collegeboard.org while preserving the package-manager presets.
 
 ### Lessons and decisions

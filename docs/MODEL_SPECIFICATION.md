@@ -130,6 +130,6 @@ This V0.1 cannot quantify baseline measurement error, current proficiency after 
 
 The founder approved this parameterized model, illustrative range, descriptive treatment of history/methods/frequency, section allocation, and PSAT edge-case policy in INPUT_SPECIFICATION.md. The input and pure simulation engines are implemented with the acceptance matrix in SIMULATION_RULES.md. Future substantive equation/parameter changes still require approval. Tests establish implementation behavior, not empirical accuracy.
 
-## Mentoring exercise
+## Learning exercise
 
 Starting at 600 leaves 200 points below the section ceiling; starting at 750 leaves 50. If the same preparation uses 10% of the remaining room, the model adds 20 points in the first case and 5 in the second. Explain why this is a coherent equation yet does not prove actual students improve that way.
