@@ -17,7 +17,6 @@ export function App() {
   const [returnView, setReturnView] = useState<View>('home');
   const [draft, setDraft] = useState(emptyDraft);
   const [result, setResult] = useState<SimulatedResult>();
-  const [motionPaused, setMotionPaused] = useState(false);
   const [today] = useState(() => localCalendarDate(new Date()));
   const main = useRef<HTMLElement>(null);
   const previousView = useRef(view);
@@ -37,7 +36,7 @@ export function App() {
   }
   return <>
     <a className="skip-link" href="#main">Skip to content</a>
-    <div className={`${styles.shell} ${motionPaused ? styles.paused : ''}`}>
+    <div className={styles.shell}>
       <div className={styles.atmosphere} aria-hidden="true">
         <ReferenceAtmosphere />
         <div className={styles.orb} /><div className={styles.orbTwo} />
@@ -79,7 +78,7 @@ export function App() {
         {(view === 'results' || (view === 'how' && returnView === 'results')) && result && <div hidden={view !== 'results'}><Results result={result} onEdit={() => setView('setup')} /></div>}
         {view === 'how' && <><button className={styles.textButton} onClick={() => setView(returnView)}>← Back to {returnView === 'results' ? 'results' : returnView === 'setup' ? 'your plan' : 'home'}</button><HowItWorks /></>}
       </main>
-      <footer className={styles.footer}><span>Laplora · Preparation, in perspective.</span><button className={styles.textButton} aria-pressed={motionPaused} onClick={() => setMotionPaused(!motionPaused)}>{motionPaused ? 'Resume motion' : 'Pause motion'}</button><span>Experimental simulation. Independent of College Board.</span></footer>
+      <footer className={styles.footer}><span>Laplora · Preparation, in perspective.</span><span>Made by Santiago Harbison</span><span>Experimental simulation. Independent of College Board.</span></footer>
     </div>
   </>;
 }

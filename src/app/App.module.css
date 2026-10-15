@@ -119,10 +119,6 @@
 .footer { max-width: 1160px; margin: auto; padding-block: 1.5rem 2rem; border-top: 1px solid var(--color-border); font-size: .7rem; color: var(--color-muted); display: flex; flex-wrap: wrap; gap: .75rem; justify-content: space-between; line-height: 1.7; }
 .enter { animation: enter 380ms cubic-bezier(.2,.7,.3,1) both; }
 .drawLine { stroke-dasharray: 1; stroke-dashoffset: 0; animation: draw 900ms ease-out both; }
-.paused *, .paused *::before, .paused *::after { animation: none !important; transition: none !important; }
-.paused .primary:hover, .paused .secondary:hover { transform: none; }
-.paused .rotorRing { animation: orbitSpin 30s linear infinite !important; animation-play-state: paused !important; }
-.footer .textButton { padding: .5rem .75rem; min-height: 44px; font-size: .75rem; }
 @keyframes enter { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
 @keyframes drift { from { transform: translate(0,0) scale(1); } to { transform: translate(-40px,45px) scale(1.08); } }
@@ -137,7 +133,7 @@
   .reviewRow { flex-wrap: wrap; gap: .2rem; } .previewRange { font-size: .78rem; } .chartHeader { gap: 1rem; } .resultsGrid .panel { padding: 1.25rem; } .orb { width: 800px; right: -500px; } .orbTwo { width: 650px; left: -480px; top: 500px; } .horizon { top: 580px; width: 140%; } .rotor { width: 560px; top: 340px; right: -330px; opacity: .65; }
   .referenceArt { width: 1050px; max-width: none; left: calc(50% - 580px); height: 1050px; top: 100px; opacity: .8; }
 }
-@media (prefers-reduced-motion: reduce) { .enter, .drawLine, .orb, .orbTwo, .rotorRing { animation: none !important; } .primary, .secondary, .preset { transition: none; transform: none; } .primary:hover, .secondary:hover { transform: none; } .paused .rotorRing { animation: none !important; } }
+@media (prefers-reduced-motion: reduce) { .enter, .drawLine, .orb, .orbTwo, .rotorRing { animation: none !important; } .primary, .secondary, .preset { transition: none; transform: none; } .primary:hover, .secondary:hover { transform: none; } }
 @media (max-width: 360px) {
   .wordmark { font-size: 1.4rem; min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
   .metrics .panel { display: block; }

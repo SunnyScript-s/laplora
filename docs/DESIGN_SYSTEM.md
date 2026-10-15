@@ -41,6 +41,8 @@ Latest refinement: a supplied amber-glass reference now guides the vector backgr
 
 Native labeled numeric/date/select controls should lead. A slider always has an equivalent numeric input. Error states use text and icons rather than color alone. Native details/table elements can provide additional assumptions and chart data.
 
+The shared footer includes a small, readable “Made by Santiago Harbison” credit beside the tagline and independence notice.
+
 ## Charts
 
 The current plan uses burnt orange, comparisons use slate violet plus dashed line styling, and the illustrative range uses a light orange shaded area. CSS tokens now drive SVG colors and matching legend markers. Explain which plan a band belongs to. Keep the goal visibly identified if within the plotted range; disclose any zoomed axis or off-scale target. Do not visually imply a probability of success.
@@ -51,7 +53,7 @@ Show totals derived from rounded section values in summaries/tooltips, while ret
 
 Use short 150–250ms feedback and restrained step/result transitions. No artificial simulation delay. Optional graph drawing and counters must preserve an immediately available semantic final value. Reduced motion removes travel/drawing/count-up effects while preserving content and interaction.
 
-Implemented motion: 180ms hover feedback, 380ms page/step entrances, 900ms central-curve drawing, two 18-second cycles of ambient drift, and a slow continuous 30-second orbital rotation with satellites. Scores render immediately with no count-up delay. Pause motion freezes the ring at its current position and removes other motion; resume continues its rotation. The system reduced-motion preference disables all animations independently. Ambient shapes use transform motion behind content; they never intercept input. The motion control has a 44px minimum target height.
+Implemented motion: 180ms hover feedback, 380ms page/step entrances, 900ms central-curve drawing, two 18-second cycles of ambient drift, and a slow continuous 30-second orbital rotation with satellites. Scores render immediately with no count-up delay. The founder requested removal of the footer Pause motion button on October 15, 2026. The system reduced-motion preference disables all animations. Ambient shapes use transform motion behind content; they never intercept input.
 
 ## Review versus validation
 

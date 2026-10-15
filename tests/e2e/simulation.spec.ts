@@ -168,11 +168,7 @@ test('reset asks before clearing; refresh clears in-memory values', async ({ pag
   await expect(page.getByLabel('Math section score', { exact: true })).toBeEmpty();
 });
 
-test('motion can be paused and reduced-motion keeps complete results with no animations', async ({ page }) => {
-  await page.getByRole('button', { name: 'Pause motion' }).click();
-  await expect(page.getByRole('button', { name: 'Resume motion' })).toHaveAttribute('aria-pressed', 'true');
-  await expect.poll(() => page.evaluate(() => document.getAnimations().filter(animation => animation.playState === 'running').length)).toBe(0);
-  await page.getByRole('button', { name: 'Resume motion' }).click();
+test('reduced-motion keeps complete results with no animations', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await results(page);
   await expect(page.getByText('Central modeled total', { exact: true }).locator('..')).toContainText('1240');

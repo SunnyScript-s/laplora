@@ -1,5 +1,13 @@
 # Laplora progress
 
+## October 15, 2026 — founder credit and footer cleanup
+
+- Removed the footer Pause/Resume motion button and its unused React state/CSS at the founder's explicit request. System reduced-motion handling remains active. Updated the existing motion test to exercise the supported system preference and complete interactive results.
+- Added the small shared footer credit “Made by Santiago Harbison”, visible throughout the site. Updated current contributor/design/product records and regenerated the standalone interactive preview.
+- TypeScript, production/standalone build, and all four targeted Chromium desktop/mobile reduced-motion and 320px/200% text reflow checks passed. Verified credit text, absent motion button, and footer fit at 1440/390/320px; reviewed docs/design/footer-credit-desktop.png. No model or full-suite rerun was needed for this footer change.
+- The initial live-preview check found port 5173 unavailable after the session transition. Restarted npm run dev and verified the actual browser-rendered footer at all three widths; left the requested preview running.
+- Saved updated environment startup guidance while preserving unrelated configuration; the saved draft still requires publication in environment settings. Local checkpoint: `style: add founder credit and simplify footer`. No push/deployment.
+
 ## October 15, 2026 — Disket Mono typography
 
 - Founder replaced the Homizio Nova request with the uploaded Disket Rostype.zip. Inspected its two font binaries and full PDF EULA. The Mariano Diez Free Font EULA (September 30, 2019), clauses a/c, explicitly permits commercial use and generated webfonts on websites; no separate webfont prerequisite remains for this choice.
