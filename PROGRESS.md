@@ -1,5 +1,19 @@
 # Laplora progress
 
+## October 15, 2026 — Laplora Pro and planned pricing
+
+- Added a pricing view with Laplora Free ($0), planned Laplora Pro ($4.99/month), and a potential one-time 90-day SAT Prep Pass ($9.99). Both paid options explicitly say Coming Soon and have no purchase controls. The six requested Pro features are presented as planned, not implemented.
+- Added a subordinate Explore Laplora Pro homepage button and a shared navigation entry while preserving “Start from an existing score. No quiz. No account.” Existing Free simulation, graphs, section estimates, and current-plan-versus-one-alternative comparison remain available. Planned Pro comparison means several saved strategies together.
+- Reused shared glass panels, controls, type, color tokens, background artwork, and entrance/reduced-motion behavior. Added only local pricing layouts for the two cards, potential pass, and accessible feature table. No global theme, model, input, runtime dependency, or license changes.
+- Separated product definitions into src/product/plans.ts with stable feature/tier/offer IDs, availability, USD prices in cents, and billing/duration metadata. This is catalog data, not account state or an entitlement mechanism. Actual accounts, storage, billing, analytics, adjustments, and exports remain future implementation work.
+- Generalized informational navigation to keep setup/results mounted while pricing or How It Works is displayed. Verified form step/values and free comparison/chart state survive navigation between these views and back. The Free card starts or resumes the simulator.
+- Verification passed: TypeScript, production build, all 123 unit tests, all 26 Chromium desktop/mobile browser cases (49.8 seconds), and nine additional pricing cases across Firefox desktop and WebKit desktop/mobile (47.9 seconds). All 35 browser cases passed with no skips. The configured complete cross-browser suite now contains 65 cases; this checkpoint does not claim all 65 were rerun.
+- New behavioral checks cover prices/status, unavailable paid purchase actions, anonymous Free entry, no external requests or storage, retained setup/comparison state, keyboard focus, axe checks, reduced motion, and 320px/200% text reflow. Reviewed desktop/mobile homepage and pricing captures in docs/design/pro-*.png. Physical-device/screen-reader review remains separate.
+- Regenerated docs/design/interactive-preview.html. Independently verified its pricing view and Free entry while allowing only the initial HTML request: no dependent requests or runtime errors. Restarted the requested live development server and confirmed actual desktop/mobile rendering; it remains running.
+- Updated README, contributor/product/design/architecture records, and docs/MONETIZATION.md with the exact boundary and future service integration steps. All 45 local links checked in the affected core documents resolve. Original DEVELOPMENT_PLAN.md retains SHA-256 f3890fc7a12a57ce7accb2ccff081a3a98b4caad7434741afdea440fae061af7.
+- Saved current environment startup guidance and suite counts, preserving unrelated configuration. Saving is not configuration publication or fresh-task restoration. Checkpoint: `feat: add Laplora Pro pricing and planned tier catalog`; publish source changes to GitHub main under the existing authorization. No site deployment or payment activation.
+- Learning: product tiers describe intended features, while future server-side ownership and entitlement checks must enforce paid access. Keeping the catalog separate from React and the pure score engine allows those services to be added without mixing billing into simulation logic.
+
 ## October 15, 2026 — repository documentation cleanup
 
 - Standardized contributor guidance as CONTRIBUTING.md and architecture documentation as ARCHITECTURE.md. The architecture now describes the implemented React/TypeScript, native SVG, CSS, and Zod system instead of earlier optional dependencies.

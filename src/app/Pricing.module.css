@@ -1,0 +1,31 @@
+.pricing { max-width: 1000px; margin: 0 auto; }
+.intro { max-width: 700px; margin-bottom: 2rem; }
+.tiers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+.tier { display: flex; flex-direction: column; }
+.pro { border-color: var(--color-control-border); box-shadow: 0 18px 42px rgb(160 79 9 / 9%), inset 0 4px 0 var(--color-vibrant); }
+.price { font: 400 clamp(2rem, 4vw, 3rem)/1.3 var(--font-display); letter-spacing: -.04em; margin: 1.5rem 0 1rem; overflow-wrap: anywhere; }
+.price span { font: 500 .85rem/1.7 var(--font-body); letter-spacing: normal; color: var(--color-muted); display: block; }
+.summary { color: var(--color-muted); font-size: .95rem; line-height: 1.8; margin: 0 0 1rem; }
+.features { padding-left: 1.2rem; font-size: .9rem; line-height: 1.8; margin: .5rem 0 1.5rem; }
+.features li { padding-left: .3rem; margin-block: .65rem; }
+.features li::marker { color: var(--color-accent); }
+.cardFoot { margin-top: auto; border-top: 1px solid var(--color-border); padding-top: 1.25rem; }
+.unavailable { margin: 0; color: var(--color-link); font-size: .85rem; font-weight: 700; line-height: 1.7; }
+.pass { margin-block: 1.5rem; display: grid; grid-template-columns: minmax(0, 1fr) minmax(180px, .4fr); gap: 2rem; align-items: center; }
+.pass .price { margin: 0; }
+.pass .summary { margin-top: .75rem; }
+.comparison { margin-top: 2rem; }
+.comparisonTable { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: .85rem; line-height: 1.7; overflow-wrap: anywhere; }
+.comparisonTable caption { text-align: left; color: var(--color-muted); margin-bottom: 1rem; }
+.comparisonTable th, .comparisonTable td { text-align: left; vertical-align: top; padding: .9rem .65rem; border-bottom: 1px solid var(--color-border); }
+.comparisonTable th:first-child { width: 48%; }
+.comparisonTable th { font-weight: 650; }
+.comparisonTable td { color: var(--color-muted); }
+.planned { display: block; font-size: .75rem; color: var(--color-link); font-weight: 500; }
+.notes { margin: 1.5rem 0 0; color: var(--color-muted); font-size: .8rem; line-height: 1.8; max-width: 86ch; }
+@media (max-width: 700px) {
+  .tiers, .pass { grid-template-columns: minmax(0, 1fr); }
+  .pass { gap: 1rem; }
+  .comparisonTable th, .comparisonTable td { padding: .75rem .25rem; }
+  .comparisonTable th:first-child { width: 42%; }
+}

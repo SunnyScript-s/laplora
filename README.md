@@ -10,6 +10,22 @@ The React/Vite app uses a vibrant orange DORfic-inspired design and includes gui
 
 The display typeface is **Disket Mono**. Its Regular/Bold webfonts serve branding, headings, action buttons, and score highlights; Manrope keeps paragraphs, forms, and chart labels readable. Fonts are bundled locally with system fallbacks and no external font service. The included EULA permits commercial and generated webfont use; see [the typography checkpoint](docs/DISKET_TYPOGRAPHY_REVIEW.md).
 
+## Laplora Pro and pricing
+
+Choose **Explore Laplora Pro** on the homepage or **Laplora Pro** in the navigation to open the pricing view. The existing free simulator, current-plan comparison, DORfic design, and animations remain available without signup or a paywall.
+
+| Option | Price | Availability |
+| --- | --- | --- |
+| Laplora Free | $0 | Available now; unlimited basic simulations, one at a time |
+| Laplora Pro | $4.99/month, planned | Coming Soon |
+| 90-day SAT Prep Pass | $9.99 one-time, potential alternative | Coming Soon; under consideration |
+
+Planned Pro features include saved simulation history, actual practice-score tracking, multiple saved strategy comparisons, advanced analytics, personalized study-plan adjustments, and exportable reports. These features are not implemented. There is no checkout, subscription activation, paid signup, or payment integration.
+
+Pricing is part of the existing in-app navigation, not a separate URL route. Visiting pricing or How It Works preserves the active setup step and comparison state. Use the in-app Back button or the Free card to return. Refresh still clears inputs.
+
+The product catalog in `src/product/plans.ts` keeps stable tier/feature/offer identifiers and planned prices separate from the UI and score engine. See [monetization design and future integration](docs/MONETIZATION.md).
+
 ## Development
 
 Use Node **24.19.0** (pinned in `.node-version`) and npm **11.9.0**. Dependencies are pinned in `package-lock.json`.
@@ -44,7 +60,7 @@ npm test
 PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npm run verify
 ```
 
-Unit tests verify engine contracts and structural behavior, including a 2,160-profile stress grid. Browser tests cover setup/results/comparison flows, validation, keyboard chart exploration, data consistency, in-memory privacy, reduced motion, automated accessibility scans, and 320px/200% text reflow. The default suite runs 20 desktop/mobile Chromium cases. Optional cross-browser projects add Firefox desktop and WebKit desktop/mobile (50 total runs). These checks do not establish prediction accuracy or full accessibility compliance. GitHub Actions is configured for all three engines. See [workflow runs](https://github.com/SunnyScript-s/laplora/actions) for current remote verification status.
+Unit tests verify engine contracts and structural behavior, including a 2,160-profile stress grid. Browser tests cover setup/results/comparison flows, validation, keyboard chart exploration, data consistency, in-memory privacy, reduced motion, automated accessibility scans, and 320px/200% text reflow. The default suite runs 26 desktop/mobile Chromium cases. Optional cross-browser projects add Firefox desktop and WebKit desktop/mobile (65 total runs). These checks do not establish prediction accuracy or full accessibility compliance. GitHub Actions is configured for all three engines. See [workflow runs](https://github.com/SunnyScript-s/laplora/actions) for current remote verification status.
 
 On a machine with browser dependencies installed:
 

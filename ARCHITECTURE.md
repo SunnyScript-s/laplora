@@ -24,6 +24,7 @@ src/
   app/        guided setup, navigation state, results, charts, and comparisons
   domain/     assessment inputs, validation, and date-only calculations
   model/      pure simulation functions, scenarios, and versioned parameters
+  product/    tier, feature, and planned offer definitions
   styles/     global tokens, accessibility rules, and local fonts
 tests/
   unit/       calendar, input, model, and scenario behavior
@@ -60,11 +61,17 @@ See the [model specification](docs/MODEL_SPECIFICATION.md), [simulation rules](d
 
 ## Interface and privacy
 
-View state handles landing, guided setup, results, and How It Works. Draft inputs and comparison state survive in-app navigation; browser Back does not navigate individual form steps. Refresh clears all entered data. Reset asks before discarding entered work.
+View state handles landing, guided setup, results, How It Works, and pricing. Both informational views keep the active setup/results component mounted but hidden, preserving step and comparison state while students browse. Draft inputs and comparison state survive in-app navigation; browser Back does not navigate individual form steps. Refresh clears all entered data. Reset asks before discarding entered work.
 
 The app uses no accounts, database, score telemetry, or server-side student records. Inputs are not placed in URLs. Any future persistence, feedback collection, or account feature needs a separate privacy and product decision.
 
 The current design uses orange/amber glass artwork, Disket Mono display type, and Manrope body text. SVG charts have keyboard timeline exploration and a table alternative. Semantic controls, field errors, visible focus, and system reduced-motion support are shared requirements. The small footer credit identifies the project owner.
+
+## Planned monetization
+
+The pricing view presents Free, planned monthly Pro, and a potential one-time 90-day pass. Product definitions live in src/product/plans.ts with stable feature, tier, and offer IDs, explicit availability, prices in cents, currency, and billing period. This catalog describes the product; it grants no entitlements and collects no data. The UI reuses existing panels, controls, design tokens, and entrance motion.
+
+Future authenticated services can reference these IDs for saved plans, practice scores, subscriptions, and entitlements. Server-side entitlement checks, ownership checks, subscription lifecycle handling, and account/data deletion must accompany actual premium implementation; a client-side plan definition is not authorization. No service adapter, payment SDK, account creation, or fake premium implementation is introduced here. See [MONETIZATION.md](docs/MONETIZATION.md).
 
 ## Verification and remaining work
 

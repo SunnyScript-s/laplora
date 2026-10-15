@@ -64,6 +64,12 @@ Use a bright sky/aqua palette, restrained green accents, rounded glass-inspired 
 
 Later owner direction, October 14, 2026: replace the aqua/green palette with a vibrant orange DORfic-inspired treatment and spinning background motion. The latest request explicitly supersedes the color direction above; approved flow, fonts, model, readable contrast, and reduced-motion support remain required. The later October 15 request removes the manual footer motion button. See DESIGN_SYSTEM.md for the implemented palette.
 
+## Planned monetization presentation
+
+The October 15, 2026 scope addition introduces a pricing view for Laplora Free ($0), planned Laplora Pro ($4.99/month), and a potential one-time 90-day SAT Prep Pass ($9.99). Both paid options are labeled Coming Soon. This addition presents future features only; it does not implement accounts, subscriptions, storage, payments, or premium capabilities.
+
+The free simulation and existing current-plan-versus-one-alternative comparison stay available. Planned Pro comparisons mean several saved strategies, alongside history, actual practice scores, analytics, study-plan adjustments, and reports. See [MONETIZATION.md](MONETIZATION.md) for the implemented boundary and future work.
+
 ## Privacy and credibility
 
 - Run V1 calculations in the browser; keep scores in memory by default.

@@ -43,6 +43,8 @@ Native labeled numeric/date/select controls should lead. A slider always has an 
 
 The shared footer includes a small, readable “Made by Santiago Harbison” credit beside the tagline and independence notice.
 
+The pricing view reuses the same glass panels, colors, Disket/Manrope type, button styles, and entrance motion. Free and Pro cards stack on mobile, followed by the potential 90-day pass and a semantic feature table. Paid cards use clear Coming Soon labels and informational text rather than checkout controls. The homepage Pro link remains subordinate to the free simulation action.
+
 ## Charts
 
 The current plan uses burnt orange, comparisons use slate violet plus dashed line styling, and the illustrative range uses a light orange shaded area. CSS tokens now drive SVG colors and matching legend markers. Explain which plan a band belongs to. Keep the goal visibly identified if within the plotted range; disclose any zoomed axis or off-scale target. Do not visually imply a probability of success.

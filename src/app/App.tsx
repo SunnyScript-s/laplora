@@ -9,19 +9,21 @@ import { ScoreChart } from './ScoreChart';
 import { HowItWorks } from './HowItWorks';
 import { ArrowIcon } from './ArrowIcon';
 import { ReferenceAtmosphere } from './ReferenceAtmosphere';
+import { Pricing } from './Pricing';
 import styles from './App.module.css';
 
-type View = 'home' | 'setup' | 'results' | 'how';
+type WorkspaceView = 'home' | 'setup' | 'results';
+type View = WorkspaceView | 'how' | 'pricing';
 export function App() {
   const [view, setView] = useState<View>('home');
-  const [returnView, setReturnView] = useState<View>('home');
+  const [returnView, setReturnView] = useState<WorkspaceView>('home');
   const [draft, setDraft] = useState(emptyDraft);
   const [result, setResult] = useState<SimulatedResult>();
   const [today] = useState(() => localCalendarDate(new Date()));
   const main = useRef<HTMLElement>(null);
   const previousView = useRef(view);
   useEffect(() => {
-    document.title = `Laplora — ${view === 'results' ? 'Your modeled trajectories' : view === 'setup' ? 'Your preparation plan' : view === 'how' ? 'How it works' : 'SAT preparation, thoughtfully modeled'}`;
+    document.title = `Laplora — ${view === 'results' ? 'Your modeled trajectories' : view === 'setup' ? 'Your preparation plan' : view === 'how' ? 'How it works' : view === 'pricing' ? 'Laplora Pro & pricing' : 'SAT preparation, thoughtfully modeled'}`;
     if (previousView.current !== view) {
       const heading = [...(main.current?.querySelectorAll('h1') ?? [])].find(element => !element.closest('[hidden]'));
       heading?.setAttribute('tabindex', '-1'); heading?.focus();
@@ -30,6 +32,11 @@ export function App() {
     previousView.current = view;
   }, [view]);
   const example = simulate({ baselineSource: 'official-practice', baselineAssessment: 'sat', baselineDate: today, mathScore: 600, readingWritingScore: 600, targetScore: 1400, targetDate: addCalendarDays(today, 84), weeklyStudyHours: 3, consistencyPercent: 70, prepHistory: 'just-starting', studyMethods: ['mistake-review'], practiceTestFrequency: 'every-four-weeks', mathSharePercent: 50 }, today);
+  const isInformationView = view === 'how' || view === 'pricing';
+  function openInformation(next: 'how' | 'pricing') {
+    if (view === 'home' || view === 'setup' || view === 'results') setReturnView(view);
+    setView(next);
+  }
   function startOver() {
     if ((draft.mathScore || draft.readingWritingScore || draft.baselineDate || draft.targetScore || draft.targetDate || result) && !window.confirm('Clear your entered plan and results? This cannot be restored.')) return;
     setDraft(emptyDraft()); setResult(undefined); setView('home');
@@ -49,7 +56,8 @@ export function App() {
       <header className={styles.header}>
         <button className={styles.wordmark} aria-label="Laplora home" onClick={() => setView('home')}>Laplora<span aria-hidden="true">.</span></button>
         <nav aria-label="Main navigation">
-          <button className={styles.navButton} aria-current={view === 'how' ? 'page' : undefined} onClick={() => { if (view !== 'how') setReturnView(view); setView('how'); }}>How it works</button>
+          <button className={styles.navButton} aria-current={view === 'how' ? 'page' : undefined} onClick={() => openInformation('how')}>How it works</button>
+          <button className={styles.navButton} aria-current={view === 'pricing' ? 'page' : undefined} onClick={() => openInformation('pricing')}>Laplora Pro</button>
           {view === 'home' ? <button className={styles.secondary} onClick={() => setView('setup')}>Start simulation <span aria-hidden="true">→</span></button> : <button className={styles.navButton} onClick={startOver}>Start over</button>}
         </nav>
       </header>
@@ -61,6 +69,7 @@ export function App() {
             <p className={styles.heroDescription}>Explore how different preparation plans could shape possible score growth—with transparent assumptions and room for uncertainty.</p>
             <button className={styles.primary} onClick={() => setView('setup')}>Explore your preparation <span aria-hidden="true">→</span></button>
             <p className={styles.hint}>Start from an existing score. No quiz. No account.</p>
+            <button className={styles.textButton} onClick={() => openInformation('pricing')}>Explore Laplora Pro <span aria-hidden="true">→</span></button>
             <div className={styles.heroTrust}><span>Separate section models</span><span>Compare study plans</span><span>Clear assumptions</span></div>
           </div>
           {example.status === 'simulated' && <div className={`${styles.panel} ${styles.preview}`}>
@@ -74,9 +83,9 @@ export function App() {
           </div>}
           <div className={styles.landingNote}><span className={styles.noteIcon}><ArrowIcon size={24} /></span><div><h2>A better question than “What will I score?”</h2><p>What changes when you study more consistently, give a section more time, or try a different preparation plan? Explore the model, then bring what you learn back to your practice.</p></div><button className={styles.textButton} onClick={() => { setReturnView('home'); setView('how'); }}>Meet the model <span aria-hidden="true">→</span></button></div>
         </section>}
-        {(view === 'setup' || (view === 'how' && returnView === 'setup')) && <div hidden={view !== 'setup'}><Setup draft={draft} update={setDraft} today={today} onResult={next => { setResult(next); setView('results'); }} /></div>}
-        {(view === 'results' || (view === 'how' && returnView === 'results')) && result && <div hidden={view !== 'results'}><Results result={result} onEdit={() => setView('setup')} /></div>}
-        {view === 'how' && <><button className={styles.textButton} onClick={() => setView(returnView)}>← Back to {returnView === 'results' ? 'results' : returnView === 'setup' ? 'your plan' : 'home'}</button><HowItWorks /></>}
+        {(view === 'setup' || (isInformationView && returnView === 'setup')) && <div hidden={view !== 'setup'}><Setup draft={draft} update={setDraft} today={today} onResult={next => { setResult(next); setView('results'); }} /></div>}
+        {(view === 'results' || (isInformationView && returnView === 'results')) && result && <div hidden={view !== 'results'}><Results result={result} onEdit={() => setView('setup')} /></div>}
+        {isInformationView && <><button className={styles.textButton} onClick={() => setView(returnView)}>← Back to {returnView === 'results' ? 'results' : returnView === 'setup' ? 'your plan' : 'home'}</button>{view === 'how' ? <HowItWorks /> : <Pricing hasActivePlan={returnView !== 'home'} onUseFree={() => setView(returnView === 'home' ? 'setup' : returnView)} />}</>}
       </main>
       <footer className={styles.footer}><span>Laplora · Preparation, in perspective.</span><span>Made by Santiago Harbison</span><span>Experimental simulation. Independent of College Board.</span></footer>
     </div>

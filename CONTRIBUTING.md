@@ -10,6 +10,8 @@ Start with [the development plan](DEVELOPMENT_PLAN.md), [project progress](PROGR
 - The current visual direction uses vibrant orange, amber glass, and orbital motion. Disket Mono supplies headings, branding, action buttons, and score highlights; Manrope supplies body, form, and chart text. Preserve the supplied font licenses and provenance.
 - Keep the capital L in Laplora's source text and the small shared footer credit “Made by Santiago Harbison”. The manual footer motion button was removed by design; preserve system reduced-motion support.
 
+- The pricing view is authorized as a presentation of planned monetization: Free $0, Pro $4.99/month, and a potential $9.99 one-time 90-day pass. Keep paid options Coming Soon and existing free comparisons available. Actual accounts, entitlements, billing, persistence, and premium features require subsequent implementation scope.
+
 ## Implementation standards
 
 - Preserve DEVELOPMENT_PLAN.md as the original source. Record subsequent decisions separately.
