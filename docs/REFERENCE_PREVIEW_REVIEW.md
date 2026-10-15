@@ -20,13 +20,13 @@ The independent browser verification intercepted only the initial HTML request a
 
 Regenerate using npm run build:preview. The source helper scripts/build-preview.mjs reads the production build rather than maintaining a second implementation. A later font change will require regeneration and retaining its actual permissions/notices.
 
-## Homizio Nova status
+## Homizio Nova status (superseded October 15)
 
 The founder requested **Homizio Nova by Álvaro Thomáz**, superseding the previous font choice once webfont permission is confirmed. The exact desktop download is available from the author's [DaFont listing](https://www.dafont.com/homizio-nova.font). Its note says “Free for personal & commercial use” and then “For a free webfont license, please visit http://atfg.co/font/homizio-nova”.
 
 Attempted the separate licensing URL; the proxy returned 403. The desktop archive contains Regular/Light and italic font files, with no license document. Font metadata identifies Homizio Nova and Alvaro Thomaz Fonts, with all-rights-reserved copyright text but no embedded license grant. Alternative publisher/archived sources did not establish permission for this exact family's web embedding. FontSpace's separate Homizio family is a different font and was not substituted.
 
-No Homizio Nova binary has been added to the repository, preview, or production build. Current Outfit/Manrope fonts remain visible. Requested a webfont license or working author-permission link from the founder while completing independent artwork/preview work. This is a concrete missing prerequisite, not a request to reapprove the design or a claim that the font requires payment.
+At this earlier checkpoint, no Homizio Nova binary was added to the repository, preview, or production build; Outfit/Manrope remained visible. A webfont license or working author-permission link was requested while independent artwork/preview work continued. The founder later replaced this font request with Disket Mono, closing that prerequisite.
 
 ## Verification and review files
 
@@ -36,4 +36,4 @@ No Homizio Nova binary has been added to the repository, preview, or production 
 - Targeted checks exercise landing rendering/fonts/keyboard fit, motion/reduced motion, and nine accessibility states across five browser projects. See PROGRESS.md for final actual results and the WebKit timing correction.
 - Model, coefficients, input policies, privacy architecture, and original DEVELOPMENT_PLAN.md are unchanged. No unnecessary engine test rerun or deployment.
 
-Homizio Nova remains pending its separate webfont permission. The live app and standalone preview continue to work with the existing fonts while that prerequisite is unresolved.
+The founder changed the font request to Disket Mono and supplied its ZIP, including an explicit website-use EULA. Disket is now installed; the Homizio Nova prerequisite is closed by that change in direction. See [DISKET_TYPOGRAPHY_REVIEW.md](DISKET_TYPOGRAPHY_REVIEW.md).

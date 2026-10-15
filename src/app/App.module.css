@@ -14,7 +14,7 @@
 .satelliteTwo { width: 23px; top: auto; right: auto; bottom: 6%; left: 23%; }
 .header { max-width: 1160px; margin: auto; padding-block: 2rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
 .header nav { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; min-width: 0; max-width: 100%; }
-.wordmark { font: 650 2rem/1.1 var(--font-display); letter-spacing: -.045em; background: none; border: 0; padding: .25rem 0; color: var(--color-ink); cursor: pointer; }
+.wordmark { font: 700 1.8rem/1.2 var(--font-display); letter-spacing: -.04em; background: none; border: 0; padding: .25rem 0; color: var(--color-ink); cursor: pointer; }
 .wordmark span { color: var(--color-accent); }
 .navButton, .textButton { background: none; border: 0; padding: .65rem .2rem; cursor: pointer; color: var(--color-link); font-weight: 650; font-size: .9rem; text-underline-offset: .25em; }
 .navButton:hover, .textButton:hover { text-decoration: underline; }
@@ -22,12 +22,12 @@
 .main:focus, .pageTitle:focus { outline: none; }
 .hero { display: grid; grid-template-columns: 1.15fr 1fr; gap: 3.5rem; align-items: center; padding-top: 2rem; }
 .heroCopy { min-width: 0; }
-.hero h1 { font-size: clamp(3rem, 5.5vw, 5.2rem); line-height: 1.06; letter-spacing: -.055em; font-weight: 550; margin: 1.2rem 0 1.6rem; text-wrap: balance; }
+.hero h1 { font-size: clamp(2.5rem, 4.5vw, 4rem); line-height: 1.16; letter-spacing: -.045em; font-weight: 400; margin: 1.2rem 0 1.6rem; text-wrap: balance; }
 .hero h1 span { color: var(--color-accent); }
 .heroDescription { font-size: 1.1rem; color: var(--color-muted); line-height: 1.8; max-width: 44ch; margin-bottom: 1.75rem; }
 .eyebrow { display: flex; align-items: center; gap: .6rem; color: var(--color-link); font-weight: 650; font-size: .85rem; margin: 0 0 1rem; line-height: 1.6; }
 .smallDot { width: 7px; height: 7px; background: var(--color-accent); border-radius: 50%; flex-shrink: 0; box-shadow: 0 0 0 5px rgb(184 61 11 / 10%); }
-.primary, .secondary { display: inline-flex; justify-content: center; align-items: center; gap: 1rem; max-width: 100%; min-width: 0; white-space: normal; overflow-wrap: anywhere; min-height: 46px; padding: .75rem 1.2rem; border-radius: 12px; border: 1px solid transparent; font-weight: 650; font-size: .9rem; line-height: 1.5; cursor: pointer; transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease; }
+.primary, .secondary { font-family: var(--font-display); display: inline-flex; justify-content: center; align-items: center; gap: 1rem; max-width: 100%; min-width: 0; white-space: normal; overflow-wrap: anywhere; min-height: 46px; padding: .75rem 1.2rem; border-radius: 12px; border: 1px solid transparent; font-weight: 700; font-size: .8rem; line-height: 1.5; cursor: pointer; transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease; }
 .primary { background: var(--color-accent); color: white; box-shadow: inset 0 1px rgb(255 255 255 / 18%), 0 5px 14px rgb(184 61 11 / 18%); }
 .primary:hover { background: var(--color-accent-hover); transform: translateY(-2px); box-shadow: 0 8px 18px rgb(184 61 11 / 24%); }
 .primary:active, .secondary:active { transform: translateY(0); }
@@ -39,7 +39,7 @@
 .panel h2 { font-size: 1.2rem; letter-spacing: -.02em; margin: 0 0 .65rem; }
 .panel h3 { font-size: 1rem; margin: 1.3rem 0 .75rem; }
 .preview { transform: rotate(1deg); }
-.previewScore { font-size: clamp(2.3rem, 4vw, 3.4rem); font-weight: 650; letter-spacing: -.05em; font-variant-numeric: tabular-nums; margin-top: 1.25rem; }
+.previewScore { font-family: var(--font-display); font-size: clamp(2.3rem, 4vw, 3.4rem); font-weight: 700; letter-spacing: -.05em; font-variant-numeric: tabular-nums; margin-top: 1.25rem; }
 .previewScore span { color: var(--color-marker); font-size: .65em; margin-inline: .25rem; }
 .previewRange { border-top: 1px solid var(--color-border); padding-top: 1rem; display: flex; gap: 1rem; align-items: center; justify-content: space-between; font-size: .85rem; }
 .previewRange strong { white-space: nowrap; font-variant-numeric: tabular-nums; }
@@ -55,7 +55,7 @@
 .steps li span { display: grid; place-items: center; width: 25px; height: 25px; border-radius: 50%; background: rgb(255 255 255 / 70%); border: 1px solid var(--color-border); }
 .steps .activeStep { color: var(--color-link); font-weight: 750; }
 .steps .activeStep span { color: white; background: var(--color-accent); border-color: var(--color-accent); }
-.pageTitle { font-weight: 550; font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -.04em; line-height: 1.15; margin: .4rem 0 1rem; text-wrap: balance; }
+.pageTitle { font-weight: 400; font-size: clamp(1.7rem, 3.4vw, 2.7rem); letter-spacing: -.04em; line-height: 1.3; margin: .4rem 0 1rem; text-wrap: balance; }
 .description { font-size: .95rem; line-height: 1.8; color: var(--color-muted); margin-bottom: 1.75rem; }
 .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
 .field { min-width: 0; }
@@ -80,7 +80,7 @@
 .resultHeading { display: flex; justify-content: space-between; gap: 2rem; align-items: center; }
 .metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-bottom: 1.5rem; }
 .metrics .hint { margin: 0; }
-.score { font-size: 2.7rem; font-weight: 650; letter-spacing: -.05em; font-variant-numeric: tabular-nums; line-height: 1.3; margin-block: .5rem; }
+.score { font-family: var(--font-display); font-size: 2.7rem; font-weight: 700; letter-spacing: -.05em; font-variant-numeric: tabular-nums; line-height: 1.3; margin-block: .5rem; }
 .rangeScore { font-size: 2.25rem; }
 .resultsGrid { display: grid; grid-template-columns: minmax(0, 1.8fr) minmax(285px, 1fr); gap: 1.5rem; align-items: start; }
 .chartHeader { display: flex; flex-wrap: wrap; gap: .75rem; justify-content: space-between; align-items: center; }
@@ -131,7 +131,7 @@
 @media (max-width: 900px) { .hero { gap: 2rem; } .resultsGrid { grid-template-columns: 1fr; } .resultsGrid aside form { max-width: 500px; } .metrics .panel { padding: 1.25rem; } .rangeScore { font-size: 1.8rem; } }
 @media (max-width: 700px) {
   .shell { padding-inline: 1.25rem; } .header { padding-block: 1.5rem; flex-wrap: wrap; } .header nav { gap: .75rem; } .wordmark { font-size: 1.8rem; } .header .secondary { font-size: .75rem; padding: .6rem .8rem; gap: .5rem; min-height: 40px; } .navButton { font-size: .75rem; }
-  .main { padding-block: 1.5rem 3rem; } .hero { grid-template-columns: 1fr; padding-top: 0; gap: 2rem; } .hero h1 { font-size: clamp(2.9rem, 11vw, 4rem); } .heroDescription { font-size: 1rem; } .heroTrust { margin-top: 1.5rem; } .preview { transform: none; }
+  .main { padding-block: 1.5rem 3rem; } .hero { grid-template-columns: 1fr; padding-top: 0; gap: 2rem; } .hero h1 { font-size: clamp(2.25rem, 8.8vw, 3.25rem); } .heroDescription { font-size: 1rem; } .heroTrust { margin-top: 1.5rem; } .preview { transform: none; }
   .landingNote { flex-wrap: wrap; gap: 1rem; margin-top: 0; } .landingNote > div { flex: 1; min-width: 180px; } .landingNote button { margin-left: 0; } .fields { grid-template-columns: 1fr; gap: 1.25rem; } .steps { font-size: .68rem; gap: .4rem; } .steps li { gap: .3rem; flex-direction: column; } .steps li span { width: 24px; height: 24px; }
   .formActions { flex-wrap: wrap; } .formActions .primary { flex-grow: 1; } .resultHeading { flex-direction: column; align-items: start; gap: .5rem; margin-bottom: 1.5rem; } .metrics { grid-template-columns: 1fr; gap: .75rem; } .metrics .panel { display: grid; grid-template-columns: 1fr auto; align-items: center; column-gap: 1rem; } .metrics .score { grid-column: 2; grid-row: 1 / 3; margin: 0; font-size: 2rem; } .metrics .hint { font-size: .72rem; } .metrics .rangeScore { font-size: 1.6rem; }
   .reviewRow { flex-wrap: wrap; gap: .2rem; } .previewRange { font-size: .78rem; } .chartHeader { gap: 1rem; } .resultsGrid .panel { padding: 1.25rem; } .orb { width: 800px; right: -500px; } .orbTwo { width: 650px; left: -480px; top: 500px; } .horizon { top: 580px; width: 140%; } .rotor { width: 560px; top: 340px; right: -330px; opacity: .65; }
@@ -139,6 +139,7 @@
 }
 @media (prefers-reduced-motion: reduce) { .enter, .drawLine, .orb, .orbTwo, .rotorRing { animation: none !important; } .primary, .secondary, .preset { transition: none; transform: none; } .primary:hover, .secondary:hover { transform: none; } .paused .rotorRing { animation: none !important; } }
 @media (max-width: 360px) {
+  .wordmark { font-size: 1.4rem; min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
   .metrics .panel { display: block; }
   .metrics .score { margin-block: .5rem; overflow-wrap: anywhere; }
   .steps li { min-width: 0; overflow-wrap: anywhere; }

@@ -1,5 +1,17 @@
 # Laplora progress
 
+## October 15, 2026 — Disket Mono typography
+
+- Founder replaced the Homizio Nova request with the uploaded Disket Rostype.zip. Inspected its two font binaries and full PDF EULA. The Mariano Diez Free Font EULA (September 30, 2019), clauses a/c, explicitly permits commercial use and generated webfonts on websites; no separate webfont prerequisite remains for this choice.
+- Converted the complete Regular/Bold fonts to WOFF2 with system Python fontTools/Brotli, preserving glyphs/outlines. Retained the full EULA and source/output SHA-256 provenance in runtime font notices. Original desktop binaries/archive are not added to the repository; historical font-comparison assets remain intact.
+- Installed Disket Mono for branding, headings, primary/secondary actions, and score highlights; retained Manrope for explanations, form text, text links, and chart annotations. Used real 400/700 weights, adjusted heading scale/spacing, and kept semantic mixed-case Laplora text. Disket's glyph design appears uppercase without a CSS uppercase transform.
+- TypeScript and production/standalone builds passed. Updated the existing font-loading browser check to verify both supplied faces load and the heading actually uses Disket Mono.
+- Initial full five-project browser run: 43 passed, 7 failed. Five failures exposed the wider wordmark clipping at 320px with 200% text; fixed the narrow wordmark sizing/wrapping. Two WebKit desktop flow tests reached the 30-second timeout with concurrent workers. Process inspection found the leftover WebKit entries were already-exited zombies, so there was no live orphan cleanup to perform. All seven affected cases passed on a single-worker rerun (54.9 seconds), with original assertions and timeouts intact; no tests skipped. This is 50 cases covered through the initial run plus affected reruns, not a claim of a second clean full-suite run.
+- Verified the running development app renders the new fonts at desktop/mobile sizes with HTTP 200 and no runtime errors; left the requested server running. Regenerated the standalone interactive preview and exercised the full synthetic flow while allowing only its initial HTML request: embedded fonts loaded, central result 1240, no dependent requests or runtime errors.
+- Reviewed desktop/mobile landing and mobile results captures under docs/design/disket-*.png. Updated current contributor/design/README guidance and docs/DISKET_TYPOGRAPHY_REVIEW.md; marked the earlier Homizio prerequisite superseded. Saved the revised environment start_skill, preserving installation and unrelated settings; saving requires publication in environment settings and does not prove fresh-task restoration.
+- Original DEVELOPMENT_PLAN.md hash remains f3890fc7a12a57ce7accb2ccff081a3a98b4caad7434741afdea440fae061af7. No model/input changes or unnecessary engine test rerun. Local checkpoint: `style: apply Disket Mono typography and responsive sizing`. No push/deployment.
+- Learning: display fonts have different width/weight characteristics; pairing a distinctive heading face with readable body text needs actual font-loading and enlarged-text checks, beyond swapping a font-family name. Next: private-beta preparation, physical-device/screen-reader review, and performance work already identified in the plan.
+
 ## October 14, 2026 — glass reference and working preview
 
 - Founder supplied a specific Pinterest image and requested a closer amber-glass/ribbon theme, a blank-preview repair, and Homizio Nova by Álvaro Thomáz.

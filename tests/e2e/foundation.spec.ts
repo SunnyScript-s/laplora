@@ -11,7 +11,9 @@ test('landing loads local fonts, supports keyboard navigation, and fits the view
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
   await expect(page.getByRole('main')).toContainText('Synthetic example');
   await page.evaluate(() => document.fonts.ready);
-  expect(await page.evaluate(() => [...document.fonts].map(font => [font.family, font.status]).sort())).toEqual([['Manrope', 'loaded'], ['Outfit', 'loaded']]);
+  expect(await page.evaluate(() => [...document.fonts].map(font => [font.family, font.weight, font.status]).sort())).toEqual([['Disket Mono', '400', 'loaded'], ['Disket Mono', '700', 'loaded'], ['Manrope', '200 800', 'loaded']]);
+
+  expect(await page.getByRole('heading', { level: 1 }).evaluate(el => getComputedStyle(el).fontFamily)).toContain('Disket Mono');
 
   await page.keyboard.press('Tab');
   await expect(page.getByRole('link', { name: 'Skip to content' })).toBeFocused();

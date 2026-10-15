@@ -4,7 +4,7 @@ Week 9 design deliverable · October 14, 2026 · Typography and landing/setup/re
 
 ## Direction
 
-The founder requested a vibrant orange “DORfic” direction after approving the layouts. The implemented interpretation combines warm ivory, vivid orange environmental shapes, glossy orbital forms, dark warm text, and readable near-white panels. This explicit request supersedes the earlier aqua/green direction; the supplied development plan stays unchanged as a historical source. Layouts, capital-L branding, and approved Outfit/Manrope typography remain in use. The interface should feel optimistic and credible to students, families, and teachers.
+The founder requested a vibrant orange “DORfic” direction after approving the layouts. The implemented interpretation combines warm ivory, vivid orange environmental shapes, glossy orbital forms, dark warm text, and readable near-white panels. This explicit request supersedes the earlier aqua/green direction; the supplied development plan stays unchanged as a historical source. Layouts and capital-L source branding remain in use; the founder's latest typography choice is Disket Mono with Manrope for body text. The interface should feel optimistic and credible to students, families, and teachers.
 
 ## Shared tokens
 
@@ -22,14 +22,14 @@ The founder requested a vibrant orange “DORfic” direction after approving th
 | Glass surface | Warm white (#fffdf9) at 96% opacity | Readable panels over the moving background |
 | Panel radius | 24px | Main cards; controls use smaller 10–12px corners |
 | Spacing | 4, 8, 12, 16, 24, 32, 48, 64px | Consistent rhythm |
-| Display typography — approved A | Outfit, locally bundled | Rounded geometric wordmark/headlines, with a system fallback |
-| Body typography — approved A | Manrope, locally bundled | Readable labels, paragraphs, and numerical summaries |
+| Display typography — latest founder request | Disket Mono Regular 400 / Bold 700, locally bundled | Geometric monospace branding, headings, actions, and score highlights |
+| Body typography | Manrope, locally bundled | Readable labels, paragraphs, form controls, and chart annotations |
 
 Use one primary accent and one scenario accent. Decorative orange orbital motion is explicitly requested by the founder; keep it behind content and subordinate to task completion. Avoid unsolicited gauges, fake precision, unnecessary counters, and motion on every component. Model-version disclosure belongs in an explanation, not as an intimidating technical label on every control.
 
 The founder selected Option A, Outfit + Manrope, and approved the full proposed layouts on October 14, 2026, with a capital **L** in **Laplora**. See [DESIGN_REFERENCES.md](DESIGN_REFERENCES.md) for actual website observations, three font pairings, provenance, and delivery tradeoffs.
 
-Latest refinement: a supplied amber-glass reference now guides the vector background—glossy bubbles, curved yellow/orange ribbons, and white orbital lines. Homizio Nova by Álvaro Thomáz was requested next, but is pending verified webfont permission; the app still uses the licensed existing pairing. See [REFERENCE_PREVIEW_REVIEW.md](REFERENCE_PREVIEW_REVIEW.md) for exact status and source evidence.
+Latest refinement: a supplied amber-glass reference now guides the vector background—glossy bubbles, curved yellow/orange ribbons, and white orbital lines. The founder subsequently replaced Homizio Nova with Disket Mono from the supplied ZIP. Its included EULA explicitly permits webfont conversion and website use. See [DISKET_TYPOGRAPHY_REVIEW.md](DISKET_TYPOGRAPHY_REVIEW.md) for provenance, type roles, and verification. Disket's lowercase glyphs have uppercase forms; preserve mixed-case semantic text without adding CSS uppercase transforms. Use the supplied real 400/700 weights and disable synthetic styles.
 
 ## Layout and components
 

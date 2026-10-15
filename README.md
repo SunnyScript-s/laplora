@@ -8,7 +8,7 @@ The founder approved the React/TypeScript architecture, implementation-with-ment
 
 The founder also approved the proposed layouts, then requested a vibrant orange DORfic-inspired direction. The React/Vite app includes guided baseline/goal/study setup, review, total and section trajectories, keyboard/touch timeline exploration, a score table, Increased Practice and custom comparisons, and How It Works. Warm ivory/orange backgrounds, a glossy rotating orbit, chart/step entrances, hover feedback, a motion pause control, and reduced-motion support provide the visual polish. Native SVG and CSS support these features without new runtime libraries.
 
-The founder selected Outfit headings/wordmark with Manrope body text and controls (Option A). These licensed variable fonts are bundled locally, with system fallbacks and no external font service.
+The founder's latest font choice is **Disket Mono** from the supplied Rostype ZIP, replacing Option A and the later Homizio Nova request. Its Regular/Bold webfonts serve branding, headings, action buttons, and score highlights; Manrope keeps paragraphs, forms, and chart labels readable. Fonts are bundled locally with system fallbacks and no external font service. The included EULA permits commercial and generated webfont use; see [the typography checkpoint](docs/DISKET_TYPOGRAPHY_REVIEW.md).
 
 ## Development
 
@@ -27,7 +27,7 @@ If the browser panel cannot reach the cloud server, [download the interactive pr
 npm run build:preview
 ```
 
-The latest artwork follows the founder's amber glass/ribbon reference. Homizio Nova by Álvaro Thomáz was requested, but its separate webfont permission remains unverified; existing fonts remain until that permission is supplied or confirmed. See [the reference and preview checkpoint](docs/REFERENCE_PREVIEW_REVIEW.md).
+The latest artwork follows the founder's amber glass/ribbon reference. Disket Mono is installed in both the live app and downloadable preview. See [the reference and preview checkpoint](docs/REFERENCE_PREVIEW_REVIEW.md) for the earlier preview diagnosis.
 
 ## Verification
 

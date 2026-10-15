@@ -1,18 +1,34 @@
 [
   {
-    "name": "outfit",
-    "version": "5.3.0",
-    "source": "@fontsource-variable/outfit",
-    "license": "OFL-1.1",
-    "integrity": "sha512-fPb5XnYK0k7SbR++HEmm4+ZqDszmLKQ+sPRUr8oQ/KNC0vy6r6hazJFe8iYozv4cqlHbvJ/JECkJWrfDodUMVQ==",
-    "bytes": 32292
-  },
-  {
     "name": "manrope",
     "version": "5.3.0",
     "source": "@fontsource-variable/manrope",
     "license": "OFL-1.1",
     "integrity": "sha512-6D5dgokHsWDDMtmXHznKa0hK229NN+1a4BLPmUCLqcO1Pw5EEhWY5RFt0AcXnVRAljFFPfRtLkJePQj6LSsV6g==",
     "bytes": 24836
+  },
+  {
+    "name": "Disket Mono",
+    "style": "Regular",
+    "weight": 400,
+    "source": "Founder-supplied Disket Rostype.zip",
+    "copyright": "Mariano Diez / Rostype",
+    "license": "Mariano Diez Free Font EULA, September 30, 2019; clause c permits generated webfont use on websites",
+    "conversion": "Full font converted from TTF to WOFF2 using fontTools; no glyph or outline changes",
+    "sourceSha256": "8229b863a91b81da7f448426a767ada97980358b1979af7e801cb4f89f2304ac",
+    "woff2Sha256": "df2bea909cc0f7a1f7be6948baa0ac3713c16ede08818fdaaa8f93cefeae7b6b",
+    "bytes": 18572
+  },
+  {
+    "name": "Disket Mono",
+    "style": "Bold",
+    "weight": 700,
+    "source": "Founder-supplied Disket Rostype.zip",
+    "copyright": "Mariano Diez / Rostype",
+    "license": "Mariano Diez Free Font EULA, September 30, 2019; clause c permits generated webfont use on websites",
+    "conversion": "Full font converted from TTF to WOFF2 using fontTools; no glyph or outline changes",
+    "sourceSha256": "7a11bfec53a4b055e75337cada73d0e3c88543a264799ee1072bd26aceb35f95",
+    "woff2Sha256": "93feda52f378ccc747c9d8bd4a18b406681000de8ab9aaa174db1f224e18ca1e",
+    "bytes": 18252
   }
 ]
