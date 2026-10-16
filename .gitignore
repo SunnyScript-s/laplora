@@ -8,3 +8,8 @@ playwright-report/
 !.env.example
 .DS_Store
 .vercel
+
+# Local validation data/results must never be committed.
+validation/data/
+validation/output/
+validation/.build/

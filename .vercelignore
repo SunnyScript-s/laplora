@@ -1,0 +1,4 @@
+validation/
+tests/
+test-results/
+playwright-report/
