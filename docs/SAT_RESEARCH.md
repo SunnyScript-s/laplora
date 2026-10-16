@@ -32,7 +32,7 @@ S1 also describes a **Score Range**: how much scores would likely vary on anothe
 
 Scoring increments and cross-assessment comparability require more detailed source review in Week 2. Different test maxima do not justify linear rescaling from PSAT to SAT. These pages do not validate a personal future-score conversion.
 
-Update: the subsequent focused review in [GROWTH_RESEARCH.md](GROWTH_RESEARCH.md) verified 10-point section intervals in the digital technical manual and the common vertical scale in the Fall 2026 score guides. A score on the common scale is not evidence of future growth; the below-SAT-floor input policy still needs approval.
+Update: the subsequent focused review in [GROWTH_RESEARCH.md](GROWTH_RESEARCH.md) verified 10-point section intervals in the digital technical manual and the common vertical scale in the Fall 2026 score guides. A score on the common scale is not evidence of future growth; the below-SAT-floor input policy was subsequently approved on October 14, 2026; see [MODEL_SPECIFICATION.md](MODEL_SPECIFICATION.md).
 
 ## Structure and content domains
 
@@ -80,3 +80,7 @@ No numerical relationship between hours, consistency, methods, preparation histo
 ## Learning exercise
 
 Explain why a Math score of 700 and a Reading and Writing score of 600 imply a total of 1300, and why the same input cannot automatically be judged valid for every test type. Then explain why knowing the score scale does not tell us how many points one hour of practice will add. This distinguishes validation rules from a growth model.
+
+## Phase 4 follow-up — October 16, 2026
+
+The [validation evidence review](VALIDATION_RESEARCH_REVIEW.md) extends this historical Week 1 record with freshly retrieved sources on digital practice associations, historical SAT retaking, longitudinal growth, and measurement reliability. The original open-policy table describes the earlier planning checkpoint; the approved V0.1 policy is now recorded in MODEL_SPECIFICATION.md. No new calibration or conversion is implied. See the [model validation roadmap](MODEL_VALIDATION_ROADMAP.md) for data standards and requirements before predictive claims.

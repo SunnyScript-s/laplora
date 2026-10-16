@@ -124,3 +124,7 @@ npm run validate:model -- --input validation/fixtures/synthetic.csv --as-of 2026
 ```
 
 Use a new output filename for every run. Real datasets and results belong outside the repository. This local tool does not change the website or validate predictive accuracy. Phase 3 adds offline charts and Markdown reports with `--report-dir validation/output/review` (choose a new directory). See the validation guide for private handling and usage.
+
+## Phase 4: evidence and model-validation roadmap
+
+The [research review](docs/VALIDATION_RESEARCH_REVIEW.md) distinguishes digital practice associations, historical retaking evidence, measurement reliability and cohort growth. The [model-validation roadmap](docs/MODEL_VALIDATION_ROADMAP.md) defines proposed data-quality standards, participant separation, baseline comparisons, future calibration/uncertainty research and evidence required before an accuracy claim. This phase changes documentation only; no coefficients were fitted or changed and no real student data was collected.
