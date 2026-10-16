@@ -1,5 +1,15 @@
 # Laplora progress
 
+## October 16, 2026 — Phase 4 research review and validation roadmap
+
+- Santiago authorized Phase 4. Created `docs/model-validation-phase-four` from the Phase 3 review branch; earlier review branches remain separate. Work is documentation-only.
+- Read the existing scoring/growth/model documentation and current validation rules. Retrieved four primary PDFs over verified HTTPS: the May 2025 digital practice study, March 2026 cohort-growth report, digital technical manual, and Goodman/Gurantz/Smith's revised April 2019 NBER retaking working paper. Inspected relevant methods/results/limitations and recorded exact PDF hashes and review scope in docs/VALIDATION_RESEARCH_REVIEW.md; did not claim a systematic/full-manual review.
+- Distinguished noncausal digital practice associations from the historical retaking study's quasi-experimental design and limited population. Documented the older three-section scale and superscore distinction, measurement reliability versus forecast uncertainty, and unresolved transfer from at-home practice to official digital outcomes. No external dataset or coefficient was imported.
+- Added docs/MODEL_VALIDATION_ROADMAP.md covering current limitations, proposed prospective protocol, minimum quality/consent/retention requirements, sample-precision planning, participant-separated training/evaluation/test governance, paired baseline comparisons, future approved calibration, prediction-interval research and requirements before public accuracy claims. Flagged that current same-source evaluation excludes practice-to-official outcomes and that software sample guards are not statistical validation thresholds.
+- Updated research cross-references, README, architecture and contributor scope. Proposed research/implementation remains explicitly separate from implemented behavior; no Phase 5 work, data collection, fitting, coefficient changes or release is included.
+- Verification: TypeScript and all 169 unit tests passed; local Markdown links and whitespace checks passed. Source PDFs retrieved successfully with TLS verification. src/, validation/, tests/, dependencies and the original DEVELOPMENT_PLAN.md are unchanged from Phase 3; original plan SHA-256 remains f3890fc7a12a57ce7accb2ccff081a3a98b4caad7434741afdea440fae061af7. Browser/build tests were not rerun for this documentation-only change; Phase 3 results remain historical evidence, not a new run.
+- Predictive accuracy remains unverified. Next: owner review of the roadmap and separate authorization for Phase 5 or a specific research protocol; production model changes still require explicit approval.
+
 ## October 16, 2026 — Phase 3 private reports
 
 - Santiago authorized Phase 3 after Phase 2 completion. Created `feat/validation-reports-phase-three` from the Phase 2 review branch; Phase 2 PR #2 remains separate. This branch adds no Phase 4 research-roadmap or model-coefficient work.
