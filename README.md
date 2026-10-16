@@ -114,3 +114,13 @@ These selectors apply only to test processes; they are not application variables
 The public beta target in the plan is February 2, 2027. Read PROGRESS.md for actual completion status.
 
 The approved model uses explicitly experimental coefficients, conservative below-SAT-floor PSAT handling, and descriptive rather than numerical treatment of preparation history/methods/test frequency. Inputs remain in this tab’s memory and clear on refresh; no account, score telemetry, or server-side score storage is used. Optional feedback messages are sent separately to Formspree. The site is deployed on Vercel; private student beta and broader accessibility/cross-browser review remain future work.
+
+## Phase 2: local model validation
+
+See [validation/README.md](validation/README.md) for the CSV schema, privacy requirements, participant splits, metrics and limitations. Run the fictional example with:
+
+```sh
+npm run validate:model -- --input validation/fixtures/synthetic.csv --as-of 2026-10-16 --data-kind synthetic --out validation/output/demo.json
+```
+
+Use a new output filename for every run. Real datasets and results belong outside the repository. This local tool does not change the website or validate predictive accuracy. Phase 3 charts and reports remain pending approval.

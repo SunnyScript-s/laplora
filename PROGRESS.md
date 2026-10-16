@@ -1,5 +1,16 @@
 # Laplora progress
 
+## October 16, 2026 — Phase 2 local model evaluation
+
+- Santiago approved Phase 1 and continuing Phase 2. Marked PR #1 ready and merged it; verified the public production JavaScript byte-matches the approved Phase 1 bundle. Created `feat/model-validation-phase-two` from merged main.
+- Added a strict documented CSV importer, 120 explicitly fictional example records, local CLI/JSON output, and unchanged-engine retrospective evaluation. The as-of date is explicit; the start date is the observed baseline. Actual hours never replace baseline-known plans. PSAT, incomparable conditions/sources and repeated tests are excluded; no conversion is invented.
+- Added section/total MAE, bias, RMSE, median absolute error, within-50/100 percentages, descriptive slower–faster coverage, no-change comparison, training-only average gain with a 30-participant guard, and four group dimensions with sample counts and suppression below ten participants. These thresholds are engineering rules, not claims of adequate research power.
+- Fixed participant-hashed train/evaluation/test partitions, one eligible interval per participant, and an explicit independent-test unlock reduce leakage. No fitting of production coefficients, dashboard, charts, Markdown report generator, public score collection, or Phase 3 work was added.
+- Local data/build/output directories are Git-ignored and validation content is excluded from Vercel uploads. CLI output uses exclusive creation and restricted new-file permissions. Real records and outputs should remain outside this repository. No real data was supplied, processed or published.
+- Verification: TypeScript, production build, 163 unit tests and all 38 Chromium desktop/mobile tests passed. CLI synthetic smoke: 120 valid records, zero issues, 76 train / 24 evaluation / 20 test. A malformed score exited 1 and blocked evaluation; locked test access exited 1 without output. Optional Firefox/WebKit matrix was not run locally. Existing non-failing bundle-size advisory remains.
+- Confirmed all `src/` files unchanged, and original DEVELOPMENT_PLAN.md SHA-256 remains f3890fc7a12a57ce7accb2ccff081a3a98b4caad7434741afdea440fae061af7. No dependency additions or environment configuration changes were needed.
+- Predictive accuracy remains unverified. Review Phase 2 before authorizing Phase 3; real-data consent, retention and independent evaluation need an agreed research process. Existing anonymous feedback still uses the owner's Formspree inbox; no live test submission was sent.
+
 ## October 15, 2026 — Phase 1 beta review branch
 
 - Scoped the owner's 16-part beta/model-validation goal to Phase 1 only after the explicit follow-up. Created feat/beta-phase-one from d7a0100. Phase 2 evaluation/data/report work is not started; approval is required before continuing or merging this review branch into production.
