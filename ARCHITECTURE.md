@@ -88,3 +88,5 @@ See [PROGRESS.md](PROGRESS.md) and the test reports for actual results and unres
 Phase 3 adds a pure report renderer fed by the same in-memory evaluation as JSON. Shared aggregate tables generate Markdown and a self-contained, script-free HTML dashboard with SVG charts. The CLI writes private, exclusively created report files on request. No report data enters React, public assets or deployment uploads.
 
 Phase 4's [model-validation roadmap](docs/MODEL_VALIDATION_ROADMAP.md) documents future research gates. Its candidate fitting, observation-error models, prospective cohorts and calibrated intervals are proposals, not implemented engine behavior. The existing V0.1 and local evaluator remain unchanged.
+
+Phase 5 adds compiled CLI integration tests and offline report browser checks to the existing CI verification. These exercise private output permissions, non-overwrite behavior, import failures, test-partition guards, report accessibility and zero-network rendering. The public app, model and report runtime are unchanged. Deployment and data-handling procedures are in [the beta operations guide](docs/BETA_RELEASE_CHECKLIST.md).

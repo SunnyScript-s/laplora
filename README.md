@@ -6,7 +6,7 @@ Laplora is an experimental SAT score-growth simulation project. It will help stu
 
 Production: **https://laplora.vercel.app** (Vercel project `laplora`). The initial production deployment uses the existing Vite build and `dist` output.
 
-Automatic GitHub deployments are not connected yet: Vercel requires the owner to add a GitHub login connection, then connect `SunnyScript-s/laplora` with production branch `main`. Until connected, publish updates explicitly with `vercel deploy --prod` from an authenticated, linked checkout.
+Verified October 16, 2026: Vercel is connected to `SunnyScript-s/laplora`, with `main` as the production branch. Git pushes create previews; merging approved work into main triggers production deployment. The project uses the Vite preset and default `dist` output. See [release operations](docs/BETA_RELEASE_CHECKLIST.md) and [verification evidence](docs/PHASE_FIVE_VERIFICATION.md).
 
 ## Project status
 
@@ -24,7 +24,7 @@ The footer’s **Send Feedback** button opens a form with four categories (Bug R
 
 Review submissions in the private Formspree dashboard. The endpoint is public configuration in `src/app/feedbackValidation.ts`, not an API key. Manage spam settings, allowed domains, retention/deletion, and quotas in Formspree; no new provider account or paid service is required. The UI validates categories, trimmed message length (10–2,000), rating (1–5), and device text (up to 120). A hidden trap, pending-submit lock, and 30-second in-tab cooldown after success discourage basic spam; these client-side measures can be bypassed and do not replace Formspree’s service-side controls.
 
-Failed drafts remain in tab memory; success requires Formspree’s JSON acknowledgment. Provider responses are mocked in automated tests, so the owner should confirm an actual message in the dashboard before inviting testers. The downloadable preview needs internet access to send feedback. See [Phase 1 review and beta checklist](docs/BETA_PHASE_ONE.md). Phase 2 validation work awaits explicit approval.
+Failed drafts remain in tab memory; success requires Formspree’s JSON acknowledgment. Provider responses are mocked in automated tests, so the owner should confirm an actual message in the dashboard before inviting testers. The downloadable preview needs internet access to send feedback. See [Phase 1 review and beta checklist](docs/BETA_PHASE_ONE.md). Phases 2–4 add local validation, private reports and a research roadmap; they do not collect real student data.
 
 ## Laplora Pro and pricing
 
@@ -76,7 +76,7 @@ npm test
 PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npm run verify
 ```
 
-Unit tests verify engine contracts and structural behavior, including a 2,160-profile stress grid. Browser tests cover setup/results/comparison flows, validation, keyboard chart exploration, data consistency, in-memory privacy, reduced motion, automated accessibility scans, and 320px/200% text reflow. The default suite runs 38 desktop/mobile Chromium cases. Optional cross-browser projects add Firefox desktop and WebKit desktop/mobile (95 total runs). These checks do not establish prediction accuracy or full accessibility compliance. GitHub Actions is configured for all three engines and runs one browser worker at a time to avoid resource contention on shared runners. Local runs default to two workers. See [workflow runs](https://github.com/SunnyScript-s/laplora/actions) for current remote verification status.
+Unit tests verify engine contracts and structural behavior, including a 2,160-profile stress grid. Browser tests cover setup/results/comparison flows, validation, keyboard chart exploration, data consistency, in-memory privacy, reduced motion, automated accessibility scans, and 320px/200% text reflow. The default suite runs 40 desktop/mobile Chromium cases. Optional cross-browser projects add Firefox desktop and WebKit desktop/mobile (100 total runs). These checks do not establish prediction accuracy or full accessibility compliance. GitHub Actions is configured for all three engines and runs one browser worker at a time to avoid resource contention on shared runners. Local runs default to two workers. See [workflow runs](https://github.com/SunnyScript-s/laplora/actions) for current remote verification status.
 
 On a machine with browser dependencies installed:
 
@@ -113,7 +113,7 @@ These selectors apply only to test processes; they are not application variables
 
 The public beta target in the plan is February 2, 2027. Read PROGRESS.md for actual completion status.
 
-The approved model uses explicitly experimental coefficients, conservative below-SAT-floor PSAT handling, and descriptive rather than numerical treatment of preparation history/methods/test frequency. Inputs remain in this tab’s memory and clear on refresh; no account, score telemetry, or server-side score storage is used. Optional feedback messages are sent separately to Formspree. The site is deployed on Vercel; private student beta and broader accessibility/cross-browser review remain future work.
+The approved model uses explicitly experimental coefficients, conservative below-SAT-floor PSAT handling, and descriptive rather than numerical treatment of preparation history/methods/test frequency. Inputs remain in this tab’s memory and clear on refresh; no account, score telemetry, or server-side score storage is used. Optional feedback messages are sent separately to Formspree. The site is deployed on Vercel; physical-device/screen-reader review and actual beta feedback remain separate from automated cross-browser checks.
 
 ## Phase 2: local model validation
 
@@ -128,3 +128,7 @@ Use a new output filename for every run. Real datasets and results belong outsid
 ## Phase 4: evidence and model-validation roadmap
 
 The [research review](docs/VALIDATION_RESEARCH_REVIEW.md) distinguishes digital practice associations, historical retaking evidence, measurement reliability and cohort growth. The [model-validation roadmap](docs/MODEL_VALIDATION_ROADMAP.md) defines proposed data-quality standards, participant separation, baseline comparisons, future calibration/uncertainty research and evidence required before an accuracy claim. This phase changes documentation only; no coefficients were fitted or changed and no real student data was collected.
+
+## Phase 5: verification and beta operations
+
+See the [release/privacy guide](docs/BETA_RELEASE_CHECKLIST.md) for feedback review, safe local data handling, validation/report commands, Git-to-Vercel deployment and beta readiness. [Phase 5 verification](docs/PHASE_FIVE_VERIFICATION.md) records actual test/deployment results and outstanding owner-side checks. Predictive accuracy remains unverified.
