@@ -1,6 +1,6 @@
 # Phase 1 — beta preparation review
 
-This branch implements only Phase 1 of the owner's 16-part beta/validation request. Phase 2 and later work remain unstarted pending approval. The original 16-week plan and production model are preserved.
+This document records the original Phase 1 review checkpoint. Later phases were separately authorized; see [current beta operations](BETA_RELEASE_CHECKLIST.md) and PROGRESS.md for current status. The original 16-week plan and production model are preserved.
 
 ## Review scope
 
