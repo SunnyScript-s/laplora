@@ -1,5 +1,15 @@
 # Laplora progress
 
+## October 16, 2026 — Phase 5 verification, privacy and release checks
+
+- Santiago authorized Phase 5. Created `feat/beta-release-phase-five` from the Phase 4 review branch and opened PR #5. Prior phases remain separate stacked review PRs; no merge or manual production deployment is claimed.
+- Added compiled CLI integration tests for synthetic reports, malformed imports, invalid-score quality reports, private file/directory permissions, held-out test access and overwrite protection. Added offline report browser checks for no network, keyboard disclosure, accessibility and narrow enlarged-text reflow across five projects.
+- Verified the Vercel project is connected to SunnyScript-s/laplora with production branch main and the Vite defaults; corrected stale README setup instructions. Verified the live production bundle and Git-generated Phase 5 preview by byte comparison with the local build. No new credentials, paid services or live feedback submissions were required.
+- Privacy review confirmed tab-memory simulator inputs, minimal opt-in Formspree payloads, no score-storage/analytics path, and ignored/excluded local datasets/results. Added the beta operations guide covering inbox review, provider controls, retention considerations, private imports/reports, research involving minors, and deployment/review procedure. Actual provider inbox receipt/settings and physical-device/screen-reader review remain owner-side checks, not automated claims.
+- TypeScript, 174 unit/integration tests and the production build passed. The initial local 100-case browser matrix completed with passed status. Initial hosted CI found 4 narrow/enlarged-text report overflows (96 passed); fixed heading/summary wrapping and reran all five report browser projects successfully without weakening assertions. Hosted rerun status is available on PR #5. Details and exact deployment evidence are in docs/PHASE_FIVE_VERIFICATION.md.
+- Local Markdown links, whitespace, ignored-path and build-content checks passed. Original DEVELOPMENT_PLAN.md hash remains f3890fc7a12a57ce7accb2ccff081a3a98b4caad7434741afdea440fae061af7; public source, model coefficients and dependencies are unchanged. Only synthetic records were used. The existing non-failing bundle-size advisory remains.
+- The five-phase engineering implementation is ready for review subject to passing hosted checks and the documented owner-side beta checks. Empirical validation, research collection, coefficient changes and predictive claims remain unimplemented and require the roadmap's separate approvals/evidence.
+
 ## October 16, 2026 — Phase 4 research review and validation roadmap
 
 - Santiago authorized Phase 4. Created `docs/model-validation-phase-four` from the Phase 3 review branch; earlier review branches remain separate. Work is documentation-only.
