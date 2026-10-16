@@ -16,6 +16,12 @@ The React/Vite app uses a vibrant orange DORfic-inspired design and includes gui
 
 The display typeface is **Disket Mono**. Its Regular/Bold webfonts serve branding, headings, action buttons, and score highlights; Manrope keeps paragraphs, forms, and chart labels readable. Fonts are bundled locally with system fallbacks and no external font service. The included EULA permits commercial and generated webfont use; see [the typography checkpoint](docs/DISKET_TYPOGRAPHY_REVIEW.md).
 
+## Anonymous feedback
+
+The footer’s **Send Feedback** button opens an in-page form with only a feedback type and message. It sends those two fields directly to the owner-selected Formspree endpoint `https://formspree.io/f/mdeaydqy` after an explicit submission. No email, name, scores, study plans, page URL, cookies, or diagnostic attachments are added. Visitors are asked not to include personal information or actual scores in their message. Formspree and hosting infrastructure may process IP addresses and other connection metadata.
+
+Review submissions privately in the Formspree dashboard. Manage retention, deletion, spam settings, and quotas there. The form retains failed drafts in tab memory and confirms success only after Formspree acknowledges receipt. Live provider delivery and inbox receipt are separate from the browser tests, which mock provider responses. The standalone preview also needs an internet connection to send feedback.
+
 ## Laplora Pro and pricing
 
 Choose **Explore Laplora Pro** on the homepage or **Laplora Pro** in the navigation to open the pricing view. The existing free simulator, current-plan comparison, DORfic design, and animations remain available without signup or a paywall.
@@ -66,7 +72,7 @@ npm test
 PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npm run verify
 ```
 
-Unit tests verify engine contracts and structural behavior, including a 2,160-profile stress grid. Browser tests cover setup/results/comparison flows, validation, keyboard chart exploration, data consistency, in-memory privacy, reduced motion, automated accessibility scans, and 320px/200% text reflow. The default suite runs 26 desktop/mobile Chromium cases. Optional cross-browser projects add Firefox desktop and WebKit desktop/mobile (65 total runs). These checks do not establish prediction accuracy or full accessibility compliance. GitHub Actions is configured for all three engines and runs one browser worker at a time to avoid resource contention on shared runners. Local runs default to two workers. See [workflow runs](https://github.com/SunnyScript-s/laplora/actions) for current remote verification status.
+Unit tests verify engine contracts and structural behavior, including a 2,160-profile stress grid. Browser tests cover setup/results/comparison flows, validation, keyboard chart exploration, data consistency, in-memory privacy, reduced motion, automated accessibility scans, and 320px/200% text reflow. The default suite runs 30 desktop/mobile Chromium cases. Optional cross-browser projects add Firefox desktop and WebKit desktop/mobile (75 total runs). These checks do not establish prediction accuracy or full accessibility compliance. GitHub Actions is configured for all three engines and runs one browser worker at a time to avoid resource contention on shared runners. Local runs default to two workers. See [workflow runs](https://github.com/SunnyScript-s/laplora/actions) for current remote verification status.
 
 On a machine with browser dependencies installed:
 
@@ -103,4 +109,4 @@ These selectors apply only to test processes; they are not application variables
 
 The public beta target in the plan is February 2, 2027. Read PROGRESS.md for actual completion status.
 
-The approved model uses explicitly experimental coefficients, conservative below-SAT-floor PSAT handling, and descriptive rather than numerical treatment of preparation history/methods/test frequency. Inputs remain in this tab’s memory and clear on refresh; no account, storage service, score telemetry, or backend is used. Private student beta, broader accessibility/cross-browser review, and owner-approved deployment remain future work.
+The approved model uses explicitly experimental coefficients, conservative below-SAT-floor PSAT handling, and descriptive rather than numerical treatment of preparation history/methods/test frequency. Inputs remain in this tab’s memory and clear on refresh; no account, score telemetry, or server-side score storage is used. Optional feedback messages are sent separately to Formspree. The site is deployed on Vercel; private student beta and broader accessibility/cross-browser review remain future work.

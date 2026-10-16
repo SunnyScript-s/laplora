@@ -63,7 +63,7 @@ See the [model specification](docs/MODEL_SPECIFICATION.md), [simulation rules](d
 
 View state handles landing, guided setup, results, How It Works, and pricing. Both informational views keep the active setup/results component mounted but hidden, preserving step and comparison state while students browse. Draft inputs and comparison state survive in-app navigation; browser Back does not navigate individual form steps. Refresh clears all entered data. Reset asks before discarding entered work.
 
-The app uses no accounts, database, score telemetry, or server-side student records. Inputs are not placed in URLs. Any future persistence, feedback collection, or account feature needs a separate privacy and product decision.
+The app uses no accounts, database, score telemetry, or server-side student records. Inputs are not placed in URLs. The owner approved optional anonymous feedback collection through Formspree. The separate Feedback component receives no simulator state and transmits only the user-entered category/message on submission. It omits cookies and referrer information; Formspree may still process network metadata. Other future persistence or account features need a separate privacy and product decision.
 
 The current design uses orange/amber glass artwork, Disket Mono display type, and Manrope body text. SVG charts have keyboard timeline exploration and a table alternative. Semantic controls, field errors, visible focus, and system reduced-motion support are shared requirements. The small footer credit identifies the project owner.
 

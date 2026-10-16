@@ -10,6 +10,7 @@ import { HowItWorks } from './HowItWorks';
 import { ArrowIcon } from './ArrowIcon';
 import { ReferenceAtmosphere } from './ReferenceAtmosphere';
 import { Pricing } from './Pricing';
+import { Feedback } from './Feedback';
 import laploraLogo from '../assets/laplora-logo.png?inline';
 import styles from './App.module.css';
 
@@ -90,7 +91,7 @@ export function App() {
         {(view === 'results' || (isInformationView && returnView === 'results')) && result && <div hidden={view !== 'results'}><Results result={result} onEdit={() => setView('setup')} /></div>}
         {isInformationView && <><button className={styles.textButton} onClick={() => setView(returnView)}>← Back to {returnView === 'results' ? 'results' : returnView === 'setup' ? 'your plan' : 'home'}</button>{view === 'how' ? <HowItWorks /> : <Pricing hasActivePlan={returnView !== 'home'} onUseFree={() => setView(returnView === 'home' ? 'setup' : returnView)} />}</>}
       </main>
-      <footer className={styles.footer}><span>Laplora · Preparation, in perspective.</span><span>Made by Santiago Harbison</span><span>Experimental simulation. Independent of College Board.</span></footer>
+      <footer className={styles.footer}><span>Laplora · Preparation, in perspective.</span><span>Made by Santiago Harbison</span><Feedback /><span>Experimental simulation. Independent of College Board.</span></footer>
     </div>
   </>;
 }

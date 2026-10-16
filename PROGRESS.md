@@ -1,5 +1,19 @@
 # Laplora progress
 
+## October 15, 2026 — Formspree feedback integration
+
+- Connected the owner-provided Formspree endpoint to the shared-footer anonymous feedback dialog. The only submitted fields are category and message; requests omit credentials/referrer and no student state enters the component. Added the provider/privacy disclosure and retained the warning to omit identifying information and actual scores.
+- The form uses Formspree JSON acknowledgment for success, preserves text on failure/timeout, prevents duplicate clicks while pending, and supports native keyboard dismissal/focus restoration. No service keys, student accounts, email fields, or new runtime dependencies.
+- TypeScript and production/standalone builds passed. All ten selected Chromium desktop/mobile foundation, accessibility, and feedback cases passed, including simulated provider failure/retry, minimal payload, no cookies/referrer, preserved study-plan state, and 320px enlarged-text reflow. Provider responses are mocked; no test message was sent to the private inbox. A read-only endpoint request reached Formspree (GET returns its expected method-not-allowed response), which does not establish inbox delivery.
+- The configured browser suite now has 30 Chromium cases or 75 across five browser projects. Full-suite counts describe configuration, not tests rerun at this checkpoint. Earlier local delivery-pending notes below are superseded by this integration.
+
+## October 15, 2026 — anonymous feedback interface (delivery pending)
+
+- Prepared a small shared-footer Send Feedback button and native modal dialog with only category and message fields. No account, email, name, study plan, or score attachments are requested or sent. Drafts remain in tab memory; copy asks people to omit personal information and actual scores.
+- Implemented pending/success/error states, a delivery timeout, retained drafts on failed delivery, accessible labels, Escape dismissal/focus restoration, and narrow-screen reflow. Success requires an explicit receipt acknowledgment; the interface cannot report success from a generic HTML response.
+- TypeScript and production/standalone builds passed. Four Chromium desktop/mobile browser checks passed for minimal outgoing payloads, simulated delivery failure/retry, retained study-plan state, accessibility, keyboard behavior, and 320px/enlarged text. Delivery responses were mocked; no receiving endpoint is configured or verified yet.
+- Awaiting the owner's choice of a private inbox or feedback service before implementing /api/feedback, documenting the provider/privacy details, and publishing. These changes are local and have not been pushed or deployed. No live feedback collection is claimed.
+
 ## October 15, 2026 — supplied browser icon
 
 - Replaced the old SVG favicon with Santiago’s supplied transparent 1024×1024 PNG, retaining its exact bytes. The new filename also avoids reusing the old favicon URL cached by browsers.

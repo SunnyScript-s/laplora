@@ -76,7 +76,7 @@ The free simulation and existing current-plan-versus-one-alternative comparison 
 - Do not request names, school, income, GPA, intelligence ratings, or college lists.
 - Do not send student inputs through analytics, URLs, or a server.
 - Do not add accounts, a database, or paid APIs without an approved need.
-- Feedback collection at launch requires a separate storage/privacy decision.
+- The owner approved anonymous feedback through Formspree on October 15, 2026. Collect only a user-entered category/message, with no requested identifiers or score attachments; disclose third-party processing. Other storage/privacy changes need a separate decision.
 - Place experimental-model wording near results and explain independence from College Board.
 - Avoid likelihood claims, calibrated percentages, or points-per-hour promises without appropriate evidence.
 
