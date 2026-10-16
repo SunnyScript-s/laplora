@@ -1,7 +1,9 @@
 import { z } from 'zod';
 
-// A public form endpoint, not an API secret. No provider script is loaded.
+// Public form endpoint, not an API secret.
 export const FEEDBACK_ENDPOINT = 'https://formspree.io/f/mdeaydqy';
+// Public Google reCAPTCHA v3 site key. The matching secret key is stored only in Formspree.
+export const RECAPTCHA_SITE_KEY = '6LfdsPItAAAAAB0oV4i5qKLIzB-zCOVe5yOKBvJB';
 export const FEEDBACK_COOLDOWN_MS = 30_000;
 
 export const feedbackSchema = z.object({
