@@ -38,7 +38,7 @@ Implication: the tables could support a separate future cohort-context feature w
 | Question | Evidence and limits | Proposed modeling treatment |
 | --- | --- | --- |
 | Baseline and remaining room | Official scales impose score ceilings; G1 reports associations varying with prior achievement | Preserve section anchors; bounded diminishing-return curve is an experimental structural choice |
-| PSAT versus SAT scale | G3–G5 confirm common vertical scale with different floors/ceilings | No linear rescaling; special below-SAT-floor policy needs owner approval |
+| PSAT versus SAT scale | G3–G5 confirm common vertical scale with different floors/ceilings | No linear rescaling; approved below-SAT-floor handling is specified in MODEL_SPECIFICATION.md |
 | Weekly study hours | Reviewed digital study does not estimate a weekly-hour dose-response | Explicit experimental saturation function, not a research-derived points/hour claim |
 | Consistency | G6 recommends a practical study plan; no personalized consistency coefficient was found here | Treat the declared completion fraction as a transparent simplifying assumption |
 | Study methods and mistake review | G6 recommends targeted practice/review and explaining mistakes | Use descriptive guidance; do not assign unsupported numerical method rankings |
@@ -56,3 +56,7 @@ Future calibration needs appropriate consented longitudinal observations, exposu
 ## Learning exercise
 
 Explain why students who choose to complete practice tests might also be more motivated or receive more support. Matching measured characteristics helps, but it cannot guarantee those unseen differences disappear. That is why an association is useful evidence to discuss yet cannot automatically become a causal score-growth rule.
+
+## Phase 4 follow-up — October 16, 2026
+
+G1–G3 were retrieved again and the relevant findings/methods rechecked. The [focused validation review](VALIDATION_RESEARCH_REVIEW.md) adds the inspected NBER retaking working paper, expands the manual review to measurement error and reliability, records source hashes, and distinguishes historical scores and superscores from digital single-administration outcomes. It documents the unresolved applicability of at-home practice reliability without claiming no relevant research exists. The [validation roadmap](MODEL_VALIDATION_ROADMAP.md) translates these limits into proposed data, comparison and uncertainty requirements. No production coefficient was changed.
