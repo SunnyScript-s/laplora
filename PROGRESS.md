@@ -1,5 +1,11 @@
 # Laplora progress
 
+## October 15, 2026 — page-bottom clipping and spacing
+
+- Reproduced an abrupt lower edge in the fixed-height decorative SVG behind the desktop footer. Added a transparent fade at the artwork’s lower edge so it blends into the page background.
+- Limited the page container’s clipping to the horizontal axis, centered wrapped footer items, and increased bottom padding with a mobile safe-area allowance. The decorative layer retains its own overflow containment.
+- Production/standalone builds and eight existing desktop/mobile accessibility/feedback cases passed. Additional browser checks at 1440×900, 390×664, and 320×480 confirmed every footer item is within the viewport at the bottom, with approximately 48px below the last item and no horizontal overflow. Reviewed before/after captures. Actual text truncation was not reproduced in these viewports; the observed background cutoff and bottom-spacing risks were addressed.
+
 ## October 15, 2026 — Formspree feedback integration
 
 - Connected the owner-provided Formspree endpoint to the shared-footer anonymous feedback dialog. The only submitted fields are category and message; requests omit credentials/referrer and no student state enters the component. Added the provider/privacy disclosure and retained the warning to omit identifying information and actual scores.
