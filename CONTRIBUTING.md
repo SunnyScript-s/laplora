@@ -12,7 +12,7 @@ Start with [the development plan](DEVELOPMENT_PLAN.md), [project progress](PROGR
 
 - The pricing view is authorized as a presentation of planned monetization: Free $0, Pro $4.99/month, and a potential $9.99 one-time 90-day pass. Keep paid options Coming Soon and existing free comparisons available. Actual accounts, entitlements, billing, persistence, and premium features require subsequent implementation scope.
 
-- Santiago approved Phase 1 and authorized Phase 2 on October 16, 2026. Phase 2 is limited to local validation tooling on `feat/model-validation-phase-two`. Preserve the production model and website. Phase 3 dashboards/report generators and coefficient changes still require approval.
+- Santiago approved Phase 1 and authorized Phase 2 on October 16, 2026. Phase 2 is limited to local validation tooling on `feat/model-validation-phase-two`. Preserve the production model and website. Santiago subsequently authorized Phase 3: private local dashboards and Markdown reports on `feat/validation-reports-phase-three`. Phase 4 research-roadmap work and coefficient changes still require approval.
 
 ## Implementation standards
 

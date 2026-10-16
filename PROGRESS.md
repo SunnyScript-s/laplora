@@ -1,5 +1,14 @@
 # Laplora progress
 
+## October 16, 2026 — Phase 3 private reports
+
+- Santiago authorized Phase 3 after Phase 2 completion. Created `feat/validation-reports-phase-three` from the Phase 2 review branch; Phase 2 PR #2 remains separate. This branch adds no Phase 4 research-roadmap or model-coefficient work.
+- Added optional `--report-dir` output: a self-contained HTML dashboard and Markdown report generated from the same evaluation as JSON. Includes dataset provenance, model version, split methodology, valid/eligible/evaluated sample counts, mean observed/modeled gains, section/total errors, baseline comparisons, exclusion counts, group metrics and descriptive coverage.
+- Dashboard SVGs show total predicted versus actual scores, error distribution and MAE by starting score, duration, planned hours and section combination. Small groups retain sample counts but suppress metrics/charts. Empty samples show unavailable, not invented zero accuracy.
+- Reports omit participant IDs, but individual scatter coordinates and small aggregates remain sensitive. No real data was used. Files remain local/ignored, have restricted creation permissions, and are never uploaded by the report tool. CSP blocks network/scripts, no dependencies were added, and existing reports are not overwritten.
+- Verification: TypeScript, build, 169 unit tests and all 38 Chromium desktop/mobile website tests passed. Synthetic report CLI succeeded; malformed-score input produced quality-only reports with exit 1; existing report-directory reuse was rejected; generated file permissions were 0600. Reviewed generated Markdown and desktop dashboard capture. Desktop 1440px and mobile 390px browser checks found no page overflow, network requests or axe violations. The cloud browser blocked file navigation; rendered the exact generated contents via Playwright setContent and used axe legacy mode for the single-document offline surface. No browser security policy was disabled.
+- Production `src/` files and the original development plan are unchanged. Predictive accuracy remains unverified. Phase 4 is pending owner approval. Optional Firefox/WebKit checks were not rerun locally; the existing bundle-size advisory remains.
+
 ## October 16, 2026 — Phase 2 local model evaluation
 
 - Santiago approved Phase 1 and continuing Phase 2. Marked PR #1 ready and merged it; verified the public production JavaScript byte-matches the approved Phase 1 bundle. Created `feat/model-validation-phase-two` from merged main.

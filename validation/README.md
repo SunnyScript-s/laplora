@@ -1,4 +1,4 @@
-# Local model validation — Phase 2
+# Local model validation — Phases 2–3
 
 This command-line system evaluates the unchanged experimental V0.1 engine. It does not run in the website, send requests, tune coefficients, or establish predictive accuracy. The CSV in `fixtures/synthetic.csv` contains **120 entirely fictional participants** and deliberately simple invented outcomes; it is only a software fixture.
 
@@ -10,7 +10,7 @@ Use the repository's Node 24 installation and `npm ci`. No new dependencies or s
 npm run validate:model -- --input validation/fixtures/synthetic.csv --as-of 2026-10-16 --data-kind synthetic --out validation/output/demo.json
 ```
 
-Output paths must be new (existing files are never overwritten). JSON contains data-quality issues, model version/parameters, dataset SHA-256, split seed, counts, exclusions, section/total metrics, baseline comparisons, group summaries, and individual errors for the selected partition. No dashboard, charts or Markdown report generator is included; those belong to Phase 3.
+Output paths must be new (existing files are never overwritten). JSON contains data-quality issues, model version/parameters, dataset SHA-256, split seed, counts, exclusions, section/total metrics, baseline comparisons, group summaries, and individual errors for the selected partition. Add `--report-dir` to generate the Phase 3 offline dashboard and Markdown report described below.
 
 For consented real data, place the CSV **outside this repository**, then use `--input /private/path/students.csv --data-kind real --out /private/path/results-new.json --as-of YYYY-MM-DD`. Treat the output as sensitive too. Local `validation/data/`, `validation/output/` and `.build/` are Git-ignored; all `validation/` content is excluded from Vercel CLI uploads and is absent from the frontend import graph. Ignore rules are not access control: never force-add private files or put datasets in `public/`. Do not attach real data to GitHub, feedback, analytics, or chat. Store any participant lookup separately with restricted access. Agree on consent, guardian requirements where applicable, purpose, access and deletion dates before collecting data; these tools do not establish consent or enforce retention.
 
@@ -60,3 +60,17 @@ Groups cover baseline totals, preparation duration, planned hours and section im
 ## Verify
 
 `npm run check` includes validation TypeScript. `npm run test:unit` includes importer, hand-calculated metrics, production-engine reuse, exclusions, null data, duplicate intervals, partition guards, and held-out outcome isolation. `npm run verify` also checks the unchanged public website. CLI smoke checks should use synthetic files only, including a malformed row and a new result path. This work adds no public collection form or automatic student-data capture.
+
+## Phase 3: private dashboard and Markdown report
+
+```sh
+npm run validate:model -- --input validation/fixtures/synthetic.csv --as-of 2026-10-16 --data-kind synthetic --out validation/output/review.json --report-dir validation/output/review
+```
+
+Choose a new JSON path and new report directory for every run. The report directory's parent must exist (for the example, run `mkdir -p validation/output` first). Outputs are `dashboard.html` and `report.md`; open the HTML in your own browser and Markdown in a text editor. No server, external assets, JavaScript, network requests or paid services are required. Reports are generated directly from the same evaluation as JSON, rather than accepting unvalidated external report JSON.
+
+The dashboard shows valid/eligible/evaluated counts, observed and predicted average gains, section/total metrics, baseline comparisons, a predicted-versus-observed total-score scatterplot, total-error histogram, group MAE charts with exact tables, and descriptive coverage. Group charts omit suppressed groups but tables retain their counts and reasons. Markdown uses the same aggregate tables and includes dataset provenance, methodology, exclusions, limits and next steps. Missing results display Unavailable; no-data charts are explicitly unavailable. Invalid rows produce a quality-only report and exit code 1; structural CSV errors still fail before report creation.
+
+Both formats visibly distinguish fictional versus real input and preserve the unverified-accuracy warning. Reports include the input digest, as-of date, version, split seed and selected partition. No participant IDs appear in either format, but scatterplot coordinates remain individual score observations: **the HTML is private, not anonymized for publication**. Markdown aggregates can also be sensitive in small samples. Keep all outputs local and out of public Git/Vercel. Nothing is automatically deployed or shared. Test-partition reports require the same explicit `--partition test --unlock-test` workflow as JSON.
+
+New files use mode 0600 and report directories 0700 where supported. Existing files/directories are refused. A later write failure can leave partial outputs; inspect the error and use new paths for the retry. Do not treat a partial directory as a successful report. For read-only browser inspection in managed cloud sessions that block `file:` URLs, load the generated HTML content in the test browser; do not publish private results to work around the restriction.
