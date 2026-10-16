@@ -65,6 +65,7 @@ test('pricing and How It Works preserve the setup step and free comparison state
   await page.getByRole('button', { name: 'Math', exact: true }).click();
   await page.getByRole('button', { name: 'Laplora Pro', exact: true }).click();
   await page.getByRole('button', { name: 'How it works', exact: true }).click();
+  await page.getByRole('button', { name: 'About the beta' }).click();
   await page.getByRole('button', { name: 'Back to results' }).click();
   await expect(page.getByRole('heading', { name: 'Explore the paths ahead.' })).toBeFocused();
   await expect(page.getByRole('status')).toContainText('1280');

@@ -8,3 +8,5 @@
 .dialog textarea { resize: vertical; }
 .actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .75rem; margin-top: 1.25rem; }
 .error { color: #9e3008; font-weight: 650; }
+.dialog { overflow-wrap: anywhere; }
+.trap { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
