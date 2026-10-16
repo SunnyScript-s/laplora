@@ -1,8 +1,18 @@
 import { expect, test } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
+async function mockCaptcha(page: import('@playwright/test').Page, token = 'test-captcha-token') {
+  await page.addInitScript((captchaToken: string) => {
+    (window as Window & { grecaptcha?: unknown }).grecaptcha = {
+      ready: (callback: () => void) => callback(),
+      execute: async () => captchaToken,
+    };
+  }, token);
+}
+
 test('anonymous feedback sends only explicit fields, keeps failed drafts, and preserves the study plan', async ({ page }) => {
   const payloads: unknown[] = [];
+  await mockCaptcha(page);
   await page.route('https://formspree.io/f/mdeaydqy', async route => {
     payloads.push(route.request().postDataJSON());
     expect(route.request().headers()['referer']).toBeUndefined();
@@ -24,13 +34,14 @@ test('anonymous feedback sends only explicit fields, keeps failed drafts, and pr
   await expect(dialog.getByLabel('Your message')).toHaveValue('The chart is difficult to read on my phone.');
   await dialog.getByRole('button', { name: 'Send feedback', exact: true }).click();
   await expect(dialog.getByRole('status')).toContainText('Your feedback was sent');
-  expect(payloads).toEqual(Array(2).fill({ category: 'issue', message: 'The chart is difficult to read on my phone.' }));
+  expect(payloads).toEqual(Array(2).fill({ category: 'issue', message: 'The chart is difficult to read on my phone.', 'g-recaptcha-response': 'test-captcha-token' }));
   await dialog.getByRole('button', { name: 'Done', exact: true }).click();
   await expect(page.getByLabel('Math section score', { exact: true })).toHaveValue('610');
 });
 
 test('feedback validates descriptions and sends optional details only when entered', async ({ page }) => {
   const payloads: unknown[] = [];
+  await mockCaptcha(page);
   await page.route('https://formspree.io/f/mdeaydqy', async route => {
     payloads.push(route.request().postDataJSON());
     await route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ ok: true }) });
@@ -48,7 +59,7 @@ test('feedback validates descriptions and sends optional details only when enter
   await dialog.getByLabel('Browser/device (optional)').fill('  Safari on iPhone  ');
   await dialog.getByRole('button', { name: 'Send feedback', exact: true }).click();
   await expect(dialog.getByRole('status')).toContainText('sent');
-  expect(payloads).toEqual([{ category: 'confusing', message: 'I could use a clearer chart legend.', rating: 4, device: 'Safari on iPhone' }]);
+  expect(payloads).toEqual([{ category: 'confusing', message: 'I could use a clearer chart legend.', rating: 4, device: 'Safari on iPhone', 'g-recaptcha-response': 'test-captcha-token' }]);
   await dialog.getByRole('button', { name: 'Done', exact: true }).click();
   await page.getByRole('button', { name: 'Send Feedback', exact: true }).click();
   await expect(dialog.getByLabel('Browser/device (optional)')).toHaveValue('');
@@ -61,6 +72,7 @@ test('feedback validates descriptions and sends optional details only when enter
 
 test('spam trap blocks submission and an unacknowledged response never reports success', async ({ page }) => {
   let requests = 0;
+  await mockCaptcha(page);
   await page.route('https://formspree.io/f/mdeaydqy', async route => {
     requests++;
     await route.fulfill({ status: 200, contentType: 'application/json', body: '{}' });
@@ -82,6 +94,7 @@ test('spam trap blocks submission and an unacknowledged response never reports s
 });
 
 test('feedback dialog supports keyboard dismissal, accessibility and narrow enlarged text', async ({ page }) => {
+  await mockCaptcha(page);
   await page.goto('/');
   const trigger = page.getByRole('button', { name: 'Send Feedback', exact: true });
   await trigger.focus();

@@ -2,7 +2,40 @@ import { useRef, useState } from 'react';
 import type { FormEvent } from 'react';
 import shared from './App.module.css';
 import styles from './Feedback.module.css';
-import { FEEDBACK_COOLDOWN_MS, FEEDBACK_ENDPOINT, feedbackSchema } from './feedbackValidation';
+import { FEEDBACK_COOLDOWN_MS, FEEDBACK_ENDPOINT, feedbackSchema, RECAPTCHA_SITE_KEY } from './feedbackValidation';
+
+type RecaptchaApi = {
+  ready: (callback: () => void) => void;
+  execute: (siteKey: string, options: { action: string }) => Promise<string>;
+};
+
+declare global {
+  interface Window { grecaptcha?: RecaptchaApi }
+}
+
+function loadRecaptcha(): Promise<RecaptchaApi> {
+  if (window.grecaptcha) return Promise.resolve(window.grecaptcha);
+  return new Promise((resolve, reject) => {
+    const existing = document.querySelector<HTMLScriptElement>('script[data-laplora-recaptcha-v3]');
+    const script = existing ?? document.createElement('script');
+    const loaded = () => window.grecaptcha ? resolve(window.grecaptcha) : reject(new Error('CAPTCHA did not initialize'));
+    script.addEventListener('load', loaded, { once: true });
+    script.addEventListener('error', () => { script.remove(); reject(new Error('reCAPTCHA could not load')); }, { once: true });
+    if (!existing) {
+      script.src = `https://www.google.com/recaptcha/api.js?render=${encodeURIComponent(RECAPTCHA_SITE_KEY)}`;
+      script.async = true;
+      script.defer = true;
+      script.dataset.laploraRecaptchaV3 = 'true';
+      document.head.append(script);
+    }
+  });
+}
+
+async function createRecaptchaToken(): Promise<string> {
+  const api = await loadRecaptcha();
+  await new Promise<void>(resolve => api.ready(resolve));
+  return api.execute(RECAPTCHA_SITE_KEY, { action: 'feedback_submit' });
+}
 
 export function Feedback() {
   const dialog = useRef<HTMLDialogElement>(null);
@@ -38,12 +71,14 @@ export function Feedback() {
     const controller = new AbortController();
     const timeout = window.setTimeout(() => controller.abort(), 15_000);
     try {
+      const captchaToken = await createRecaptchaToken();
+      if (!captchaToken) throw new Error('reCAPTCHA did not return a token');
       const response = await fetch(FEEDBACK_ENDPOINT, {
         method: 'POST',
         credentials: 'omit',
         referrerPolicy: 'no-referrer',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(parsed.data),
+        body: JSON.stringify({ ...parsed.data, 'g-recaptcha-response': captchaToken }),
         signal: controller.signal,
       });
       const result: unknown = await response.json();
@@ -101,6 +136,7 @@ export function Feedback() {
         <label htmlFor="feedback-device">Browser/device (optional)</label>
         <input id="feedback-device" value={device} onChange={event => setDevice(event.target.value)} maxLength={120} disabled={status === 'sending'} placeholder="For example, Safari on iPhone" autoComplete="off" aria-describedby="feedback-device-help" />
         <p id="feedback-device-help" className={shared.hint}>Enter only a browser/device description. We don’t detect it automatically; please omit names and device identifiers.</p>
+        <p className={shared.hint}>This form uses invisible, score-based Google reCAPTCHA to help block spam. Google may process device and interaction information. See Google’s <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a> and <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer">Terms</a>.</p>
         <p className={shared.hint}>Your type, message, and any optional details you enter are sent to Laplora’s private Formspree inbox. Formspree and our hosting provider may process connection details such as your IP address. <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">Formspree privacy policy</a>.</p>
         {status === 'error' && <p role="alert" className={styles.error}>{error}</p>}
         <div className={styles.actions}>
