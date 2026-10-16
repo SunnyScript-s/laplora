@@ -11,11 +11,12 @@ import { ArrowIcon } from './ArrowIcon';
 import { ReferenceAtmosphere } from './ReferenceAtmosphere';
 import { Pricing } from './Pricing';
 import { Feedback } from './Feedback';
+import { BetaInfo } from './BetaInfo';
 import laploraLogo from '../assets/laplora-logo.png?inline';
 import styles from './App.module.css';
 
 type WorkspaceView = 'home' | 'setup' | 'results';
-type View = WorkspaceView | 'how' | 'pricing';
+type View = WorkspaceView | 'how' | 'pricing' | 'beta';
 export function App() {
   const [view, setView] = useState<View>('home');
   const [returnView, setReturnView] = useState<WorkspaceView>('home');
@@ -25,7 +26,7 @@ export function App() {
   const main = useRef<HTMLElement>(null);
   const previousView = useRef(view);
   useEffect(() => {
-    document.title = `Laplora — ${view === 'results' ? 'Your modeled trajectories' : view === 'setup' ? 'Your preparation plan' : view === 'how' ? 'How it works' : view === 'pricing' ? 'Laplora Pro & pricing' : 'SAT preparation, thoughtfully modeled'}`;
+    document.title = `Laplora — ${view === 'results' ? 'Your modeled trajectories' : view === 'setup' ? 'Your preparation plan' : view === 'how' ? 'How it works' : view === 'pricing' ? 'Laplora Pro & pricing' : view === 'beta' ? 'About the beta' : 'SAT preparation, thoughtfully modeled'}`;
     if (previousView.current !== view) {
       const heading = [...(main.current?.querySelectorAll('h1') ?? [])].find(element => !element.closest('[hidden]'));
       heading?.setAttribute('tabindex', '-1'); heading?.focus();
@@ -34,8 +35,8 @@ export function App() {
     previousView.current = view;
   }, [view]);
   const example = simulate({ baselineSource: 'official-practice', baselineAssessment: 'sat', baselineDate: today, mathScore: 600, readingWritingScore: 600, targetScore: 1400, targetDate: addCalendarDays(today, 84), weeklyStudyHours: 3, consistencyPercent: 70, prepHistory: 'just-starting', studyMethods: ['mistake-review'], practiceTestFrequency: 'every-four-weeks', mathSharePercent: 50 }, today);
-  const isInformationView = view === 'how' || view === 'pricing';
-  function openInformation(next: 'how' | 'pricing') {
+  const isInformationView = view === 'how' || view === 'pricing' || view === 'beta';
+  function openInformation(next: 'how' | 'pricing' | 'beta') {
     if (view === 'home' || view === 'setup' || view === 'results') setReturnView(view);
     setView(next);
   }
@@ -56,9 +57,12 @@ export function App() {
         <div className={styles.horizon} />
       </div>
       <header className={styles.header}>
+        <div className={styles.brand}>
         <button className={styles.wordmark} aria-label="Laplora home" onClick={() => setView('home')}>
           <img className={styles.logo} src={laploraLogo} width="1412" height="382" alt="" />
         </button>
+        <button className={styles.betaBadge} aria-label="About the beta" aria-current={view === 'beta' ? 'page' : undefined} onClick={() => openInformation('beta')}>Beta</button>
+        </div>
         <nav aria-label="Main navigation">
           <button className={styles.navButton} aria-current={view === 'how' ? 'page' : undefined} onClick={() => openInformation('how')}>How it works</button>
           <button className={styles.navButton} aria-current={view === 'pricing' ? 'page' : undefined} onClick={() => openInformation('pricing')}>Laplora Pro</button>
@@ -89,7 +93,7 @@ export function App() {
         </section>}
         {(view === 'setup' || (isInformationView && returnView === 'setup')) && <div hidden={view !== 'setup'}><Setup draft={draft} update={setDraft} today={today} onResult={next => { setResult(next); setView('results'); }} /></div>}
         {(view === 'results' || (isInformationView && returnView === 'results')) && result && <div hidden={view !== 'results'}><Results result={result} onEdit={() => setView('setup')} /></div>}
-        {isInformationView && <><button className={styles.textButton} onClick={() => setView(returnView)}>← Back to {returnView === 'results' ? 'results' : returnView === 'setup' ? 'your plan' : 'home'}</button>{view === 'how' ? <HowItWorks /> : <Pricing hasActivePlan={returnView !== 'home'} onUseFree={() => setView(returnView === 'home' ? 'setup' : returnView)} />}</>}
+        {isInformationView && <><button className={styles.textButton} onClick={() => setView(returnView)}>← Back to {returnView === 'results' ? 'results' : returnView === 'setup' ? 'your plan' : 'home'}</button>{view === 'how' ? <HowItWorks /> : view === 'beta' ? <BetaInfo /> : <Pricing hasActivePlan={returnView !== 'home'} onUseFree={() => setView(returnView === 'home' ? 'setup' : returnView)} />}</>}
       </main>
       <footer className={styles.footer}><span>Laplora · Preparation, in perspective.</span><span>Made by Santiago Harbison</span><Feedback /><span>Experimental simulation. Independent of College Board.</span></footer>
     </div>
