@@ -1,0 +1,27 @@
+import { describe, expect, it } from 'vitest';
+import { columns, importDataset } from '../../validation/dataset';
+import { parseCsv } from '../../validation/csv';
+import { evaluate, metrics, partition } from '../../validation/evaluate';
+import { simulate } from '../../src/model/simulate';
+function line(id = 'p_0000000000000001', overrides: Record<string, string> = {}) {
+  const values = [id, 'sat', '2026-01-01', '500', '500', 'official-practice', 'digital', 'standard', 'yes', 'sat', '2026-03-01', '540', '520', 'official-practice', 'digital', 'standard', 'yes', '2026-01-01', '4', '', '80', '50', 'mistake-review', 'every-two-weeks', 'some-preparation'];
+  return columns.map((key, i) => overrides[key] ?? values[i]).join(',');
+}
+function dataset(lines: string[]) { return importDataset(columns.join(',') + '\n' + lines.join('\n'), '2026-10-16'); }
+const ids = Array.from({ length: 250 }, (_, i) => `p_${i.toString(16).padStart(16, '0')}`);
+const evaluationId = ids.find(id => partition(id) === 'evaluation')!;
+describe('local validation', () => {
+  it('parses quoted fields, BOM, CRLF, escaped quotes and newlines', () => expect(parseCsv('\uFEFFa,b\r\n"x\ny","a""b"\r\n')).toEqual([['a', 'b'], ['x\ny', 'a"b']]));
+  it.each(['a,"b', 'a,"b"x', 'a,b"c'])('rejects malformed CSV %s', csv => expect(() => parseCsv(csv)).toThrow());
+  it('rejects duplicate headers and empty data', () => { expect(() => importDataset('x,x\n1,2', '2026-10-16')).toThrow(); expect(() => dataset([])).toThrow(); });
+  it.each([{ baseline_math: '' }, { baseline_math: '505' }, { followup_rw: '810' }, { followup_date: '2026-02-30' }, { followup_date: '2026-01-01' }, { followup_date: '2027-01-01' }, { plan_recorded_date: '2026-02-01' }, { planned_weekly_hours: 'NaN' }, { actual_weekly_hours: '-1' }, { participant_id: 'name@example.com' }, { study_methods: 'unsure;mistake-review' }])('rejects invalid records %j', overrides => expect(dataset([line(evaluationId, overrides)]).issues.length).toBeGreaterThan(0));
+  it('distinguishes missing actual hours from zero and rejects duplicate intervals', () => { expect(dataset([line()]).records[0]!.actualHours).toBeNull(); expect(dataset([line(), line()]).issues).toHaveLength(1); });
+  it('retains valid PSAT observations but excludes comparison, without conversion', () => { const d = dataset([line(evaluationId, { baseline_assessment: 'psat-10', baseline_math: '160' })]); expect(d.issues).toEqual([]); expect(evaluate(d.records).evaluatedParticipants).toBe(0); expect(d.records[0]!.input.mathScore).toBe(160); });
+  it('excludes incomparable source and repeated assessments', () => { for (const fields of [{ followup_source: 'official' }, { followup_first_attempt: 'no' }]) expect(evaluate(dataset([line(evaluationId, fields)]).records).exclusions).toHaveLength(1); });
+  it('calculates hand-checked metrics and null empty results', () => { expect(metrics([-100, 0, 50, 150])).toEqual({ n: 4, mae: 75, bias: 25, rmse: Math.sqrt(8750), medianAbsoluteError: 75, within50Percent: 50, within100Percent: 75 }); expect(metrics([])).toBeNull(); expect(() => metrics([NaN])).toThrow(); });
+  it('uses production raw endpoints at baseline date and ignores later actual hours', () => { const d = dataset([line(evaluationId)]), r = evaluate(d.records).rows[0]!, original = simulate(d.records[0]!.input, '2026-01-01'); expect(original.status).toBe('simulated'); if (original.status === 'simulated') expect(r.predictions.laplora).toEqual(original.trajectories.central.endpoint); expect(evaluate(dataset([line(evaluationId, { actual_weekly_hours: '30' })]).records).rows[0]!.predictions).toEqual(r.predictions); });
+  it('flat model has correct signed errors and inclusive range coverage', () => { const r = evaluate(dataset([line(evaluationId, { planned_weekly_hours: '0', followup_math: '500', followup_rw: '490' })]).records); expect(r.rows[0]!.errors.laplora).toEqual({ math: 0, readingWriting: 10, total: 10 }); expect(r.coveragePercent).toEqual({ math: 100, readingWriting: 0, total: 0 }); });
+  it('keeps one interval per participant and locks independent test results', () => { const d = dataset([line(evaluationId), line(evaluationId, { followup_date: '2026-04-01' })]); expect(evaluate(d.records).evaluatedParticipants).toBe(1); expect(evaluate(d.records).exclusions).toHaveLength(1); expect(() => evaluate(d.records, 'test')).toThrow(); expect(evaluate(d.records, 'test', true).selectedPartition).toBe('test'); });
+  it('fits average growth only from sufficient training participants, never evaluation or test outcomes', () => { const lines = ids.map(id => line(id)); const first = evaluate(dataset(lines).records); const changed = evaluate(dataset(ids.map(id => line(id, partition(id) === 'train' ? {} : { followup_math: '800' }))).records); expect(first.averageGrowth.fittedSectionGains).toEqual({ math: 40, readingWriting: 20, total: 60 }); expect(changed.averageGrowth).toEqual(first.averageGrowth); expect(evaluate(dataset([line(evaluationId)]).records).averageGrowth.fittedSectionGains).toBeNull(); expect(first.partitionCounts.train! + first.partitionCounts.evaluation! + first.partitionCounts.test!).toBe(250); });
+  it('suppresses small groups and empty-partition metrics', () => { expect(evaluate(dataset([line(evaluationId)]).records).groups.startingScore![0]!.metrics).toBeNull(); expect(evaluate(dataset([line(ids.find(id => partition(id) === 'train')!)]).records).metrics.laplora!.total).toBeNull(); });
+});

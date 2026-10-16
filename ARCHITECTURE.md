@@ -80,3 +80,7 @@ Unit tests cover validation, calendar behavior, score boundaries, zero effort, c
 These checks establish software behavior, not empirical prediction accuracy or complete accessibility compliance. The existing Vercel deployment and Formspree configuration are reused. Physical-device and screen-reader review, performance measurements, actual student beta feedback, and empirical model validation remain separate milestones. The public beta target is February 2, 2027.
 
 See [PROGRESS.md](PROGRESS.md) and the test reports for actual results and unresolved limits. Keep substantive model, architecture, and scope changes reviewable by the project owner. Preserve accurate commit history and the original source plan.
+
+## Local validation boundary
+
+`validation/` is a Node-only CLI, bundled with the existing Vite toolchain. CSV parsing and baseline input validation feed the unchanged production simulator. Participant-hashed partitions isolate training-only average gains from evaluation and independent test outcomes. Results are private JSON files; no frontend imports, endpoints, persistence or network calls are added. See [validation methodology](validation/README.md). The production build and Vercel upload exclude private validation data.
