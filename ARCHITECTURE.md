@@ -84,3 +84,5 @@ See [PROGRESS.md](PROGRESS.md) and the test reports for actual results and unres
 ## Local validation boundary
 
 `validation/` is a Node-only CLI, bundled with the existing Vite toolchain. CSV parsing and baseline input validation feed the unchanged production simulator. Participant-hashed partitions isolate training-only average gains from evaluation and independent test outcomes. Results are private JSON files; no frontend imports, endpoints, persistence or network calls are added. See [validation methodology](validation/README.md). The production build and Vercel upload exclude private validation data.
+
+Phase 3 adds a pure report renderer fed by the same in-memory evaluation as JSON. Shared aggregate tables generate Markdown and a self-contained, script-free HTML dashboard with SVG charts. The CLI writes private, exclusively created report files on request. No report data enters React, public assets or deployment uploads.

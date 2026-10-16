@@ -123,4 +123,4 @@ See [validation/README.md](validation/README.md) for the CSV schema, privacy req
 npm run validate:model -- --input validation/fixtures/synthetic.csv --as-of 2026-10-16 --data-kind synthetic --out validation/output/demo.json
 ```
 
-Use a new output filename for every run. Real datasets and results belong outside the repository. This local tool does not change the website or validate predictive accuracy. Phase 3 charts and reports remain pending approval.
+Use a new output filename for every run. Real datasets and results belong outside the repository. This local tool does not change the website or validate predictive accuracy. Phase 3 adds offline charts and Markdown reports with `--report-dir validation/output/review` (choose a new directory). See the validation guide for private handling and usage.
