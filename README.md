@@ -18,9 +18,13 @@ The display typeface is **Disket Mono**. Its Regular/Bold webfonts serve brandin
 
 ## Anonymous feedback
 
-The footer’s **Send Feedback** button opens an in-page form with only a feedback type and message. It sends those two fields directly to the owner-selected Formspree endpoint `https://formspree.io/f/mdeaydqy` after an explicit submission. No email, name, scores, study plans, page URL, cookies, or diagnostic attachments are added. Visitors are asked not to include personal information or actual scores in their message. Formspree and hosting infrastructure may process IP addresses and other connection metadata.
+The **Beta** badge beside the logo opens guidance on using Laplora, interpreting experimental results, sharing useful feedback, and privacy. The beta page preserves the current setup/results state when visited through in-app navigation.
 
-Review submissions privately in the Formspree dashboard. Manage retention, deletion, spam settings, and quotas there. The form retains failed drafts in tab memory and confirms success only after Formspree acknowledges receipt. Live provider delivery and inbox receipt are separate from the browser tests, which mock provider responses. The standalone preview also needs an internet connection to send feedback.
+The footer’s **Send Feedback** button opens a form with four categories (Bug Report, Feature Suggestion, Confusing Experience, General Feedback), a description, optional 1–5 usefulness rating, and optional manually entered browser/device text. It sends only those selected fields to the owner-provided Formspree endpoint `https://formspree.io/f/mdeaydqy`. No account, name, email, scores, study plan, page URL, cookies, or automatic device diagnostics are attached. Visitors are asked to omit personal information and actual scores. Formspree and Vercel may process connection metadata such as IP addresses.
+
+Review submissions in the private Formspree dashboard. The endpoint is public configuration in `src/app/feedbackValidation.ts`, not an API key. Manage spam settings, allowed domains, retention/deletion, and quotas in Formspree; no new provider account or paid service is required. The UI validates categories, trimmed message length (10–2,000), rating (1–5), and device text (up to 120). A hidden trap, pending-submit lock, and 30-second in-tab cooldown after success discourage basic spam; these client-side measures can be bypassed and do not replace Formspree’s service-side controls.
+
+Failed drafts remain in tab memory; success requires Formspree’s JSON acknowledgment. Provider responses are mocked in automated tests, so the owner should confirm an actual message in the dashboard before inviting testers. The downloadable preview needs internet access to send feedback. See [Phase 1 review and beta checklist](docs/BETA_PHASE_ONE.md). Phase 2 validation work awaits explicit approval.
 
 ## Laplora Pro and pricing
 
@@ -72,7 +76,7 @@ npm test
 PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npm run verify
 ```
 
-Unit tests verify engine contracts and structural behavior, including a 2,160-profile stress grid. Browser tests cover setup/results/comparison flows, validation, keyboard chart exploration, data consistency, in-memory privacy, reduced motion, automated accessibility scans, and 320px/200% text reflow. The default suite runs 30 desktop/mobile Chromium cases. Optional cross-browser projects add Firefox desktop and WebKit desktop/mobile (75 total runs). These checks do not establish prediction accuracy or full accessibility compliance. GitHub Actions is configured for all three engines and runs one browser worker at a time to avoid resource contention on shared runners. Local runs default to two workers. See [workflow runs](https://github.com/SunnyScript-s/laplora/actions) for current remote verification status.
+Unit tests verify engine contracts and structural behavior, including a 2,160-profile stress grid. Browser tests cover setup/results/comparison flows, validation, keyboard chart exploration, data consistency, in-memory privacy, reduced motion, automated accessibility scans, and 320px/200% text reflow. The default suite runs 38 desktop/mobile Chromium cases. Optional cross-browser projects add Firefox desktop and WebKit desktop/mobile (95 total runs). These checks do not establish prediction accuracy or full accessibility compliance. GitHub Actions is configured for all three engines and runs one browser worker at a time to avoid resource contention on shared runners. Local runs default to two workers. See [workflow runs](https://github.com/SunnyScript-s/laplora/actions) for current remote verification status.
 
 On a machine with browser dependencies installed:
 

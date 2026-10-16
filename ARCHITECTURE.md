@@ -61,9 +61,9 @@ See the [model specification](docs/MODEL_SPECIFICATION.md), [simulation rules](d
 
 ## Interface and privacy
 
-View state handles landing, guided setup, results, How It Works, and pricing. Both informational views keep the active setup/results component mounted but hidden, preserving step and comparison state while students browse. Draft inputs and comparison state survive in-app navigation; browser Back does not navigate individual form steps. Refresh clears all entered data. Reset asks before discarding entered work.
+View state handles landing, guided setup, results, How It Works, pricing, and beta information. All informational views keep the active setup/results component mounted but hidden, preserving step and comparison state while students browse. Draft inputs and comparison state survive in-app navigation; browser Back does not navigate individual form steps. Refresh clears all entered data. Reset asks before discarding entered work.
 
-The app uses no accounts, database, score telemetry, or server-side student records. Inputs are not placed in URLs. The owner approved optional anonymous feedback collection through Formspree. The separate Feedback component receives no simulator state and transmits only the user-entered category/message on submission. It omits cookies and referrer information; Formspree may still process network metadata. Other future persistence or account features need a separate privacy and product decision.
+The app uses no accounts, database, score telemetry, or server-side student records. Inputs are not placed in URLs. The owner approved optional anonymous feedback collection through Formspree. The separate Feedback component receives no simulator state and transmits only the user-entered category/message and explicitly chosen optional usefulness rating or device description on submission. A strict Zod payload schema rejects unexpected fields; no device details are detected automatically. It omits cookies and referrer information; Formspree may still process network metadata. Other future persistence or account features need a separate privacy and product decision.
 
 The current design uses orange/amber glass artwork, Disket Mono display type, and Manrope body text. SVG charts have keyboard timeline exploration and a table alternative. Semantic controls, field errors, visible focus, and system reduced-motion support are shared requirements. The small footer credit identifies the project owner.
 
@@ -77,6 +77,6 @@ Future authenticated services can reference these IDs for saved plans, practice 
 
 Unit tests cover validation, calendar behavior, score boundaries, zero effort, ceilings, section-total consistency, and scenario behavior, including a 2,160-profile stress grid. Browser tests cover the guided flow, comparisons, input errors, privacy behavior, keyboard interaction, motion preferences, automated accessibility scans, and enlarged-text reflow.
 
-These checks establish software behavior, not empirical prediction accuracy or complete accessibility compliance. Physical-device and screen-reader review, performance measurements, student beta feedback, feedback-storage decisions, and deployment remain separate milestones. The public beta target is February 2, 2027.
+These checks establish software behavior, not empirical prediction accuracy or complete accessibility compliance. The existing Vercel deployment and Formspree configuration are reused. Physical-device and screen-reader review, performance measurements, actual student beta feedback, and empirical model validation remain separate milestones. The public beta target is February 2, 2027.
 
 See [PROGRESS.md](PROGRESS.md) and the test reports for actual results and unresolved limits. Keep substantive model, architecture, and scope changes reviewable by the project owner. Preserve accurate commit history and the original source plan.

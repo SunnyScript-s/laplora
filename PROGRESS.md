@@ -1,5 +1,15 @@
 # Laplora progress
 
+## October 15, 2026 — Phase 1 beta review branch
+
+- Scoped the owner's 16-part beta/model-validation goal to Phase 1 only after the explicit follow-up. Created feat/beta-phase-one from d7a0100. Phase 2 evaluation/data/report work is not started; approval is required before continuing or merging this review branch into production.
+- Added a subtle Beta badge near the existing logo and a matching information view covering usage, limitations, useful feedback, future validation, independence, and privacy. Setup and result/comparison state survive navigation among beta, pricing, and How It Works.
+- Extended the existing owner-provided Formspree form with all four categories, optional 1–5 usefulness rating, and optional user-entered device/browser text. Added strict payload validation, a hidden spam trap, and an in-tab post-success cooldown; retained timeout/error recovery, anonymous defaults, and no automatic diagnostic/score attachments. Provider-side spam controls and actual inbox receipt still need owner review; tests use mocked responses.
+- Initial targeted tests found the Browser/device label overflowing at 320px with 200% text. Added wrapping and reran the complete configured verification command: TypeScript, production build, all 138 unit tests, and all 38 Chromium desktop/mobile cases passed. No tests skipped. The 95-case optional full browser matrix was not rerun for this checkpoint.
+- Regenerated the standalone preview and reviewed desktop/mobile captures in docs/design/beta-*.png. The existing non-failing bundle-size advisory remains. Physical-device/screen-reader checks remain separate from automation.
+- Confirmed src/model and src/domain are byte-unchanged against d7a0100; the original DEVELOPMENT_PLAN.md SHA-256 remains f3890fc7a12a57ce7accb2ccff081a3a98b4caad7434741afdea440fae061af7. No dependencies, coefficients, real student datasets, public research claims, or paid services were introduced.
+- Updated README, architecture, contributor scope, product privacy guidance, and docs/BETA_PHASE_ONE.md with review/configuration/retention considerations. Production promotion remains outside this Phase 1 review checkpoint.
+
 ## October 15, 2026 — page-bottom clipping and spacing
 
 - Reproduced an abrupt lower edge in the fixed-height decorative SVG behind the desktop footer. Added a transparent fade at the artwork’s lower edge so it blends into the page background.

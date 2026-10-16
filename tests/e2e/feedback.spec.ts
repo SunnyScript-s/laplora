@@ -15,7 +15,9 @@ test('anonymous feedback sends only explicit fields, keeps failed drafts, and pr
   await page.getByRole('button', { name: 'Send Feedback', exact: true }).click();
   const dialog = page.getByRole('dialog', { name: 'Send feedback' });
   await expect(dialog).toBeVisible();
-  await expect(dialog.locator('input')).toHaveCount(0);
+  await expect(dialog.locator('input[type="email"]')).toHaveCount(0);
+  await expect(dialog.getByLabel('Browser/device (optional)')).toHaveValue('');
+  await expect(dialog.getByLabel('Usefulness rating (optional)')).toHaveValue('');
   await dialog.getByLabel('Your message').fill('The chart is difficult to read on my phone.');
   await dialog.getByRole('button', { name: 'Send feedback', exact: true }).click();
   await expect(dialog.getByRole('alert')).toContainText('couldn’t confirm delivery');
@@ -25,6 +27,58 @@ test('anonymous feedback sends only explicit fields, keeps failed drafts, and pr
   expect(payloads).toEqual(Array(2).fill({ category: 'issue', message: 'The chart is difficult to read on my phone.' }));
   await dialog.getByRole('button', { name: 'Done', exact: true }).click();
   await expect(page.getByLabel('Math section score', { exact: true })).toHaveValue('610');
+});
+
+test('feedback validates descriptions and sends optional details only when entered', async ({ page }) => {
+  const payloads: unknown[] = [];
+  await page.route('https://formspree.io/f/mdeaydqy', async route => {
+    payloads.push(route.request().postDataJSON());
+    await route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ ok: true }) });
+  });
+  await page.goto('/');
+  await page.getByRole('button', { name: 'Send Feedback', exact: true }).click();
+  const dialog = page.getByRole('dialog');
+  await dialog.getByLabel('Your message').fill('            ');
+  await dialog.getByRole('button', { name: 'Send feedback', exact: true }).click();
+  await expect(dialog.getByRole('alert')).toContainText('at least 10 characters');
+  expect(payloads).toEqual([]);
+  await dialog.getByLabel('Feedback type').selectOption('confusing');
+  await dialog.getByLabel('Your message').fill('  I could use a clearer chart legend.  ');
+  await dialog.getByLabel('Usefulness rating (optional)').selectOption('4');
+  await dialog.getByLabel('Browser/device (optional)').fill('  Safari on iPhone  ');
+  await dialog.getByRole('button', { name: 'Send feedback', exact: true }).click();
+  await expect(dialog.getByRole('status')).toContainText('sent');
+  expect(payloads).toEqual([{ category: 'confusing', message: 'I could use a clearer chart legend.', rating: 4, device: 'Safari on iPhone' }]);
+  await dialog.getByRole('button', { name: 'Done', exact: true }).click();
+  await page.getByRole('button', { name: 'Send Feedback', exact: true }).click();
+  await expect(dialog.getByLabel('Browser/device (optional)')).toHaveValue('');
+  await expect(dialog.getByLabel('Usefulness rating (optional)')).toHaveValue('');
+  await dialog.getByLabel('Your message').fill('Another suggestion too soon after the last.');
+  await dialog.getByRole('button', { name: 'Send feedback', exact: true }).click();
+  await expect(dialog.getByRole('alert')).toContainText('wait 30 seconds');
+  expect(payloads).toHaveLength(1);
+});
+
+test('spam trap blocks submission and an unacknowledged response never reports success', async ({ page }) => {
+  let requests = 0;
+  await page.route('https://formspree.io/f/mdeaydqy', async route => {
+    requests++;
+    await route.fulfill({ status: 200, contentType: 'application/json', body: '{}' });
+  });
+  await page.goto('/');
+  await page.getByRole('button', { name: 'Send Feedback', exact: true }).click();
+  const dialog = page.getByRole('dialog');
+  await dialog.getByLabel('Your message').fill('A valid description of an interface issue.');
+  await dialog.locator('[name="_gotcha"]').fill('spam', { force: true });
+  await dialog.getByRole('button', { name: 'Send feedback', exact: true }).click();
+  await expect(dialog.getByRole('alert')).toContainText('Unable to submit');
+  expect(requests).toBe(0);
+  await dialog.locator('[name="_gotcha"]').fill('', { force: true });
+  await dialog.getByRole('button', { name: 'Send feedback', exact: true }).click();
+  await expect(dialog.getByRole('alert')).toContainText('couldn’t confirm delivery');
+  await expect(dialog.getByRole('status')).toHaveCount(0);
+  await expect(dialog.getByLabel('Your message')).toHaveValue('A valid description of an interface issue.');
+  expect(requests).toBe(1);
 });
 
 test('feedback dialog supports keyboard dismissal, accessibility and narrow enlarged text', async ({ page }) => {
