@@ -135,7 +135,7 @@ export function Setup({ draft, update, today, onResult }: { draft: Draft; update
             {errors.find(e => e.field === 'studyMethods') && <p id="studyMethods-error" className={styles.error}>{errors.find(e => e.field === 'studyMethods')?.message}</p>}
           </fieldset>
           <section className={styles.planner} aria-labelledby="planner-title">
-            <h2 id="planner-title">Build a study week with Python</h2>
+            <h2 id="planner-title">Build a study week</h2>
             <p className={styles.hint}>Choose the days that usually work for you. Laplora will organize your weekly time into a flexible four-week schedule.</p>
             <fieldset className={styles.dayChoices}><legend>Available days</legend>
               {plannerDays.map(day => <label key={day}><input type="checkbox" checked={availableDays.includes(day)} onChange={event => setAvailableDays(current => event.target.checked ? [...current, day] : current.filter(value => value !== day))} />{day.slice(0, 3)}</label>)}
