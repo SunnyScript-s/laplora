@@ -72,7 +72,6 @@ export function App() {
       <main id="main" tabIndex={-1} ref={main} className={styles.main}>
         {view === 'home' && <section className={`${styles.hero} ${styles.enter}`}>
           <div className={styles.heroCopy}>
-            <p className={styles.eyebrow}><span className={styles.smallDot} /> A little clarity for the journey ahead</p>
             <h1>A clearer view of your <span>SAT journey.</span></h1>
             <p className={styles.heroDescription}>Explore how different preparation plans could shape possible score growth—with transparent assumptions and room for uncertainty.</p>
             <button className={styles.primary} onClick={() => setView('setup')}>Explore your preparation <span aria-hidden="true">→</span></button>
