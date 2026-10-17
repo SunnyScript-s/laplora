@@ -75,6 +75,10 @@
 .methods legend { font-weight: 650; font-size: .85rem; }
 .methods label { display: flex; align-items: center; gap: .65rem; font-size: .85rem; min-height: 40px; cursor: pointer; line-height: 1.5; }
 .methods input { width: 18px; height: 18px; flex-shrink: 0; accent-color: var(--color-accent); }
+.consistencyGroup { min-width: 0; }
+.consistencyHelp { margin-top: .35rem; color: var(--color-muted); font-size: .75rem; line-height: 1.7; }
+.consistencyHelp summary { display: list-item; width: fit-content; color: var(--color-accent); cursor: pointer; font-weight: 650; }
+.consistencyHelp p { margin: .55rem 0; }
 .planner { border: 1px solid var(--color-border); background: #fffaf4c9; border-radius: 14px; padding: clamp(1rem, 3vw, 1.5rem); margin-block: 2rem; }
 .planner h2 { margin: 0 0 .5rem; font-size: 1.1rem; }
 .planner h3 { margin: 1.2rem 0 .25rem; font-size: 1rem; }
@@ -86,6 +90,7 @@
 .schedule details { border-top: 1px solid var(--color-border); padding: .75rem 0; font-size: .8rem; }
 .schedule summary { cursor: pointer; font-weight: 650; }
 .schedule ul { padding-left: 1.2rem; line-height: 1.7; }
+.subjectBreakdown { margin: .85rem 0; color: var(--color-muted); line-height: 1.7; }
 .plannerPrivacy, .plannerError { margin: 1rem 0 0; color: var(--color-muted); font-size: .7rem; line-height: 1.7; }
 .plannerError { color: #942e35; font-size: .8rem; }
 .reviewRow { display: flex; gap: 1.5rem; align-items: start; justify-content: space-between; padding: 1.2rem 0; border-bottom: 1px solid var(--color-border); }

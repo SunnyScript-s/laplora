@@ -5,7 +5,7 @@ import { validateInput } from '../domain/inputs';
 import type { InputError } from '../domain/inputs';
 import { simulate } from '../model/simulate';
 import type { SimulatedResult } from '../model/simulate';
-import { requestStudyPlan, plannerDays } from './studyPlanner';
+import { coveredWeeks, formatStudyDuration, requestStudyPlan, plannerDays } from './studyPlanner';
 import type { PlannerDay, StudyPlan } from './studyPlanner';
 import { Field, NumberField, controlProps } from './Fields';
 import { assessmentLabels, candidate, formatDate, frequencyLabels, friendlyErrors, historyLabels, methodLabels, stepErrors } from './form';
@@ -22,12 +22,21 @@ export function Setup({ draft, update, today, onResult }: { draft: Draft; update
   const [studyPlan, setStudyPlan] = useState<StudyPlan | null>(null);
   const [plannerError, setPlannerError] = useState('');
   const [planning, setPlanning] = useState(false);
+  const plannerRequestId = useRef(0);
   const heading = useRef<HTMLHeadingElement>(null);
   const form = useRef<HTMLFormElement>(null);
   useEffect(() => { heading.current?.focus(); }, [step]);
+  useEffect(() => {
+    // An older response must not redraw a schedule after its inputs change.
+    plannerRequestId.current += 1;
+    setStudyPlan(null);
+    setPlannerError('');
+    setPlanning(false);
+  }, [draft.weeklyStudyHours, draft.studyMethods, draft.practiceTestFrequency, draft.mathSharePercent, availableDays]);
   function move(next: number) { setErrors([]); setBaselineMessage(''); setStep(next); }
   async function buildStudyPlan() {
     if (!availableDays.length) { setPlannerError('Choose at least one day that works for you.'); return; }
+    const requestId = ++plannerRequestId.current;
     setPlanning(true); setPlannerError(''); setStudyPlan(null);
     try {
       // Only these schedule preferences are sent. Score and target fields are intentionally excluded.
@@ -38,10 +47,10 @@ export function Setup({ draft, update, today, onResult }: { draft: Draft; update
         practiceTestFrequency: draft.practiceTestFrequency,
         mathSharePercent: Number(draft.mathSharePercent),
       });
-      setStudyPlan(result);
+      if (requestId === plannerRequestId.current) setStudyPlan(result);
     } catch (error) {
-      setPlannerError(error instanceof Error ? error.message : 'We could not build your plan. Please try again.');
-    } finally { setPlanning(false); }
+      if (requestId === plannerRequestId.current) setPlannerError(error instanceof Error ? error.message : 'We could not build your plan. Please try again.');
+    } finally { if (requestId === plannerRequestId.current) setPlanning(false); }
   }
   function fail(nextErrors: InputError[]) {
     setErrors(nextErrors);
@@ -123,7 +132,14 @@ export function Setup({ draft, update, today, onResult }: { draft: Draft; update
         {step === 2 && <>
           <div className={styles.fields}>
             <NumberField field="weeklyStudyHours" draft={draft} update={update} errors={errors} min={0} max={40} step={0.25} hint="0–40 hours, in quarter-hour increments. Include tests and review." />
-            <NumberField field="consistencyPercent" draft={draft} update={update} errors={errors} min={0} max={100} step={1} hint="75% means following roughly three quarters of your planned preparation." />
+            <div className={styles.consistencyGroup}>
+              <NumberField field="consistencyPercent" draft={draft} update={update} errors={errors} min={0} max={100} step={1} hint="How much of your planned study time you expect to complete." />
+              <details className={styles.consistencyHelp}>
+                <summary>How do I choose my consistency?</summary>
+                <p>Think of this as the percentage of your planned study time you expect to actually complete most weeks. Enter planned hours in the Weekly study hours field, then use consistency for missed or shortened sessions.</p>
+                <p>For example, if you plan 6 hours each week and usually complete about 4½ hours, enter <strong>75%</strong>. If you typically finish about half your plan, enter <strong>50%</strong>. Choose a realistic average through your test date, allowing for school, activities, and breaks. It is not a measure of motivation or your chance of reaching a score.</p>
+              </details>
+            </div>
             <Field field="prepHistory" errors={errors}><select {...controlProps('prepHistory', errors)} value={draft.prepHistory} onChange={e => update({ ...draft, prepHistory: e.target.value as Draft['prepHistory'] })}>{Object.entries(historyLabels).map(([value, name]) => <option key={value} value={value}>{name}</option>)}</select></Field>
             <Field field="practiceTestFrequency" errors={errors}><select {...controlProps('practiceTestFrequency', errors)} value={draft.practiceTestFrequency} onChange={e => update({ ...draft, practiceTestFrequency: e.target.value as Draft['practiceTestFrequency'] })}>{Object.entries(frequencyLabels).map(([value, name]) => <option key={value} value={value}>{name}</option>)}</select></Field>
           </div>
@@ -134,27 +150,28 @@ export function Setup({ draft, update, today, onResult }: { draft: Draft; update
             }} />{name}</label>)}
             {errors.find(e => e.field === 'studyMethods') && <p id="studyMethods-error" className={styles.error}>{errors.find(e => e.field === 'studyMethods')?.message}</p>}
           </fieldset>
+          <p className={styles.callout}>History, methods, and test frequency provide context. This experimental model gives them no separate score bonuses.</p>
+          <details><summary>Section allocation · {draft.mathSharePercent}% Math</summary><p className={styles.hint}>Default: half of your study time to each section.</p><NumberField field="mathSharePercent" draft={draft} update={update} errors={errors} min={0} max={100} step={1} hint="The remaining percentage goes to Reading & Writing." /></details>
           <section className={styles.planner} aria-labelledby="planner-title">
             <h2 id="planner-title">Build a study week</h2>
-            <p className={styles.hint}>Choose the days that usually work for you. Laplora will organize your weekly time into a flexible four-week schedule.</p>
+            <p className={styles.hint}>Set your section allocation above, then choose the days that usually work for you. Laplora will show each distinct weekly schedule once.</p>
             <fieldset className={styles.dayChoices}><legend>Available days</legend>
               {plannerDays.map(day => <label key={day}><input type="checkbox" checked={availableDays.includes(day)} onChange={event => setAvailableDays(current => event.target.checked ? [...current, day] : current.filter(value => value !== day))} />{day.slice(0, 3)}</label>)}
             </fieldset>
             <button type="button" className={styles.secondary} onClick={() => void buildStudyPlan()} disabled={planning || draft.studyMethods.length === 0}>{planning ? 'Building your plan…' : 'Build my study week'}</button>
             {plannerError && <p className={styles.plannerError} role="alert">{plannerError}</p>}
             {studyPlan && <div className={styles.schedule} aria-live="polite">
-              <h3>Your four-week schedule</h3>
-              <p className={styles.hint}>{(studyPlan.weeklyMinutes / 60).toLocaleString()} hours each week · adjust any session to fit your life</p>
-              {studyPlan.weeks.map(week => <details key={week.week} open={week.week === 1}>
-                <summary>Week {week.week} · {Math.floor(week.totalMinutes / 60)} hr {week.totalMinutes % 60 ? `${week.totalMinutes % 60} min` : ''}</summary>
-                {week.sessions.length ? <ul>{week.sessions.map(session => <li key={session.day}><strong>{session.day} · {Math.floor(session.durationMinutes / 60)} hr {session.durationMinutes % 60 ? `${session.durationMinutes % 60} min` : ''}</strong><ul>{session.activities.map((activity, index) => <li key={`${activity.method}-${index}`}>{activity.durationMinutes} min · {activity.focus} · {activity.method}</li>)}</ul></li>)}</ul> : <p>No study hours entered for this week.</p>}
+              <h3>Your study schedule</h3>
+              <p className={styles.hint}>{formatStudyDuration(studyPlan.weeklyMinutes)} each week · adjust any session to fit your life. Reuse each schedule for the weeks listed below.</p>
+              {studyPlan.plans.map((plan, index) => <details key={plan.appliesToWeeks.join('-')} open={index === 0}>
+                <summary>{coveredWeeks(plan.appliesToWeeks)} · {formatStudyDuration(plan.totalMinutes)}</summary>
+                <p className={styles.subjectBreakdown}><strong>Math study:</strong> {formatStudyDuration(plan.mathMinutes)} · <strong>Reading & Writing study:</strong> {formatStudyDuration(plan.readingWritingMinutes)}{plan.practiceTestMinutes > 0 && <> · <strong>Full-length test:</strong> {formatStudyDuration(plan.practiceTestMinutes)}</>}</p>
+                {plan.sessions.length ? <ul>{plan.sessions.map(session => <li key={session.day}><strong>{session.day} · {formatStudyDuration(session.durationMinutes)}</strong><ul>{session.activities.map((activity, activityIndex) => <li key={`${activity.method}-${activityIndex}`}>{formatStudyDuration(activity.durationMinutes)} · {activity.method}{activity.kind === 'practice' && <> · Math {formatStudyDuration(activity.mathMinutes)} · Reading & Writing {formatStudyDuration(activity.readingWritingMinutes)}</>}</li>)}</ul></li>)}</ul> : <p>No study hours entered for this week.</p>}
               </details>)}
               {studyPlan.notes.map(note => <p className={styles.hint} key={note}>{note}</p>)}
             </div>}
             <p className={styles.plannerPrivacy}>Only weekly hours, available days, chosen methods, test frequency, and section allocation are sent to the scheduler. It never receives SAT scores, goals, dates, consistency, or preparation history. The request and schedule are not saved and clear when you refresh this tab. Vercel may process connection metadata; see its <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">privacy policy</a>.</p>
           </section>
-          <p className={styles.callout}>History, methods, and test frequency provide context. This experimental model gives them no separate score bonuses.</p>
-          <details><summary>Section allocation · {draft.mathSharePercent}% Math</summary><p className={styles.hint}>Default: half of your study time to each section.</p><NumberField field="mathSharePercent" draft={draft} update={update} errors={errors} min={0} max={100} step={1} hint="The remaining percentage goes to Reading & Writing." /></details>
         </>}
         {step === 3 && <>
           <div className={styles.reviewRow}><div><h2>Baseline</h2><p>{assessmentLabels[draft.baselineAssessment]} · {draft.baselineSource === 'official' ? 'Official administration' : 'Official full-length practice'} · {formatDate(draft.baselineDate)}</p><p>Math {draft.mathScore} · Reading & Writing {draft.readingWritingScore}</p></div><button type="button" className={styles.textButton} onClick={() => move(0)}>Edit baseline</button></div>
