@@ -10,18 +10,38 @@ export type StudyPlannerRequest = {
   mathSharePercent: number;
 };
 export type StudyPlan = {
-  weeks: Array<{
-    week: number;
+  plans: Array<{
+    appliesToWeeks: number[];
     totalMinutes: number;
+    mathMinutes: number;
+    readingWritingMinutes: number;
+    practiceTestMinutes: number;
     sessions: Array<{
       day: PlannerDay;
       durationMinutes: number;
-      activities: Array<{ durationMinutes: number; focus: string; method: string }>;
+      activities: Array<{
+        kind: 'practice' | 'test';
+        durationMinutes: number;
+        focus: string;
+        method: string;
+        mathMinutes: number;
+        readingWritingMinutes: number;
+      }>;
     }>;
   }>;
   weeklyMinutes: number;
   notes: string[];
 };
+
+export function formatStudyDuration(minutes: number) {
+  const hours = Math.floor(minutes / 60);
+  const rest = minutes % 60;
+  return hours ? `${hours} hr${rest ? ` ${rest} min` : ''}` : `${rest} min`;
+}
+
+export function coveredWeeks(weeks: number[]) {
+  return `${weeks.length === 1 ? 'Week' : 'Weeks'} ${weeks.join(', ')}`;
+}
 
 export async function requestStudyPlan(input: StudyPlannerRequest): Promise<StudyPlan> {
   const response = await fetch('/api/study_plan', {

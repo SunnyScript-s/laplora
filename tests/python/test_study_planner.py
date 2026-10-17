@@ -21,18 +21,42 @@ def preferences(**overrides):
 
 
 class StudyPlannerTests(unittest.TestCase):
-    def test_builds_four_weeks_and_budgets_a_practice_test(self):
-        plan = build_plan(preferences())
-        self.assertEqual(len(plan["weeks"]), 4)
-        self.assertEqual([week["totalMinutes"] for week in plan["weeks"]], [180] * 4)
-        week_one = plan["weeks"][0]
+    def test_groups_repeated_weeks_and_budgets_a_practice_test(self):
+        plan = build_plan(preferences(mathSharePercent=35))
+        self.assertEqual(len(plan["plans"]), 2)
+        week_one, regular_weeks = plan["plans"]
+        self.assertEqual(week_one["appliesToWeeks"], [1])
+        self.assertEqual(regular_weeks["appliesToWeeks"], [2, 3, 4])
+        self.assertEqual((week_one["mathMinutes"], week_one["readingWritingMinutes"], week_one["practiceTestMinutes"]), (16, 29, 135))
+        self.assertEqual((regular_weeks["mathMinutes"], regular_weeks["readingWritingMinutes"], regular_weeks["practiceTestMinutes"]), (63, 117, 0))
         activities = [activity for day in week_one["sessions"] for activity in day["activities"]]
         self.assertIn("Full SAT practice test and brief reflection", [item["focus"] for item in activities])
         self.assertEqual(sum(day["durationMinutes"] for day in week_one["sessions"]), 180)
+        for week in plan["plans"]:
+            self.assertEqual(sum(week[key] for key in ("mathMinutes", "readingWritingMinutes", "practiceTestMinutes")), 180)
+            self.assertEqual(sum(activity["durationMinutes"] for day in week["sessions"] for activity in day["activities"]), 180)
+
+    def test_only_distinct_week_patterns_are_returned(self):
+        cases = {
+            "none": [[1, 2, 3, 4]],
+            "weekly": [[1, 2, 3, 4]],
+            "every-two-weeks": [[1, 3], [2, 4]],
+            "every-four-weeks": [[1], [2, 3, 4]],
+        }
+        for frequency, expected in cases.items():
+            with self.subTest(frequency=frequency):
+                plan = build_plan(preferences(practiceTestFrequency=frequency))
+                self.assertEqual([week["appliesToWeeks"] for week in plan["plans"]], expected)
+
+    def test_allocation_edges_use_only_the_selected_section(self):
+        for percent, expected in ((0, (0, 180)), (100, (180, 0))):
+            with self.subTest(percent=percent):
+                plan = build_plan(preferences(mathSharePercent=percent, practiceTestFrequency="none"))
+                self.assertEqual((plan["plans"][0]["mathMinutes"], plan["plans"][0]["readingWritingMinutes"]), expected)
 
     def test_unsure_methods_get_a_practical_default_and_note(self):
         plan = build_plan(preferences(studyMethods=["unsure"], practiceTestFrequency="none"))
-        methods = {activity["method"] for day in plan["weeks"][0]["sessions"] for activity in day["activities"]}
+        methods = {activity["method"] for day in plan["plans"][0]["sessions"] for activity in day["activities"]}
         self.assertEqual(methods, {"Targeted questions and skill practice", "Review missed and uncertain questions"})
         self.assertTrue(any("not sure" in note.lower() for note in plan["notes"]))
 
@@ -82,7 +106,7 @@ class StudyPlannerHttpTests(unittest.TestCase):
         data = json.loads(response.read())
         self.assertEqual(response.status, 200)
         self.assertEqual(response.headers["Cache-Control"], "no-store, max-age=0")
-        self.assertEqual(len(data["weeks"]), 4)
+        self.assertEqual([week["appliesToWeeks"] for week in data["plans"]], [[1], [2, 3, 4]])
 
     def test_http_endpoint_rejects_score_payloads(self):
         response = self.post(preferences(mathScore=600))
