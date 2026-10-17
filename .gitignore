@@ -8,6 +8,8 @@ playwright-report/
 !.env.example
 .DS_Store
 .vercel
+__pycache__/
+*.py[cod]
 
 # Local validation data/results must never be committed.
 validation/data/

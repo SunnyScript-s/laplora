@@ -645,3 +645,7 @@ Write one clear answer to:
 > 
 
 Then research the SAT score system and begin defining the inputs the model actually needs.
+
+## Founder-approved Python planner scope update — October 17, 2026
+
+The founder approved a narrow addition to the privacy scope: use a stateless Python API to turn weekly study preferences into a flexible four-week calendar. The endpoint receives weekly hours, available days, selected study methods, practice-test frequency, and Math allocation only. It must reject scores, goals, dates, consistency, and preparation history. The request and generated calendar are not stored or logged and remain transient in the user's tab. This does not change the mathematical score model, create accounts, or collect student results. See [the study planner specification](docs/STUDY_PLANNER.md).

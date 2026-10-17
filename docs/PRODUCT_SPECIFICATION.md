@@ -74,7 +74,8 @@ The free simulation and existing current-plan-versus-one-alternative comparison 
 
 - Run V1 calculations in the browser; keep scores in memory by default.
 - Do not request names, school, income, GPA, intelligence ratings, or college lists.
-- Do not send student inputs through analytics, URLs, or a server.
+- Do not send scores, goals, test dates, consistency, or preparation history through analytics, URLs, or the server.
+- Approved October 17, 2026 scope update: the optional Python study planner may receive only weekly study hours, selected weekdays, study methods, practice-test frequency, and section allocation to construct a transient four-week schedule. Strictly reject other fields; do not log or persist request data or the generated plan. Explain this exception before the user sends it.
 - Do not add accounts, a database, or paid APIs without an approved need.
 - The owner approved anonymous feedback through Formspree on October 15, 2026. Collect a user-entered category/message, optionally a 1–5 usefulness rating and manually entered browser/device description, with no requested identifiers or score attachments; disclose third-party processing. Other storage/privacy changes need a separate decision.
 - Place experimental-model wording near results and explain independence from College Board.

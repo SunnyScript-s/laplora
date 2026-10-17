@@ -51,6 +51,8 @@ npm ci
 npm run dev
 ```
 
+The optional Python study planner needs the API running in a second terminal (`npm run dev:api`, Python 3.12). Vite proxies `/api` requests to it. Python uses only the standard library; there is no database or environment configuration.
+
 The development server listens on port 5173 on all interfaces for preview access and fails clearly if that port is occupied. Keep it running while viewing the app; live processes do not survive a cloud snapshot. `npm run preview` serves the production build on loopback port 4173. In this cloud sandbox, use `npm ci --cache /tmp/laplora-npm-cache` because the default home cache is not writable. No application environment variables or credentials are required.
 
 If the browser panel cannot reach the cloud server, [download the interactive preview](docs/design/interactive-preview.html) and open it in a browser. It includes the actual app, styles, fonts, favicon, and font notices in one file. Refreshing clears its inputs just as in the live app. Rebuild it after application changes with:
@@ -76,7 +78,7 @@ npm test
 PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npm run verify
 ```
 
-Unit tests verify engine contracts and structural behavior, including a 2,160-profile stress grid. Browser tests cover setup/results/comparison flows, validation, keyboard chart exploration, data consistency, in-memory privacy, reduced motion, automated accessibility scans, and 320px/200% text reflow. The default suite runs 40 desktop/mobile Chromium cases. Optional cross-browser projects add Firefox desktop and WebKit desktop/mobile (100 total runs). These checks do not establish prediction accuracy or full accessibility compliance. GitHub Actions is configured for all three engines and runs one browser worker at a time to avoid resource contention on shared runners. Local runs default to two workers. See [workflow runs](https://github.com/SunnyScript-s/laplora/actions) for current remote verification status.
+Unit tests verify engine contracts and structural behavior, including a 2,160-profile stress grid. Browser tests cover setup/results/comparison flows, planner request privacy, validation, keyboard chart exploration, data consistency, in-memory privacy, reduced motion, automated accessibility scans, and 320px/200% text reflow. The default suite runs 44 desktop/mobile Chromium cases. Optional cross-browser projects add Firefox desktop and WebKit desktop/mobile (110 total runs). These checks do not establish prediction accuracy or full accessibility compliance. GitHub Actions is configured for all three engines and runs one browser worker at a time to avoid resource contention on shared runners. Local runs default to two workers. See [workflow runs](https://github.com/SunnyScript-s/laplora/actions) for current remote verification status.
 
 On a machine with browser dependencies installed:
 
@@ -113,7 +115,7 @@ These selectors apply only to test processes; they are not application variables
 
 The public beta target in the plan is February 2, 2027. Read PROGRESS.md for actual completion status.
 
-The approved model uses explicitly experimental coefficients, conservative below-SAT-floor PSAT handling, and descriptive rather than numerical treatment of preparation history/methods/test frequency. Inputs remain in this tab’s memory and clear on refresh; no account, score telemetry, or server-side score storage is used. Optional feedback messages are sent separately to Formspree. The site is deployed on Vercel; physical-device/screen-reader review and actual beta feedback remain separate from automated cross-browser checks.
+The approved model uses explicitly experimental coefficients, conservative below-SAT-floor PSAT handling, and descriptive rather than numerical treatment of preparation history/methods/test frequency. Simulation inputs remain in this tab’s memory and clear on refresh; no account, score telemetry, or server-side score storage is used. The optional Python planner receives only scheduling preferences and returns a transient calendar; it rejects scores and goals and does not persist requests or plans. Optional feedback messages are sent separately to Formspree. The site is deployed on Vercel; physical-device/screen-reader review and actual beta feedback remain separate from automated checks.
 
 ## Phase 2: local model validation
 

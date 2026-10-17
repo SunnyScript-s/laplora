@@ -1,6 +1,6 @@
 # Laplora architecture
 
-Laplora runs its experimental SAT simulations entirely in the browser. The React/TypeScript architecture and V0.1 mathematical rules were approved on October 14, 2026. The [original development plan](DEVELOPMENT_PLAN.md) remains the roadmap; this document describes the implemented system.
+Laplora runs its experimental SAT simulations entirely in the browser. The React/TypeScript architecture and V0.1 mathematical rules were approved on October 14, 2026. The [development plan](DEVELOPMENT_PLAN.md) remains the roadmap, including the founder-approved Python planner scope update of October 17, 2026; this document describes the implemented system.
 
 ## Stack
 
@@ -8,6 +8,7 @@ Laplora runs its experimental SAT simulations entirely in the browser. The React
 | --- | --- |
 | React + TypeScript | Guided forms, view state, results, and shared typed contracts |
 | Vite | Development server and static production build |
+| Python 3.12 standard library | Stateless serverless API for generating schedules from allowlisted preferences |
 | CSS Modules + shared CSS variables | Responsive layout, typography, colors, and motion |
 | Native SVG | Score trajectories, comparison curves, and decorative artwork |
 | Zod | Runtime input validation |
@@ -15,7 +16,7 @@ Laplora runs its experimental SAT simulations entirely in the browser. The React
 | Playwright + axe-core | Browser workflows, keyboard behavior, reflow, and automated accessibility checks |
 | npm + committed lockfile | Reproducible dependency installation |
 
-Node 24.19.0 and npm 11.9.0 are pinned for development. No backend, paid runtime service, application API key, chart library, or animation library is required.
+Node 24.19.0 and npm 11.9.0 are pinned for development. Python 3.12 runs the schedule API and its tests; no Python package dependencies, application API keys, or database are required.
 
 ## Code organization
 
@@ -26,9 +27,11 @@ src/
   model/      pure simulation functions, scenarios, and versioned parameters
   product/    tier, feature, and planned offer definitions
   styles/     global tokens, accessibility rules, and local fonts
+api/          Python request handler and pure schedule-planning algorithm
 tests/
   unit/       calendar, input, model, and scenario behavior
   e2e/        browser workflows and accessibility checks
+  python/     Python planner and HTTP API tests
 public/       favicon and distributed font license notices
 docs/         product, research, model, design, and verification records
 scripts/      standalone preview generation
@@ -39,6 +42,8 @@ scripts/      standalone preview generation
 Raw form strings → validated student input → explicit model parameters → separate Math and Reading & Writing trajectories → combined totals → charts, tables, and explanations.
 
 The model receives an explicit start date and parameter set. It does not depend on React, browser storage, network calls, or an implicit clock. Results include the model version, assumptions, and input snapshot. Target score is a comparison marker; it does not increase modeled growth.
+
+The optional four-week study planner posts only weekly hours, available weekdays, selected study methods, practice-test frequency, and Math allocation to `/api/study_plan`. The Python function strictly rejects extra fields, including scores, goal values, dates, consistency, and preparation history. It returns an in-memory schedule and sends `Cache-Control: no-store`; it has no database, file writes, analytics, or request-body logging. The schedule stays in current page state. See [the planner specification](docs/STUDY_PLANNER.md).
 
 Scenario comparisons keep baseline scores, goals, dates, and model version fixed. They change only the supported study-plan fields and disclose those changes. Preparation methods, experience, and practice-test frequency provide context without unvalidated numerical bonuses.
 
@@ -63,7 +68,7 @@ See the [model specification](docs/MODEL_SPECIFICATION.md), [simulation rules](d
 
 View state handles landing, guided setup, results, How It Works, pricing, and beta information. All informational views keep the active setup/results component mounted but hidden, preserving step and comparison state while students browse. Draft inputs and comparison state survive in-app navigation; browser Back does not navigate individual form steps. Refresh clears all entered data. Reset asks before discarding entered work.
 
-The app uses no accounts, database, score telemetry, or server-side student records. Inputs are not placed in URLs. The owner approved optional anonymous feedback collection through Formspree. The separate Feedback component receives no simulator state and transmits only the user-entered category/message and explicitly chosen optional usefulness rating or device description on submission. A strict Zod payload schema rejects unexpected fields; no device details are detected automatically. It omits cookies and referrer information; Formspree may still process network metadata. Other future persistence or account features need a separate privacy and product decision.
+The app uses no accounts, database, score telemetry, or server-side student records. Scores, goals, dates, consistency, and preparation history remain in the browser and are excluded from the planner API. The founder approved this narrow, transient scheduling-preference exception on October 17, 2026. Inputs are not placed in URLs. The owner also approved optional anonymous feedback through Formspree. The separate Feedback component receives no simulator state and transmits only the user-entered category/message and explicitly chosen optional usefulness rating or device description on submission. A strict Zod payload schema rejects unexpected fields; no device details are detected automatically. It omits cookies and referrer information; Formspree and Vercel may still process network metadata. Other persistence or account features need a separate privacy and product decision.
 
 The current design uses orange/amber glass artwork, Disket Mono display type, and Manrope body text. SVG charts have keyboard timeline exploration and a table alternative. Semantic controls, field errors, visible focus, and system reduced-motion support are shared requirements. The small footer credit identifies the project owner.
 

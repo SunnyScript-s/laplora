@@ -75,6 +75,19 @@
 .methods legend { font-weight: 650; font-size: .85rem; }
 .methods label { display: flex; align-items: center; gap: .65rem; font-size: .85rem; min-height: 40px; cursor: pointer; line-height: 1.5; }
 .methods input { width: 18px; height: 18px; flex-shrink: 0; accent-color: var(--color-accent); }
+.planner { border: 1px solid var(--color-border); background: #fffaf4c9; border-radius: 14px; padding: clamp(1rem, 3vw, 1.5rem); margin-block: 2rem; }
+.planner h2 { margin: 0 0 .5rem; font-size: 1.1rem; }
+.planner h3 { margin: 1.2rem 0 .25rem; font-size: 1rem; }
+.dayChoices { display: flex; flex-wrap: wrap; gap: .5rem; border: 0; padding: 0; margin: 1rem 0; }
+.dayChoices legend { width: 100%; font-size: .8rem; font-weight: 650; margin-bottom: .5rem; }
+.dayChoices label { display: inline-flex; gap: .4rem; align-items: center; border: 1px solid var(--color-border); border-radius: 999px; padding: .4rem .65rem; font-size: .75rem; cursor: pointer; }
+.dayChoices input { accent-color: var(--color-accent); }
+.schedule { margin-top: 1rem; }
+.schedule details { border-top: 1px solid var(--color-border); padding: .75rem 0; font-size: .8rem; }
+.schedule summary { cursor: pointer; font-weight: 650; }
+.schedule ul { padding-left: 1.2rem; line-height: 1.7; }
+.plannerPrivacy, .plannerError { margin: 1rem 0 0; color: var(--color-muted); font-size: .7rem; line-height: 1.7; }
+.plannerError { color: #942e35; font-size: .8rem; }
 .reviewRow { display: flex; gap: 1.5rem; align-items: start; justify-content: space-between; padding: 1.2rem 0; border-bottom: 1px solid var(--color-border); }
 .reviewRow h2 { margin-bottom: .5rem; }
 .reviewRow p { color: var(--color-muted); font-size: .85rem; line-height: 1.7; margin: .4rem 0; }

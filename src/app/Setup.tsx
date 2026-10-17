@@ -5,6 +5,8 @@ import { validateInput } from '../domain/inputs';
 import type { InputError } from '../domain/inputs';
 import { simulate } from '../model/simulate';
 import type { SimulatedResult } from '../model/simulate';
+import { requestStudyPlan, plannerDays } from './studyPlanner';
+import type { PlannerDay, StudyPlan } from './studyPlanner';
 import { Field, NumberField, controlProps } from './Fields';
 import { assessmentLabels, candidate, formatDate, frequencyLabels, friendlyErrors, historyLabels, methodLabels, stepErrors } from './form';
 import type { Draft } from './form';
@@ -16,10 +18,31 @@ export function Setup({ draft, update, today, onResult }: { draft: Draft; update
   const [step, setStep] = useState(0);
   const [errors, setErrors] = useState<InputError[]>([]);
   const [baselineMessage, setBaselineMessage] = useState('');
+  const [availableDays, setAvailableDays] = useState<PlannerDay[]>(['Monday', 'Wednesday', 'Saturday']);
+  const [studyPlan, setStudyPlan] = useState<StudyPlan | null>(null);
+  const [plannerError, setPlannerError] = useState('');
+  const [planning, setPlanning] = useState(false);
   const heading = useRef<HTMLHeadingElement>(null);
   const form = useRef<HTMLFormElement>(null);
   useEffect(() => { heading.current?.focus(); }, [step]);
   function move(next: number) { setErrors([]); setBaselineMessage(''); setStep(next); }
+  async function buildStudyPlan() {
+    if (!availableDays.length) { setPlannerError('Choose at least one day that works for you.'); return; }
+    setPlanning(true); setPlannerError(''); setStudyPlan(null);
+    try {
+      // Only these schedule preferences are sent. Score and target fields are intentionally excluded.
+      const result = await requestStudyPlan({
+        weeklyHours: Number(draft.weeklyStudyHours),
+        availableDays,
+        studyMethods: draft.studyMethods,
+        practiceTestFrequency: draft.practiceTestFrequency,
+        mathSharePercent: Number(draft.mathSharePercent),
+      });
+      setStudyPlan(result);
+    } catch (error) {
+      setPlannerError(error instanceof Error ? error.message : 'We could not build your plan. Please try again.');
+    } finally { setPlanning(false); }
+  }
   function fail(nextErrors: InputError[]) {
     setErrors(nextErrors);
     requestAnimationFrame(() => {
@@ -85,7 +108,7 @@ export function Setup({ draft, update, today, onResult }: { draft: Draft; update
             <NumberField field="readingWritingScore" draft={draft} update={update} errors={errors} min={min} max={max} step={10} hint={`${assessmentLabels[draft.baselineAssessment]}: ${min}–${max}, in increments of 10.`} />
           </div>
           <p className={styles.hint}>Find your section scores in your score report or scored Bluebook result. An unscored test preview is not a baseline.</p>
-          <p className={styles.callout}>Your inputs stay in this tab’s memory. Refreshing clears them. No account or identifying information is needed.</p>
+          <p className={styles.callout}>Your scores and goals stay in this tab’s memory. The optional study-week planner sends only selected scheduling preferences when you choose to use it. Refreshing clears your inputs. No account or identifying information is needed.</p>
         </>}
         {step === 1 && <>
           <div className={styles.fields}>
@@ -111,6 +134,25 @@ export function Setup({ draft, update, today, onResult }: { draft: Draft; update
             }} />{name}</label>)}
             {errors.find(e => e.field === 'studyMethods') && <p id="studyMethods-error" className={styles.error}>{errors.find(e => e.field === 'studyMethods')?.message}</p>}
           </fieldset>
+          <section className={styles.planner} aria-labelledby="planner-title">
+            <h2 id="planner-title">Build a study week with Python</h2>
+            <p className={styles.hint}>Choose the days that usually work for you. Laplora will organize your weekly time into a flexible four-week schedule.</p>
+            <fieldset className={styles.dayChoices}><legend>Available days</legend>
+              {plannerDays.map(day => <label key={day}><input type="checkbox" checked={availableDays.includes(day)} onChange={event => setAvailableDays(current => event.target.checked ? [...current, day] : current.filter(value => value !== day))} />{day.slice(0, 3)}</label>)}
+            </fieldset>
+            <button type="button" className={styles.secondary} onClick={() => void buildStudyPlan()} disabled={planning || draft.studyMethods.length === 0}>{planning ? 'Building your plan…' : 'Build my study week'}</button>
+            {plannerError && <p className={styles.plannerError} role="alert">{plannerError}</p>}
+            {studyPlan && <div className={styles.schedule} aria-live="polite">
+              <h3>Your four-week schedule</h3>
+              <p className={styles.hint}>{(studyPlan.weeklyMinutes / 60).toLocaleString()} hours each week · adjust any session to fit your life</p>
+              {studyPlan.weeks.map(week => <details key={week.week} open={week.week === 1}>
+                <summary>Week {week.week} · {Math.floor(week.totalMinutes / 60)} hr {week.totalMinutes % 60 ? `${week.totalMinutes % 60} min` : ''}</summary>
+                {week.sessions.length ? <ul>{week.sessions.map(session => <li key={session.day}><strong>{session.day} · {Math.floor(session.durationMinutes / 60)} hr {session.durationMinutes % 60 ? `${session.durationMinutes % 60} min` : ''}</strong><ul>{session.activities.map((activity, index) => <li key={`${activity.method}-${index}`}>{activity.durationMinutes} min · {activity.focus} · {activity.method}</li>)}</ul></li>)}</ul> : <p>No study hours entered for this week.</p>}
+              </details>)}
+              {studyPlan.notes.map(note => <p className={styles.hint} key={note}>{note}</p>)}
+            </div>}
+            <p className={styles.plannerPrivacy}>Only weekly hours, available days, chosen methods, test frequency, and section allocation are sent to the scheduler. It never receives SAT scores, goals, dates, consistency, or preparation history. The request and schedule are not saved and clear when you refresh this tab. Vercel may process connection metadata; see its <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">privacy policy</a>.</p>
+          </section>
           <p className={styles.callout}>History, methods, and test frequency provide context. This experimental model gives them no separate score bonuses.</p>
           <details><summary>Section allocation · {draft.mathSharePercent}% Math</summary><p className={styles.hint}>Default: half of your study time to each section.</p><NumberField field="mathSharePercent" draft={draft} update={update} errors={errors} min={0} max={100} step={1} hint="The remaining percentage goes to Reading & Writing." /></details>
         </>}
