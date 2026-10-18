@@ -152,7 +152,7 @@
   .landingNote { flex-wrap: wrap; gap: 1rem; margin-top: 0; } .landingNote > div { flex: 1; min-width: 180px; } .landingNote button { margin-left: 0; } .fields { grid-template-columns: 1fr; gap: 1.25rem; } .steps { font-size: .68rem; gap: .4rem; } .steps li { gap: .3rem; flex-direction: column; } .steps li span { width: 24px; height: 24px; }
   .formActions { flex-wrap: wrap; } .formActions .primary { flex-grow: 1; } .resultHeading { flex-direction: column; align-items: start; gap: .5rem; margin-bottom: 1.5rem; } .metrics { grid-template-columns: 1fr; gap: .75rem; } .metrics .panel { display: grid; grid-template-columns: 1fr auto; align-items: center; column-gap: 1rem; } .metrics .score { grid-column: 2; grid-row: 1 / 3; margin: 0; font-size: 2rem; } .metrics .hint { font-size: .72rem; } .metrics .rangeScore { font-size: 1.6rem; }
   .reviewRow { flex-wrap: wrap; gap: .2rem; } .previewRange { font-size: .78rem; } .chartHeader { gap: 1rem; } .resultsGrid .panel { padding: 1.25rem; } .orb { width: 800px; right: -500px; } .orbTwo { width: 650px; left: -480px; top: 500px; } .horizon { top: 580px; width: 140%; } .rotor { width: 560px; top: 340px; right: -330px; opacity: .65; }
-  .referenceArt { width: 1050px; max-width: none; left: calc(50% - 580px); height: 1050px; top: 100px; opacity: .8; }
+  .referenceArt { width: 1050px; max-width: none; left: calc(50% - 580px); height: 1050px; top: 0; opacity: .8; }
 }
 @media (prefers-reduced-motion: reduce) { .enter, .drawLine, .orb, .orbTwo, .rotorRing { animation: none !important; } .primary, .secondary, .preset { transition: none; transform: none; } .primary:hover, .secondary:hover { transform: none; } }
 @media (max-width: 360px) {
