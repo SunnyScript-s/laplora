@@ -12,7 +12,7 @@ import { ReferenceAtmosphere } from './ReferenceAtmosphere';
 import { Pricing } from './Pricing';
 import { Feedback } from './Feedback';
 import { BetaInfo } from './BetaInfo';
-import laploraLogo from '../assets/laplora-logo.png?inline';
+import laploraLogo from '../assets/laplora-header-logo.png?inline';
 import styles from './App.module.css';
 
 type WorkspaceView = 'home' | 'setup' | 'results';
@@ -59,7 +59,7 @@ export function App() {
       <header className={styles.header}>
         <div className={styles.brand}>
         <button className={styles.wordmark} aria-label="Laplora home" onClick={() => setView('home')}>
-          <img className={styles.logo} src={laploraLogo} width="1412" height="382" alt="" />
+          <span className={styles.logoFrame}><img className={styles.logo} src={laploraLogo} width="1366" height="768" alt="" /></span>
         </button>
         <button className={styles.betaBadge} aria-label="About the beta" aria-current={view === 'beta' ? 'page' : undefined} onClick={() => openInformation('beta')}>Beta</button>
         </div>
