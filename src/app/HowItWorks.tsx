@@ -3,7 +3,7 @@ import styles from './App.module.css';
 
 export function HowItWorks() {
   return <section className={`${styles.how} ${styles.enter}`}>
-    <p className={styles.eyebrow}>Clear assumptions. More useful questions.</p><h1 className={styles.pageTitle}>How Laplora works</h1><p className={styles.description}>A way to explore preparation, with room for everything a model cannot know.</p>
+    <h1 className={styles.pageTitle}>How Laplora works</h1><p className={styles.description}>A way to explore preparation, with room for everything a model cannot know.</p>
     <div className={styles.panel}>
       <h2>Start from a score you already have</h2><p>An SAT, PSAT/NMSQT, PSAT 10, or scored official full-length practice result anchors Math and Reading & Writing separately. Your total is the sum of the sections. No new quiz is needed.</p>
       <p>PSAT uses the shared score scale without rescaling. A valid PSAT section below 200 requires an SAT baseline before simulation, because the SAT section scale starts at 200. A PSAT score of 760 is not automatically increased.</p>
