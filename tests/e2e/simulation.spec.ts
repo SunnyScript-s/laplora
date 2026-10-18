@@ -164,7 +164,7 @@ test('reset asks before clearing; refresh clears in-memory values', async ({ pag
   await expect(page.getByLabel('Math section score', { exact: true })).toBeEmpty();
   await page.getByLabel('Math section score', { exact: true }).fill('600');
   await page.reload();
-  await page.getByRole('button', { name: 'Start simulation' }).click();
+  await expect(page).toHaveTitle('Your preparation plan');
   await expect(page.getByLabel('Math section score', { exact: true })).toBeEmpty();
 });
 
