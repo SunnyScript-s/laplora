@@ -15,8 +15,8 @@
 .header { max-width: 1160px; margin: auto; padding-block: 2rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
 .header nav { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; min-width: 0; max-width: 100%; }
 .wordmark { width: clamp(180px, 20vw, 220px); max-width: 100%; min-height: 44px; flex-shrink: 0; background: none; border: 0; padding: 6px 0; cursor: pointer; }
-.logoFrame { display: block; position: relative; width: 100%; aspect-ratio: 749 / 154; overflow: hidden; }
-.logo { display: block; position: absolute; width: 182.38%; max-width: none; height: auto; left: -40.45%; top: -200%; }
+.logoFrame { display: block; position: relative; width: 100%; aspect-ratio: 1060 / 235; overflow: hidden; }
+.logo { display: block; position: absolute; width: 128.87%; max-width: none; height: auto; left: -15.09%; top: -113.62%; }
 .brand { display: flex; flex-wrap: wrap; align-items: center; gap: .65rem; min-width: 0; max-width: 100%; }
 .betaBadge { min-height: 44px; padding: .4rem .65rem; border: 1px solid var(--color-border); border-radius: 999px; background: var(--color-soft); color: var(--color-link); font-size: .75rem; font-weight: 700; cursor: pointer; }
 .navButton, .textButton { background: none; border: 0; padding: .65rem .2rem; cursor: pointer; color: var(--color-link); font-weight: 650; font-size: .9rem; text-underline-offset: .25em; }
