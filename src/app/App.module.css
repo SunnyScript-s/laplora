@@ -14,7 +14,7 @@
 .satelliteTwo { width: 23px; top: auto; right: auto; bottom: 6%; left: 23%; }
 .header { max-width: 1160px; margin: auto; padding-block: 2rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
 .header nav { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; min-width: 0; max-width: 100%; }
-.wordmark { width: clamp(180px, 20vw, 220px); max-width: 100%; min-height: 44px; flex-shrink: 0; background: none; border: 0; padding: 6px 0; cursor: pointer; }
+.wordmark { width: clamp(198px, 22vw, 242px); max-width: 100%; min-height: 44px; flex-shrink: 0; background: none; border: 0; padding: 6px 0; cursor: pointer; }
 .logoFrame { display: block; position: relative; width: 100%; aspect-ratio: 1060 / 235; overflow: hidden; }
 .logo { display: block; position: absolute; width: 128.87%; max-width: none; height: auto; left: -15.09%; top: -113.62%; }
 .brand { display: flex; flex-wrap: wrap; align-items: center; gap: .65rem; min-width: 0; max-width: 100%; }
