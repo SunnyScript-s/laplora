@@ -26,7 +26,7 @@ export function App() {
   const main = useRef<HTMLElement>(null);
   const previousView = useRef(view);
   useEffect(() => {
-    document.title = `Laplora — ${view === 'results' ? 'Your modeled trajectories' : view === 'setup' ? 'Your preparation plan' : view === 'how' ? 'How it works' : view === 'pricing' ? 'Laplora Pro & pricing' : view === 'beta' ? 'About the beta' : 'SAT preparation, thoughtfully modeled'}`;
+    document.title = view === 'home' ? "Laplora | See What's Possible" : `Laplora — ${view === 'results' ? 'Your modeled trajectories' : view === 'setup' ? 'Your preparation plan' : view === 'how' ? 'How it works' : view === 'pricing' ? 'Laplora Pro & pricing' : 'About the beta'}`;
     if (previousView.current !== view) {
       const heading = [...(main.current?.querySelectorAll('h1') ?? [])].find(element => !element.closest('[hidden]'));
       heading?.setAttribute('tabindex', '-1'); heading?.focus();
