@@ -16,7 +16,7 @@ test('pricing distinguishes live free features from planned paid offers without 
   await expect(page.getByText('Start from an existing score. No quiz. No account.', { exact: true })).toBeVisible();
   await page.getByRole('button', { name: 'Explore Laplora Pro' }).click();
   await expect(page.getByRole('heading', { level: 1, name: 'Laplora Pro' })).toBeFocused();
-  await expect(page).toHaveTitle('Laplora — Laplora Pro & pricing');
+  await expect(page).toHaveTitle('Laplora Pro');
   const free = page.getByRole('article', { name: 'Laplora Free', exact: true });
   const pro = page.getByRole('article', { name: 'Laplora Pro', exact: true });
   const pass = page.getByRole('article', { name: '90-day SAT Prep Pass' });

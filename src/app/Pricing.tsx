@@ -7,7 +7,6 @@ type PricingProps = { onUseFree: () => void; hasActivePlan: boolean };
 export function Pricing({ onUseFree, hasActivePlan }: PricingProps) {
   return <section className={`${styles.pricing} ${shared.enter}`}>
     <div className={styles.intro}>
-      <p className={shared.eyebrow}><span className={shared.smallDot} /> More room for your preparation</p>
       <h1 className={shared.pageTitle}>Laplora Pro</h1>
       <p className={shared.description}>Explore your possibilities for free. A deeper view of your progress is planned for Laplora Pro.</p>
       <p className={shared.hint}>The free simulator is available now. Both paid options below are Coming Soon.</p>

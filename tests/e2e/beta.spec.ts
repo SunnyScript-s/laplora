@@ -7,7 +7,7 @@ test('beta guidance preserves the active plan through other information pages', 
   await page.getByLabel('Math section score', { exact: true }).fill('610');
   await page.getByRole('button', { name: 'About the beta' }).click();
   await expect(page.getByRole('heading', { name: 'About the Laplora beta' })).toBeFocused();
-  await expect(page).toHaveTitle('Laplora — About the beta');
+  await expect(page).toHaveTitle('About the beta');
   await expect(page.getByRole('main')).toContainText('not scientifically validated predictions');
   await expect(page.getByRole('main')).toContainText('not a statistical confidence interval');
   await expect(page.getByRole('main')).toContainText('private Formspree inbox');
