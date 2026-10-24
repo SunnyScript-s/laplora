@@ -139,7 +139,7 @@ export function App() {
         {(view === 'results' || (isInformationView && returnView === 'results')) && result && <div hidden={view !== 'results'}><Results result={result} onEdit={() => navigate('setup')} /></div>}
         {isInformationView && <><button className={styles.textButton} onClick={() => navigate(returnView)}>← Back to {returnView === 'results' ? 'results' : returnView === 'setup' ? 'your plan' : 'home'}</button>{view === 'how' ? <HowItWorks /> : view === 'beta' ? <BetaInfo /> : <Pricing hasActivePlan={returnView !== 'home'} onUseFree={() => navigate(returnView === 'home' ? 'setup' : returnView)} />}</>}
       </main>
-      <footer className={styles.footer}><span>Laplora · Preparation, in perspective.</span><span>Made by Santiago Harbison</span><Feedback /><span>Experimental simulation. Independent of College Board.</span></footer>
+      <footer className={styles.footer}><span>Laplora · Preparation, in perspective.</span><span className={styles.creatorCredit}>Made by Santiago Harbison <a className={styles.footerLink} href="https://www.linkedin.com/in/santiago-harbison-60a57043b/" target="_blank" rel="noopener noreferrer" aria-label="Santiago Harbison on LinkedIn (opens in a new tab)">LinkedIn <span aria-hidden="true">↗</span></a></span><Feedback /><span>Experimental simulation. Independent of College Board.</span></footer>
     </div>
   </>;
 }
