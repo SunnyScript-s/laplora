@@ -138,6 +138,10 @@
 .how h2:first-child { margin-top: 0; }
 .equations code { font-size: .82rem; overflow-wrap: anywhere; }
 .footer { max-width: 1160px; margin: auto; padding-block: 1.5rem calc(3rem + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--color-border); font-size: .7rem; color: var(--color-muted); display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; justify-content: space-between; line-height: 1.7; }
+.creatorCredit { display: inline-flex; flex-wrap: wrap; align-items: center; gap: .3rem .65rem; }
+.footerLink { color: var(--color-link); font-weight: 650; text-decoration: underline; text-underline-offset: .2em; border-radius: 3px; }
+.footerLink:hover { color: var(--color-accent); }
+.footerLink:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
 .enter { animation: enter 380ms cubic-bezier(.2,.7,.3,1) both; }
 .drawLine { stroke-dasharray: 1; stroke-dashoffset: 0; animation: draw 900ms ease-out both; }
 @keyframes enter { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
