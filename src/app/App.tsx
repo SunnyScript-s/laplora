@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { addCalendarDays, localCalendarDate } from '../domain/dates';
 import { simulate } from '../model/simulate';
 import type { SimulatedResult } from '../model/simulate';
@@ -141,5 +142,6 @@ export function App() {
       </main>
       <footer className={styles.footer}><span>Laplora · Preparation, in perspective.</span><span className={styles.creatorCredit}>Made by Santiago Harbison <a className={styles.footerLink} href="https://www.linkedin.com/in/santiago-harbison-60a57043b/" target="_blank" rel="noopener noreferrer" aria-label="Santiago Harbison on LinkedIn (opens in a new tab)">LinkedIn <span aria-hidden="true">↗</span></a></span><Feedback /><span>Experimental simulation. Independent of College Board.</span></footer>
     </div>
+    <Analytics />
   </>;
 }
